@@ -6,7 +6,7 @@ import { NavigationSheet } from "./navigation-sheet";
 const Navbar04Page = () => {
   return (
     <div className="bg-muted">
-      <nav className="fixed top-6 inset-x-4 h-16 bg-background border dark:border-slate-700/70 max-w-(--breakpoint-xl) mx-auto rounded-full">
+      <nav className="fixed top-6 inset-x-4 h-16 bg-background border dark:border-slate-700/70 max-w-(--breakpoint-xl) mx-auto rounded-full z-100">
         <div className="h-full flex items-center justify-between mx-auto px-4">
           <Logo />
 

@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Urbanist } from "next/font/google";
+import { Urbanist, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar04Page from "@/components/navbar-04/navbar-04";
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
+  subsets: ["latin"],
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -25,9 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${urbanist.variable} antialiased`}
-      >
+      <body className={`${urbanist.variable} ${outfit.variable} antialiased`}>
         <Navbar04Page />
         {children}
       </body>
