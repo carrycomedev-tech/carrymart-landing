@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Smartphone, Download } from "lucide-react";
+import Image from "next/image";
 import qrcode from "qrcode-generator";
 
 const DownloadAppSection = () => {
     const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string>("");
-    const canvasRef = useRef<HTMLCanvasElement>(null);
 
     // App download URLs (replace with actual URLs when available)
     const appStoreUrl = "https://apps.apple.com/app/carrycome";
@@ -83,9 +82,11 @@ const DownloadAppSection = () => {
                             <div className="flex flex-col items-center space-y-4">
                                 {qrCodeDataUrl ? (
                                     <div className="bg-white p-2 rounded-lg border">
-                                        <img
+                                        <Image
                                             src={qrCodeDataUrl}
                                             alt="QR Code for downloading CarryCome app"
+                                            width={128}
+                                            height={128}
                                             className="w-32 h-32"
                                         />
                                     </div>

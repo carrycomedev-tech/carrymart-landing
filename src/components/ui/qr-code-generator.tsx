@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import {
   Card,
   CardContent,
@@ -100,7 +101,7 @@ export function QRCodeDisplay({ data, isLoading, error }: QRCodeDisplayProps) {
             className="w-full rounded-lg bg-white p-4"
             style={{ maxWidth: `${data.size}px` }}
           >
-            <img
+            <Image
               src={data.output}
               alt={
                 data.data && data.data.length > 50
@@ -111,8 +112,6 @@ export function QRCodeDisplay({ data, isLoading, error }: QRCodeDisplayProps) {
               }
               width={data.size}
               height={data.size}
-              loading="lazy"
-              decoding="async"
               className="h-auto w-full"
             />
           </div>

@@ -44,7 +44,7 @@ const Footer03Page = () => {
             <h3 className="text-2xl font-semibold text-white">CarryCome</h3>
             <p className="mt-4 text-white/80">
               CarryCome connects students through fast, affordable, and reliable
-              campus deliveries. Whether it's food, parcels, or errands — we make
+              campus deliveries. Whether it&apos;s food, parcels, or errands — we make
               life on campus simpler and more rewarding.
             </p>
 
