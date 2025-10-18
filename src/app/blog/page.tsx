@@ -47,7 +47,7 @@ const Blog02Page = () => {
       {/* Header */}
       <div className="flex items-end justify-between">
         <h2 className="text-3xl font-urbanist font-extrabold tracking-tight text-secondary">
-          Latest Articles
+          Latest Blogs
         </h2>
         <Select defaultValue="recommended">
           <SelectTrigger className="w-[180px]">

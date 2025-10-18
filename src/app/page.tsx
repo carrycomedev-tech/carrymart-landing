@@ -3,6 +3,8 @@ import Hero03 from '@/components/hero-03/hero-03'
 import Hero05 from '@/components/hero-05/hero-05'
 import React from 'react'
 import Blog02Page from './blog/page'
+import Features01Page from '@/components/features-01/features-01'
+import QRCodeDisplay from '@/components/ui/qr-code-generator'
 
 const HomePage = () => {
   return (
@@ -11,6 +13,8 @@ const HomePage = () => {
       <Hero05 />
       <Features06Page />
       <Blog02Page />
+      <Features01Page />
+      <QRCodeDisplay data={{ url: "https://carrycome.com" } as any} />
     </>
   )
 }
