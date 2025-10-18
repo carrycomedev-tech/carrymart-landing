@@ -8,10 +8,12 @@
         "@radix-ui/react-navigation-menu": "^1.2.14",
         "@radix-ui/react-select": "^2.2.6",
         "@radix-ui/react-slot": "^1.2.3",
+        "@types/qrcode-generator": "^1.0.6",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "lucide-react": "^0.546.0",
         "next": "15.5.6",
+        "qrcode-generator": "^2.0.4",
         "react": "19.1.0",
         "react-dom": "19.1.0",
         "tailwind-merge": "^3.3.1",
@@ -224,6 +226,8 @@
     "@types/json5": ["@types/json5@0.0.29", "", {}, ""],
 
     "@types/node": ["@types/node@20.19.22", "", { "dependencies": { "undici-types": "~6.21.0" } }, ""],
+
+    "@types/qrcode-generator": ["@types/qrcode-generator@1.0.6", "", { "dependencies": { "qrcode-generator": "*" } }, "sha512-XasuPjhHBC4hyOJ/pHaUNTj+tNxA1SyZpXaS/FOUxEVX03D1gFM8UmMKSIs+pPHLAmRZpU6j9KYxvo+lfsvhKw=="],
 
     "@types/react": ["@types/react@19.2.2", "", { "dependencies": { "csstype": "^3.0.2" } }, ""],
 
@@ -700,6 +704,8 @@
     "prop-types": ["prop-types@15.8.1", "", { "dependencies": { "loose-envify": "^1.4.0", "object-assign": "^4.1.1", "react-is": "^16.13.1" } }, ""],
 
     "punycode": ["punycode@2.3.1", "", {}, ""],
+
+    "qrcode-generator": ["qrcode-generator@2.0.4", "", {}, "sha512-mZSiP6RnbHl4xL2Ap5HfkjLnmxfKcPWpWe/c+5XxCuetEenqmNFf1FH/ftXPCtFG5/TDobjsjz6sSNL0Sr8Z9g=="],
 
     "queue-microtask": ["queue-microtask@1.2.3", "", {}, ""],
 
