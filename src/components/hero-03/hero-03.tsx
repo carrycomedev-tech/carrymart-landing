@@ -15,10 +15,10 @@ const Hero03 = () => {
           asChild
         >
           <Link href="#">
-            Just released v1.0.0 <ArrowUpRight className="ml-1 size-4" />
+          Coming Soon v1.0.0 (beta) <ArrowUpRight className="ml-1 size-4" />
           </Link>
         </Badge>
-        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl md:leading-[1.2] font-bold tracking-tighter">
+        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl text-secondary lg:text-7xl md:leading-[1.2] font-bold tracking-tighter">
           Deliver. Ride. Earn <br /> Right on Campus.
         </h1>
         <p className="mt-6 md:text-lg">
