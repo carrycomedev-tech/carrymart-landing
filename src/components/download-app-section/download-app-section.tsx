@@ -51,14 +51,25 @@ const DownloadAppSection = () => {
     }, [appStoreUrl]);
 
     return (
-        <section className="w-full bg-[#080231] py-20 px-6">
-            <div className="max-w-4xl mx-auto text-center">
+        <section className="w-full bg-primary/10 py-20 px-6 relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 left-0 w-full h-full" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFCC00' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                }}></div>
+            </div>
+            {/* Floating Elements */}
+            <div className="absolute top-10 left-10 w-20 h-20 bg-[#FFCC00]/20 rounded-full blur-xl"></div>
+            <div className="absolute bottom-10 right-10 w-32 h-32 bg-[#FFCC00]/10 rounded-full blur-2xl"></div>
+            <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/5 rounded-full blur-lg"></div>
+            
+            <div className="max-w-4xl mx-auto text-center relative z-10">
                 {/* Header */}
                 <div className="mb-12">
-                    <h2 className="font-urbanist text-3xl md:text-4xl font-extrabold text-white mb-4">
+                    <h2 className="font-urbanist text-3xl md:text-4xl font-extrabold text-secondary mb-4">
                         Download Our <span className="text-[#FFCC00]">App</span>
                     </h2>
-                    <p className="font-outfit text-lg text-white/80 max-w-2xl mx-auto">
+                    <p className="font-outfit text-lg text-secondary/80 max-w-2xl mx-auto">
                         Get the CarryCome app and start earning or ordering right from your phone.
                         Available on both iOS and Android platforms.
                     </p>
@@ -156,7 +167,7 @@ const DownloadAppSection = () => {
 
                     {/* Alternative Text */}
                     <div className="mt-8">
-                        <p className="font-outfit text-sm text-white/60">
+                        <p className="font-outfit text-sm text-secondary/60">
                             Coming soon to your favorite app stores. Join the campus delivery revolution today!
                         </p>
                     </div>
