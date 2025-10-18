@@ -1,12 +1,13 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Bike, Truck } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Hero03 = () => {
   return (
-    <div className="min-h-screen w-full flex flex-col gap-16 items-center justify-center px-6 py-16">
+    <div className="min-h-screen w-full flex flex-col gap-16 items-center justify-center px-6 py-30">
       <div className="text-center max-w-3xl">
         <Badge
           variant="secondary"
@@ -36,7 +37,14 @@ const Hero03 = () => {
           </Button>
         </div>
       </div>
-      <div className="w-full max-w-(--breakpoint-xl) mx-auto aspect-video bg-accent rounded-xl" />
+      <div className="w-full max-w-(--breakpoint-xl) mx-auto aspect-video bg-accent rounded-xl relative overflow-hidden">
+        <Image 
+          src="/assets/hero-image.png"
+          alt="CarryCome delivery service"
+          fill
+          className="object-cover"
+        />
+      </div>
     </div>
   );
 };
