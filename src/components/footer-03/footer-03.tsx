@@ -59,7 +59,7 @@ const Footer03Page = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-[#FFCC00]" />
-                <span>+233 55 123 4567</span>
+                <span>+233 55 123 4567 </span>
               </div>
             </div>
           </div>
