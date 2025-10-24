@@ -43,7 +43,7 @@ const blogs = [
 
 const Blog02Page = () => {
   return (
-    <div className="max-w-(--breakpoint-xl) mx-auto py-16 px-6 xl:px-0">
+    <div id="blogs" className="max-w-(--breakpoint-xl) mx-auto py-16 px-6 xl:px-0">
       {/* Header */}
       <div className="flex items-end justify-between">
         <h2 className="text-3xl font-urbanist font-extrabold tracking-tight text-secondary">

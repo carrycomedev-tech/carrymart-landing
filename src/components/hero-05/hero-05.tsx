@@ -3,7 +3,7 @@ import { Target, Globe, Zap } from "lucide-react";
 
 const AboutSection = () => {
   return (
-    <section className="w-full bg-[#FFCC00]/5 py-20 px-6">
+    <section id="about" className="w-full bg-[#FFCC00]/5 py-20 px-6">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Left Side - Text */}
         <div>

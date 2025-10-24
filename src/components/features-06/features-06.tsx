@@ -54,7 +54,7 @@ const features = [
 
 const Features06Page = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div id="services" className="min-h-screen flex items-center justify-center">
       <div className="max-w-(--breakpoint-lg) w-full py-10 px-6">
         <h2 className="text-4xl md:text-[2.75rem] md:leading-[1.2] font-bold tracking-[-0.03em] sm:max-w-xl text-pretty sm:mx-auto sm:text-center">
           Our Services        

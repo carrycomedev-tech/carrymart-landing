@@ -7,7 +7,7 @@ import React from "react";
 
 const Hero03 = () => {
   return (
-    <div className="min-h-screen w-full flex flex-col gap-16 items-center justify-center px-6 py-30">
+    <div id="hero" className="min-h-screen w-full flex flex-col gap-16 items-center justify-center px-6 py-30">
       <div className="text-center max-w-3xl">
         <Badge
           variant="secondary"

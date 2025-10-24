@@ -35,7 +35,7 @@ const features = [
 
 const Features01Page = () => {
   return (
-    <div className="min-h-full flex items-center justify-center py-32 px-4 bg-background">
+    <div id="features" className="min-h-full flex items-center justify-center py-32 px-4 bg-background">
       <div className="max-w-7xl w-full">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-4">
