@@ -5,6 +5,7 @@ import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
 import { useEffect, useState } from "react";
+import { RegistrationModal } from "@/components/registration-modal";
 
 const Navbar04Page = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -39,7 +40,9 @@ const Navbar04Page = () => {
           <NavMenu className="hidden md:block" />
 
           <div className="flex items-center gap-3">
-            <Button className="rounded-full">Become a Courier</Button>
+            <RegistrationModal>
+              <Button className="rounded-full">Become a Courier</Button>
+            </RegistrationModal>
 
             {/* Mobile Menu */}
             <div className="md:hidden">

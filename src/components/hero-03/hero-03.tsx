@@ -4,6 +4,7 @@ import { ArrowUpRight, Bike, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { RegistrationModal } from "@/components/registration-modal";
 
 const Hero03 = () => {
   return (
@@ -25,9 +26,11 @@ const Hero03 = () => {
          Turn your daily campus rides into real rewards. Whether you’re heading to class or grabbing lunch, help fellow students get what they need — and earn as you go.
         </p>
         <div className="mt-10 flex items-center justify-center gap-4">
-          <Button size="lg" className="rounded-full text-base">
-            Become a Courier <Truck className="h-5! w-5!" />
-          </Button>
+          <RegistrationModal>
+            <Button size="lg" className="rounded-full text-base">
+              Become a Courier <Truck className="h-5! w-5!" />
+            </Button>
+          </RegistrationModal>
           <Button
             variant="outline"
             size="lg"
