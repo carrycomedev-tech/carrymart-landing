@@ -26,9 +26,16 @@ export const NavMenu = (props: ComponentProps<typeof NavigationMenu>) => {
     e.preventDefault();
     const targetId = href.replace(/.*#/, "");
     const elem = document.getElementById(targetId);
-    elem?.scrollIntoView({
-      behavior: "smooth",
-    });
+    if (elem) {
+      const navbarHeight = 100; // Approximate height of the fixed navbar
+      const elementPosition = elem.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (

@@ -22,7 +22,7 @@ export default function ActiveSectionContextProvider({ children }: { children: R
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.3, rootMargin: '-100px 0px -50% 0px' }
     );
 
     sections.forEach((section) => {
