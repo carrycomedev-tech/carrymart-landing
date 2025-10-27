@@ -1,3 +1,4 @@
+import ActiveSectionContextProvider from "@/context/active-section-context";
 import type { Metadata } from "next";
 import { Urbanist, Outfit } from "next/font/google";
 import "./globals.css";
@@ -92,10 +93,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${urbanist.variable} ${outfit.variable} antialiased`}>
         <StructuredData />
-        <Navbar04Page />
-        {children}
-        <Footer03Page />
+        <ActiveSectionContextProvider>
+          <Navbar04Page />
+          {children}
+          <Footer03Page />
+        </ActiveSectionContextProvider>
       </body>
     </html>
   );
 }
+
