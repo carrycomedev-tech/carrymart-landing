@@ -62,7 +62,7 @@ const DownloadAppSection = () => {
             <div className="absolute bottom-10 right-10 w-32 h-32 bg-[#FFCC00]/10 rounded-full blur-2xl"></div>
             <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/5 rounded-full blur-lg"></div>
             
-            <div className="max-w-4xl mx-auto text-center relative z-10">
+            <div className="max-w-4xl mx-auto text-center relative z-1">
                 {/* Header */}
                 <div className="mb-12">
                     <h2 className="font-urbanist text-3xl md:text-4xl font-extrabold text-secondary mb-4">
