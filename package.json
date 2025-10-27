@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "bun run deploy.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
