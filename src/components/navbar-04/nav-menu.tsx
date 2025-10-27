@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { ComponentProps, MouseEvent } from "react";
-import { useActiveSection } from "@/context/active-section-context";
 
 const navItems = [
   { href: "#hero", label: "Home" },
@@ -20,8 +19,6 @@ const navItems = [
 ];
 
 export const NavMenu = (props: ComponentProps<typeof NavigationMenu>) => {
-  const { activeSection } = useActiveSection();
-
   const handleScroll = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const targetId = href.replace(/.*#/, "");
@@ -47,10 +44,7 @@ export const NavMenu = (props: ComponentProps<typeof NavigationMenu>) => {
               <Link
                 href={item.href}
                 onClick={(e) => handleScroll(e, item.href)}
-                className={`transition-colors ${activeSection === item.href.replace("#", "")
-                    ? "text-primary font-semibold"
-                    : "text-muted-foreground hover:text-foreground"
-                  }`}
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
               </Link>
