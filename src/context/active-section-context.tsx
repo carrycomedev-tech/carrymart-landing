@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 
 type ActiveSectionContextType = {
   activeSection: string;
@@ -11,6 +11,36 @@ export const ActiveSectionContext = createContext<ActiveSectionContextType | nul
 
 export default function ActiveSectionContextProvider({ children }: { children: React.ReactNode }) {
   const [activeSection, setActiveSection] = useState('hero');
+
+  useEffect(() => {
+    const sections = ['hero', 'services', 'about', 'blogs', 'features', 'download'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    sections.forEach((section) => {
+      const element = document.getElementById(section);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []);
 
   return (
     <ActiveSectionContext.Provider value={{ activeSection, setActiveSection }}>
