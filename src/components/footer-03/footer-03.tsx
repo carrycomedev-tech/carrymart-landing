@@ -11,6 +11,7 @@ import {
   Phone,
 } from "lucide-react";
 import Link from "next/link";
+import { Logo } from "../navbar-04/logo";
 
 const footerSections = [
   {
@@ -41,7 +42,7 @@ const Footer03Page = () => {
         <div className="py-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-10 px-6 xl:px-0">
           {/* Brand Info */}
           <div className="col-span-full xl:col-span-2">
-            <h3 className="text-2xl font-semibold text-white">CarryCome</h3>
+            <Logo isDarkBg={true}/>
             <p className="mt-4 text-white/80">
               CarryCome connects students through fast, affordable, and reliable
               campus deliveries. Whether it&apos;s food, parcels, or errands — we make
