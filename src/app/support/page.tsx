@@ -1,4 +1,5 @@
 import React from 'react';
+import SupportRequestForm from '@/components/support-request-form/support-request-form';
 
 const faqCategories = [
   {
@@ -155,6 +156,7 @@ const SupportPage = () => {
             </div>
           ))}
         </div>
+        <SupportRequestForm />
       </div>
     </div>
   );
