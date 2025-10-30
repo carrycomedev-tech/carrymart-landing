@@ -29,7 +29,7 @@ const Navbar04Page = () => {
   return (
     <div className="bg-muted">
       <nav
-        className={`fixed top-6 inset-x-4 h-16 bg-background/80 border dark:border-slate-700/70 max-w-(--breakpoint-xl) mx-auto rounded-full z-10 shadow-md ${
+        className={`fixed top-6 inset-x-4 h-16 bg-background/80 backdrop-blur-xs border dark:border-slate-700/70 max-w-(--breakpoint-xl) mx-auto rounded-full z-10 shadow-md ${
           scrolled ? "backdrop-blur-md" : ""
         }`}
       >
