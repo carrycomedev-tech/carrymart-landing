@@ -10,29 +10,31 @@ import Link from "next/link";
 import { ComponentProps, MouseEvent } from "react";
 
 const navItems = [
-  { href: "#hero", label: "Home" },
+  { href: "/", label: "Home" },
+  { href: "#services", label: "Services" },
+  { href: "#how-it-works", label: "How It Works" },
   { href: "#about", label: "About Us" },
-  { href: "#services", label: "Our Services" },
-  { href: "#blogs", label: "Blogs" },
-  { href: "#features", label: "Features" },
-  { href: "#download", label: "Download App" },
+  { href: "/support", label: "Support" },
 ];
 
 export const NavMenu = (props: ComponentProps<typeof NavigationMenu>) => {
-  const handleScroll = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace(/.*#/, "");
-    const elem = document.getElementById(targetId);
-    if (elem) {
-      const navbarHeight = 100; // Approximate height of the fixed navbar
-      const elementPosition = elem.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = targetId === 'hero' ? 0 : elementPosition - navbarHeight;
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.replace(/.*#/, "");
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        const navbarHeight = 100; // Approximate height of the fixed navbar
+        const elementPosition = elem.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = targetId === 'hero' ? 0 : elementPosition - navbarHeight;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
     }
+    // For non-hash links (like /support), let Next.js handle navigation
   };
 
   return (
@@ -43,7 +45,7 @@ export const NavMenu = (props: ComponentProps<typeof NavigationMenu>) => {
             <NavigationMenuLink asChild>
               <Link
                 href={item.href}
-                onClick={(e) => handleScroll(e, item.href)}
+                onClick={(e) => handleClick(e, item.href)}
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
