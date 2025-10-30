@@ -5,6 +5,7 @@ import DownloadAppSection from '@/components/download-app-section/download-app-s
 import React from 'react'
 import Blog02Page from './blog/page'
 import Features01Page from '@/components/features-01/features-01'
+import CourierRecruitment from '@/components/courier-recruitment/courier-recruitment'
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
       <Features06Page />
       <Blog02Page />
       <Features01Page />
+      <CourierRecruitment />
       <DownloadAppSection />
     </>
   )

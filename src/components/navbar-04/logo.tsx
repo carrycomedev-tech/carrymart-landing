@@ -14,6 +14,6 @@ export const Logo = ({ isDarkBg }: LogoProps) => (
                 </div> :
                 <Image src="/carrycome.svg" alt="CarryCome logo" width={64} height={64} />
         }
-        <h1 className="font-bold">CarryCome</h1>
+        <h1 className="font-bold hidden md:block">CarryCome</h1>
     </div>
 );
