@@ -1,35 +1,49 @@
 import {
-  MapPin,
-  CreditCard,
-  PiggyBank,
+  Zap,
   GraduationCap,
+  DollarSign,
+  Package,
+  Ticket,
+  Moon,
 } from "lucide-react";
 import React from "react";
 
 const features = [
   {
-    icon: MapPin,
-    title: "Real-time Tracking",
+    icon: Zap,
+    title: "15-20 Minute Delivery",
     description:
-      "Stay in the loop with live updates from pickup to drop-off. Know exactly where your order or rider is—right on your phone.",
-  },
-  {
-    icon: CreditCard,
-    title: "Easy Payment Options",
-    description:
-      "Pay your way, effortlessly. From mobile money to secure in-app payments, we make every transaction smooth and student-friendly.",
-  },
-  {
-    icon: PiggyBank,
-    title: "Cost-effective Delivery",
-    description:
-      "Affordable deliveries without compromise. Enjoy quick service at student-budget prices, optimized for campus routes.",
+      "Campus-only routes mean we're faster than city-wide services. No traffic, no delays — just quick delivery between classes.",
   },
   {
     icon: GraduationCap,
-    title: "Student-friendly Earning Opportunities",
+    title: "Delivered by Fellow Students",
     description:
-      "Turn your daily rides and errands into income. Deliver for others, earn rewards, and grow your savings—right from campus.",
+      "Our couriers know every shortcut, building access code, and campus protocol. Student-to-student trust you can count on.",
+  },
+  {
+    icon: DollarSign,
+    title: "Flat 5 GHS Delivery Fee",
+    description:
+      "No surge pricing surprises. Transparent, affordable rates designed for student budgets. Pay with mobile money instantly.",
+  },
+  {
+    icon: Package,
+    title: "Everything in One App",
+    description:
+      "Food, parcels, documents, groceries — handle all your delivery needs from a single platform. No switching between apps.",
+  },
+  {
+    icon: Ticket,
+    title: "Subscribe & Save",
+    description:
+      "Get unlimited food deliveries, priority service, and exclusive discounts for just 25 GHS/month. Pay for itself in 5 orders.",
+  },
+  {
+    icon: Moon,
+    title: "Deliver When Gates Close",
+    description:
+      "Need something at 10 PM? Our student couriers have campus access even after regular hours. Available when you need us most.",
   },
 ];
 
@@ -39,14 +53,14 @@ const Features01Page = () => {
       <div className="max-w-7xl w-full">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-4">
-            Why Students Love CarryCome
+              Why Students Choose CarryCome
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Experience fast, reliable, and rewarding campus delivery built just for students.
+              Campus delivery designed by students, for students.
           </p>
         </div>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature) => (
             <div
               key={feature.title}

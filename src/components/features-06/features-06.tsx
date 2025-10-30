@@ -9,46 +9,50 @@ const features = [
     title: "Get meals delivered right to you",
     details:
       "Order from your favorite campus spots and get food delivered fast by fellow students. Save time and satisfy your cravings — no need to leave class or your hostel.",
-    tutorialLink: "#",
+    featuresLink: "#",
     image: "/assets/feature-img-1.png",
     alt: "Food delivery on campus",
-  },
-  {
-    category: "Document Delivery",
-    title: "Send or receive documents easily",
-    details:
-      "Whether it’s an assignment, signed form, or notes from a friend, CarryCome helps you move documents securely and quickly across campus.",
-    tutorialLink: "#",
-    image: "/assets/feature-img-2.png",
-    alt: "Document delivery service",
+    link: "Order Now"
   },
   {
     category: "Parcel Services",
     title: "Deliver and receive parcels on campus",
     details:
-      "From gifts to gadgets, CarryCome connects you with nearby riders who can deliver items safely within minutes — easy, reliable, and campus-focused.",
-    tutorialLink: "#",
+      "From textbooks and online orders to campus shop purchases, we bring your parcels right to your door. No more missed deliveries or long walks to pickup points — we handle it all.",
+    featuresLink: "#",
     image: "/assets/feature-img-3.png",
     alt: "Parcel delivery on campus",
+    link: "Send a Parcel"
+  },
+    {
+    category: "Document Delivery",
+    title: "Urgent papers delivered on time",
+    details:
+      "Need to send documents between departments, submit assignments, or pick up printed materials? We deliver papers and documents across campus quickly and securely — because deadlines matter.",
+    featuresLink: "#",
+    image: "/assets/feature-img-2.png",
+    alt: "Document delivery service",
+    link: "Send Documents"
   },
   {
-    category: "Campus Errands",
-    title: "Simplify your daily campus runs",
+    category: "Grocery Delivery",
+    title: "Essentials brought to your doorstep",
     details:
-      "Need something picked up from the cafeteria or bookstore? Our student couriers handle small errands and drop-offs anywhere around campus.",
-    tutorialLink: "#",
+      "Stock up on snacks, toiletries, drinks, and daily necessities without leaving your room. Order from local campus stores and get everything you need delivered while you focus on what matters most.",
+    featuresLink: "#",
     image: "/assets/feature-img-4.png",
     alt: "Student running campus errands",
+    link: "Order Groceries"
   },
-  {
-    category: "Become a Courier",
-    title: "Earn rewards while helping others",
-    details:
-      "Turn your rides or walks across campus into real earnings. Deliver food, parcels, or errands — and get rewarded every time you move with purpose.",
-    tutorialLink: "#",
-    image: "/assets/feature-img-5.png",
-    alt: "Student courier earning rewards",
-  },
+  // {
+  //   category: "Become a Courier",
+  //   title: "Earn rewards while helping others",
+  //   details:
+  //     "Turn your rides or walks across campus into real earnings. Deliver food, parcels, or errands — and get rewarded every time you move with purpose.",
+  //   featuresLink: "#",
+  //   image: "/assets/feature-img-5.png",
+  //   alt: "Student courier earning rewards",
+  // },
 ];
 
 
@@ -57,11 +61,10 @@ const Features06Page = () => {
     <div id="services" className="min-h-screen flex items-center justify-center">
       <div className="max-w-(--breakpoint-lg) w-full py-10 px-6">
         <h2 className="text-4xl md:text-[2.75rem] md:leading-[1.2] font-bold tracking-[-0.03em] sm:max-w-xl text-pretty sm:mx-auto sm:text-center">
-          Our Services        
+          What We Deliver
         </h2>
         <p className="mt-2 text-muted-foreground text-lg sm:text-xl sm:text-center">
-          Built for students, powered by community.
-          From food cravings to errands and parcels — CarryCome helps you get things done faster around campus.
+          From midnight cravings to urgent documents, we've got your campus covered. Fast, affordable delivery for everything you need.
         </p>
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
           {features.map((feature) => (
@@ -90,8 +93,8 @@ const Features06Page = () => {
                 </h4>
                 <p className="text-muted-foreground">{feature.details}</p>
                 <Button asChild size="lg" className="mt-6 rounded-full gap-3">
-                  <Link href={feature.tutorialLink}>
-                    Learn More <ArrowRight />
+                  <Link href={feature.featuresLink}>
+                    {feature.link || "Learn More"} <ArrowRight />
                   </Link>
                 </Button>
               </div>
