@@ -5,8 +5,10 @@ import {
   Package,
   Ticket,
   Moon,
+  Check,
 } from "lucide-react";
 import React from "react";
+import { Button } from "../ui/button";
 
 const features = [
   {
@@ -79,6 +81,64 @@ const Features01Page = () => {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Campus Pass Subscription Section */}
+        <div className="mt-16 text-center">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-4">
+            Campus Pass: Unlimited Delivery
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+            The smarter way to order. Save money with every delivery.
+          </p>
+
+          <div className="max-w-md mx-auto bg-card border border-border rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300">
+            <h3 className="text-2xl font-semibold text-foreground mb-4">Campus Pass</h3>
+            <div className="text-3xl font-bold text-primary mb-6">25 GHS/month</div>
+
+            <ul className="text-left mb-6 space-y-2">
+              <li className="flex items-center">
+                <Check className="w-5 h-5 text-green-500 mr-2" />
+                Unlimited FREE food delivery (15 GHS minimum order)
+              </li>
+              <li className="flex items-center">
+                <Check className="w-5 h-5 text-green-500 mr-2" />
+                Unlimited FREE document delivery
+              </li>
+              <li className="flex items-center">
+                <Check className="w-5 h-5 text-green-500 mr-2" />
+                50% OFF all parcel deliveries
+              </li>
+              <li className="flex items-center">
+                <Check className="w-5 h-5 text-green-500 mr-2" />
+                Priority delivery queue (faster service)
+              </li>
+              <li className="flex items-center">
+                <Check className="w-5 h-5 text-green-500 mr-2" />
+                10% discount at partner restaurants
+              </li>
+              <li className="flex items-center">
+                <Check className="w-5 h-5 text-green-500 mr-2" />
+                No surge pricing during peak hours
+              </li>
+            </ul>
+
+            <Button className="w-full bg-primary text-primary-foreground p-6 cursor-pointer rounded-lg font-semibold hover:bg-primary/90 transition-colors">
+              Subscribe Now →
+            </Button>
+
+            <p className="text-sm text-muted-foreground mt-4">
+              Cancel anytime. Save 75-125 GHS monthly on average.
+            </p>
+          </div>
+
+          {/* <div className="mt-8">
+            <img
+              src="/assets/feature-img-5.png"
+              alt="Happy student using phone with CarryCome app, holding delivered food, campus setting"
+              className="mx-auto rounded-lg shadow-lg max-w-sm"
+            />
+          </div> */}
         </div>
       </div>
     </div>
