@@ -6,7 +6,6 @@ import {
   CreditCard,
   MapPin,
   Users,
-  CheckCircle,
 } from "lucide-react";
 
 const timelineSteps = [
@@ -67,7 +66,7 @@ const CourierRecruitment = () => {
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/20 hidden md:block"></div>
 
             <div className="space-y-8">
-              {timelineSteps.map((step, index) => (
+              {timelineSteps.map((step) => (
                 <div key={step.title} className="relative flex items-center">
                   {/* Timeline dot */}
                   <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg relative z-10">

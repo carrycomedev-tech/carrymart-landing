@@ -64,7 +64,7 @@ const Features06Page = () => {
           What We Deliver
         </h2>
         <p className="mt-2 text-muted-foreground text-lg sm:text-xl sm:text-center">
-          From midnight cravings to urgent documents, we've got your campus covered. Fast, affordable delivery for everything you need.
+          From midnight cravings to urgent documents, we&apos;ve got your campus covered. Fast, affordable delivery for everything you need.
         </p>
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
           {features.map((feature) => (

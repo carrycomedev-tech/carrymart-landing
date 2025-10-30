@@ -16,15 +16,15 @@ const AboutSection = () => {
           </p>
 
           <p className="font-outfit text-lg text-[#080231]/80 leading-relaxed mb-6">
-            We're a student-focused delivery platform designed specifically for campus life. Unlike city-wide services, we understand University of Ghana's unique challenges: gate restrictions, building access codes, and the need for fast, affordable delivery that works around your academic schedule.
+            We&apos;re a student-focused delivery platform designed specifically for campus life. Unlike city-wide services, we understand University of Ghana&apos;s unique challenges: gate restrictions, building access codes, and the need for fast, affordable delivery that works around your academic schedule.
           </p>
 
           <p className="font-outfit text-lg text-[#080231]/80 leading-relaxed mb-6">
-            Our student couriers aren't just delivering packages — they're fellow students earning income while helping their peers. They know the shortcuts through campus, the fastest routes to every hall, and exactly how to navigate when you need something urgently.
+            Our student couriers aren&apos;t just delivering packages — they&apos;re fellow students earning income while helping their peers. They know the shortcuts through campus, the fastest routes to every hall, and exactly how to navigate when you need something urgently.
           </p>
 
           <p className="font-outfit text-lg text-[#080231]/80 leading-relaxed mb-8">
-            From late-night study sessions to early morning exams, we're here to make campus life easier. One app. Multiple categories. Delivered by students who get it.
+            From late-night study sessions to early morning exams, we&apos;cre here to make campus life easier. One app. Multiple categories. Delivered by students who get it.
           </p>
 
           <div className="grid grid-cols-2 gap-4">

@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Bike, Truck } from "lucide-react";
+import { ArrowUpRight, Bike } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
