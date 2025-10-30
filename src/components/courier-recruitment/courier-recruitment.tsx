@@ -69,7 +69,7 @@ const CourierRecruitment = () => {
               {timelineSteps.map((step) => (
                 <div key={step.title} className="relative flex items-center">
                   {/* Timeline dot */}
-                  <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg relative z-10">
+                  <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg relative z-0">
                     <step.icon className="w-8 h-8 text-primary-foreground" strokeWidth={2} />
                   </div>
 
@@ -96,7 +96,7 @@ const CourierRecruitment = () => {
           </div>
         </div>
 
-        <div className="text-center mt-5">
+        <div className="text-center mt-10">
           <button className="bg-primary text-primary-foreground py-3 px-8 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
             Apply to Ride →
           </button>

@@ -9,28 +9,46 @@ import {
   MapPin,
   Mail,
   Phone,
+  MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "../navbar-04/logo";
 
 const footerSections = [
   {
-    title: "Quick Links",
+    title: "Company",
     links: [
-      { title: "Home", href: "#" },
-      { title: "About", href: "#" },
-      { title: "Services", href: "#" },
-      { title: "Become a Rider", href: "#" },
-      { title: "Blogs", href: "#" },
-      { title: "Contact", href: "#" },
+      { title: "About Us", href: "#" },
+      { title: "How It Works", href: "#" },
+      { title: "Campus Pass", href: "#" },
+      { title: "Careers", href: "#" },
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      { title: "Food Delivery", href: "#" },
+      { title: "Parcel Delivery", href: "#" },
+      { title: "Document Delivery", href: "#" },
+      { title: "Grocery Delivery", href: "#" },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { title: "Help Center", href: "#" },
+      { title: "FAQs", href: "#" },
+      { title: "Contact Us", href: "#" },
+      { title: "Safety Guidelines", href: "#" },
     ],
   },
   {
     title: "Legal",
     links: [
-      { title: "Privacy Policy", href: "#" },
       { title: "Terms of Service", href: "#" },
-      { title: "Cookie Policy", href: "#" },
+      { title: "Privacy Policy", href: "#" },
+      { title: "Courier Agreement", href: "#" },
+      { title: "Community Guidelines", href: "#" },
     ],
   },
 ];
@@ -84,20 +102,37 @@ const Footer03Page = () => {
             </div>
           ))}
 
-          {/* Newsletter */}
+          {/* Connect */}
           <div className="col-span-2">
-            <h6 className="font-medium text-white">Stay up to date</h6>
-            <p className="text-white/70 text-sm mt-2">
-              Get delivery updates, student offers, and tips in your inbox.
-            </p>
-            <form className="mt-6 flex items-center gap-2">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="grow max-w-64 bg-white/10 border-white/20 text-white placeholder:text-white/50"
-              />
-              <Button className="bg-[#FFCC00] text-[#080231] hover:bg-[#FFCC00]/90">Subscribe</Button>
-            </form>
+            <h6 className="font-medium text-white">Connect</h6>
+            <div className="mt-6 flex items-center gap-4">
+              <Link href="#" target="_blank" aria-label="Instagram">
+                <InstagramIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
+              </Link>
+              <Link href="#" target="_blank" aria-label="Twitter">
+                <TwitterIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
+              </Link>
+              <Link href="#" target="_blank" aria-label="Facebook">
+                <FacebookIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
+              </Link>
+              <Link href="#" target="_blank" aria-label="TikTok">
+                <YoutubeIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
+              </Link>
+            </div>
+            <div className="mt-6 space-y-3 text-white/70 text-sm">
+              <div className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-[#FFCC00]" />
+                <span>hello@carrycome.gh</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-[#FFCC00]" />
+                <span>+233 XX XXX XXXX</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MessageCircle className="h-4 w-4 text-[#FFCC00]" />
+                <span>WhatsApp Support</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -106,24 +141,9 @@ const Footer03Page = () => {
         {/* Footer Bottom */}
         <div className="py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-x-2 gap-y-5 px-6 xl:px-0">
           <span className="text-white/70 text-sm text-center sm:text-left">
-            © {new Date().getFullYear()} CarryCome. All rights reserved. <br />
-            Built with 💛 by students, for students.
+            © 2025 CarryCome Ghana Ltd. All rights reserved. <br />
+            Made with 💛 for campus life.
           </span>
-
-          <div className="flex items-center gap-5 text-white/70">
-            <Link href="#" target="_blank" aria-label="Facebook">
-              <FacebookIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
-            </Link>
-            <Link href="#" target="_blank" aria-label="Instagram">
-              <InstagramIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
-            </Link>
-            <Link href="#" target="_blank" aria-label="Twitter (X)">
-              <TwitterIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
-            </Link>
-            <Link href="#" target="_blank" aria-label="YouTube">
-              <YoutubeIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

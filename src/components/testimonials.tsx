@@ -31,7 +31,7 @@ const testimonials = [
 ];
 
 const Testimonials = () => (
-  <div className="min-h-screen flex justify-center items-center py-12 px-6">
+  <div className="min-h-full flex justify-center items-center py-12 px-6">
     <div>
       <h2 className="mb-14 text-5xl md:text-6xl font-semibold text-center tracking-[-0.03em]">
         What Students Say
