@@ -1,24 +1,21 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
 import { useEffect, useState } from "react";
-import { RegistrationModal } from "@/components/registration-modal";
 
 const Navbar04Page = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 10);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -27,31 +24,34 @@ const Navbar04Page = () => {
   }, []);
 
   return (
-    <div className="bg-muted">
-      <nav
-        className={`fixed top-6 inset-x-4 h-16 bg-background/80 backdrop-blur-xs border dark:border-slate-700/70 max-w-(--breakpoint-xl) mx-auto rounded-full z-10 shadow-md ${
-          scrolled ? "backdrop-blur-md" : ""
-        }`}
-      >
-        <div className="h-full flex items-center justify-between mx-auto px-4">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/90 backdrop-blur-md border-b border-border shadow-[0_1px_2px_rgba(0,11,41,0.04)]"
+          : "bg-white/60 backdrop-blur-sm border-b border-transparent"
+      }`}
+    >
+      <nav className="h-(--nav-height) max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" aria-label="CarryMart home">
           <Logo />
+        </Link>
 
-          {/* Desktop Menu */}
-          <NavMenu className="hidden md:block" />
+        {/* Desktop Menu */}
+        <NavMenu className="hidden lg:block" />
 
-          <div className="flex items-center gap-3">
-            <RegistrationModal>
-              <Button className="rounded-full">Become a Courier</Button>
-            </RegistrationModal>
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Kept visible on phones too — this is the primary action. */}
+          <Button asChild className="px-4 sm:px-6">
+            <Link href="/#download">Get the app</Link>
+          </Button>
 
-            {/* Mobile Menu */}
-            <div className="md:hidden">
-              <NavigationSheet />
-            </div>
+          {/* Mobile Menu */}
+          <div className="lg:hidden">
+            <NavigationSheet />
           </div>
         </div>
       </nav>
-    </div>
+    </header>
   );
 };
 

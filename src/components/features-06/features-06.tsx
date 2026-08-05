@@ -1,109 +1,204 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+"use client";
+
+import {ArrowRight, Check, Clapperboard, Heart, MapPin, MessagesSquare, Play, Send, Store,} from "lucide-react";
 import Link from "next/link";
+import {AnimatedSection} from "@/components/ui/animated-section";
+
+/* --- Mini app-style visuals (pure CSS, no stock images) --- */
+
+const ListingsVisual = () => (
+    <div className="grid grid-cols-2 gap-2.5 w-full max-w-[320px]">
+        {[
+            {emoji: "👟", name: "Air Force 1", price: "GHS 250"},
+            {emoji: "💄", name: "Gloss set", price: "GHS 45"},
+            {emoji: "🍗", name: "Jollof + wings", price: "GHS 35"},
+            {emoji: "🎧", name: "AirPods Pro", price: "GHS 480"},
+        ].map((item) => (
+            <div key={item.name} className="bg-white rounded-xl border border-border p-2.5 shadow-sharp">
+                <div className="h-9 rounded-lg bg-muted flex items-center justify-center text-lg mb-1.5">
+                    {item.emoji}
+                </div>
+                <p className="text-[11px] font-semibold text-secondary leading-tight">{item.name}</p>
+                <div className="flex items-center justify-between mt-0.5">
+                    <p className="text-[11px] font-bold text-secondary">{item.price}</p>
+                    <Heart className="size-3 text-muted-foreground"/>
+                </div>
+            </div>
+        ))}
+    </div>
+);
+
+const ReelsVisual = () => (
+    <div className="flex items-center gap-3">
+        <div className="w-20 h-36 rounded-2xl bg-gradient-to-b from-secondary/70 to-secondary opacity-60 scale-90"/>
+        <div
+            className="relative w-28 h-48 rounded-2xl bg-gradient-to-b from-primary to-[#C7004A] shadow-sharp-lg flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-white/40 backdrop-blur flex items-center justify-center -mt-6">
+                <Play className="size-4 text-secondary fill-secondary ml-0.5"/>
+            </div>
+            <div className="absolute bottom-2.5 inset-x-2.5 bg-white/95 rounded-lg px-2.5 py-1.5">
+                <p className="text-[11px] font-bold text-secondary leading-snug whitespace-nowrap">Thrift drop 🔥</p>
+                <p className="text-[11px] text-muted-foreground font-semibold leading-snug whitespace-nowrap">From GHS
+                    20</p>
+            </div>
+        </div>
+        <div className="w-20 h-36 rounded-2xl bg-gradient-to-b from-secondary/70 to-secondary opacity-60 scale-90"/>
+    </div>
+);
+
+const ChatVisual = () => (
+    <div className="w-full max-w-[300px] space-y-2.5">
+        <div className="bg-white border border-border rounded-2xl rounded-bl-md px-4 py-2.5 w-fit shadow-sharp">
+            <p className="text-sm text-secondary">Is the hoodie still available? 👀</p>
+        </div>
+        <div className="bg-primary rounded-2xl rounded-br-md px-4 py-2.5 w-fit ml-auto shadow-sharp">
+            <p className="text-sm text-primary-foreground font-medium">Yes! GHS 80. Meet at the night market?</p>
+        </div>
+        <div className="bg-white border border-border rounded-2xl rounded-bl-md px-4 py-2.5 w-fit shadow-sharp">
+            <p className="text-sm text-secondary">Deal 🤝 Paying with CarryPay</p>
+        </div>
+        <div
+            className="flex items-center gap-2 bg-white border border-border rounded-full pl-4 pr-1.5 py-1.5 shadow-sharp">
+            <p className="text-xs text-muted-foreground flex-1">Message…</p>
+            <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center">
+                <Send className="size-3.5 text-primary-foreground"/>
+            </div>
+        </div>
+    </div>
+);
+
+const CampusVisual = () => (
+    <div className="w-full max-w-[300px] bg-white rounded-2xl border border-border shadow-sharp overflow-hidden">
+        <div className="px-4 py-3 border-b border-border">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Choose your campus</p>
+        </div>
+        {[
+            {name: "University of Ghana", active: true},
+            {name: "KNUST", active: false},
+            {name: "University of Cape Coast", active: false},
+            {name: "Ashesi University", active: false},
+        ].map((campus) => (
+            <div key={campus.name}
+                 className="flex items-center justify-between px-4 py-2.5 border-b border-border/60 last:border-0">
+                <p className={`text-sm ${campus.active ? "font-semibold text-secondary" : "text-muted-foreground"}`}>
+                    {campus.name}
+                </p>
+                {campus.active && (
+                    <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                        <Check className="size-3 text-primary-foreground" strokeWidth={3}/>
+                    </div>
+                )}
+            </div>
+        ))}
+    </div>
+);
+
+/* --- Section --- */
 
 const features = [
-  {
-    category: "Food Delivery",
-    title: "Get meals delivered right to you",
-    details:
-      "Order from your favorite campus spots and get food delivered fast by fellow students. Save time and satisfy your cravings — no need to leave class or your hostel.",
-    featuresLink: "#",
-    image: "/assets/feature-img-1.png",
-    alt: "Food delivery on campus",
-    link: "Order Now"
-  },
-  {
-    category: "Parcel Services",
-    title: "Deliver and receive parcels on campus",
-    details:
-      "From textbooks and online orders to campus shop purchases, we bring your parcels right to your door. No more missed deliveries or long walks to pickup points — we handle it all.",
-    featuresLink: "#",
-    image: "/assets/feature-img-3.png",
-    alt: "Parcel delivery on campus",
-    link: "Send a Parcel"
-  },
     {
-    category: "Document Delivery",
-    title: "Urgent papers delivered on time",
-    details:
-      "Need to send documents between departments, submit assignments, or pick up printed materials? We deliver papers and documents across campus quickly and securely — because deadlines matter.",
-    featuresLink: "#",
-    image: "/assets/feature-img-2.png",
-    alt: "Document delivery service",
-    link: "Send Documents"
-  },
-  {
-    category: "Grocery Delivery",
-    title: "Essentials brought to your doorstep",
-    details:
-      "Stock up on snacks, toiletries, drinks, and daily necessities without leaving your room. Order from local campus stores and get everything you need delivered while you focus on what matters most.",
-    featuresLink: "#",
-    image: "/assets/feature-img-4.png",
-    alt: "Student running campus errands",
-    link: "Order Groceries"
-  },
-  // {
-  //   category: "Become a Courier",
-  //   title: "Earn rewards while helping others",
-  //   details:
-  //     "Turn your rides or walks across campus into real earnings. Deliver food, parcels, or errands — and get rewarded every time you move with purpose.",
-  //   featuresLink: "#",
-  //   image: "/assets/feature-img-5.png",
-  //   alt: "Student courier earning rewards",
-  // },
+        category: "Listings",
+        title: "Post it in seconds, sell it today",
+        details:
+            "Snap a photo, set a price, pick a category: fashion, beauty, food, deals, events, or delivery. Your listing is live on your campus feed instantly.",
+        link: "Browse listings",
+        icon: Store,
+        visual: <ListingsVisual/>,
+    },
+    {
+        category: "Reels & Stories",
+        title: "Discover deals in every reel",
+        details:
+            "Sellers show off their stuff in short videos and stories. Scroll, spot something you like, and buy it without leaving the reel.",
+        link: "See what's trending",
+        icon: Clapperboard,
+        visual: <ReelsVisual/>,
+    },
+    {
+        category: "Real-time Chat",
+        title: "Chat, haggle, and close the deal",
+        details:
+            "Message sellers instantly. No exchanging numbers. Agree on price and meetup, then pay right from the conversation.",
+        link: "Start a conversation",
+        icon: MessagesSquare,
+        visual: <ChatVisual/>,
+    },
+    {
+        category: "Every Campus",
+        title: "Your campus is the storefront",
+        details:
+            "CarryMart runs campus by campus, so everything you see is nearby. Switch campuses anytime to shop what students are selling across Ghana.",
+        link: "Find your campus",
+        icon: MapPin,
+        visual: <CampusVisual/>,
+    },
 ];
 
-
 const Features06Page = () => {
-  return (
-    <div id="services" className="min-h-screen flex items-center justify-center">
-      <div className="max-w-(--breakpoint-lg) w-full py-10 px-6">
-        <h2 className="text-4xl md:text-[2.75rem] md:leading-[1.2] font-bold tracking-[-0.03em] sm:max-w-xl text-pretty sm:mx-auto sm:text-center">
-          What We Deliver
-        </h2>
-        <p className="mt-2 text-muted-foreground text-lg sm:text-xl sm:text-center">
-          From midnight cravings to urgent documents, we&apos;ve got your campus covered. Fast, affordable delivery for everything you need.
-        </p>
-        <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
-          {features.map((feature) => (
-            <div
-              key={feature.category}
-              className="flex flex-col md:flex-row items-center gap-x-12 gap-y-6 md:even:flex-row-reverse"
-            >
-              <div className="w-full aspect-[4/3] z-0 bg-muted rounded-xl border border-border/50 basis-1/2 relative overflow-hidden">
-                {feature.image && (
-                  <Image
-                    src={feature.image}
-                    alt={feature.alt || feature.title}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    priority={feature.category === "Food Delivery"}
-                  />
-                )}
-              </div>
-              <div className="basis-1/2 shrink-0">
-                <span className="uppercase font-medium text-sm text-muted-foreground">
-                  {feature.category}
-                </span>
-                <h4 className="my-3 text-2xl font-bold tracking-tight">
-                  {feature.title}
-                </h4>
-                <p className="text-muted-foreground">{feature.details}</p>
-                <Button asChild size="lg" className="mt-6 rounded-full gap-3">
-                  <Link href={feature.featuresLink}>
-                    {feature.link || "Learn More"} <ArrowRight />
-                  </Link>
-                </Button>
-              </div>
+    return (
+        <section id="marketplace" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl w-full mx-auto">
+                <AnimatedSection className="max-w-2xl mb-12 md:mb-16">
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-[0.15em] mb-3">
+                        The Marketplace
+                    </p>
+                    <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-secondary">
+                        Everything your campus is selling, in one app
+                    </h2>
+                    <p className="mt-4 text-muted-foreground text-base md:text-lg leading-relaxed">
+                        A social marketplace built for student life: list, discover, chat,
+                        and get paid without leaving campus.
+                    </p>
+                </AnimatedSection>
+
+                <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
+                    {features.map((feature, index) => (
+                        <AnimatedSection key={feature.category} delay={index * 0.08} direction="up">
+                            <Link
+                                href="#download"
+                                className="group block bg-muted rounded-3xl overflow-hidden border border-transparent hover:border-border hover:shadow-sharp-lg transition-all duration-300 h-full"
+                            >
+                                <div
+                                    className="h-60 md:h-64 flex items-center justify-center px-6 pt-6 overflow-hidden">
+                                    <div
+                                        className="transition-transform duration-500 group-hover:scale-[1.03] group-hover:-translate-y-1 w-full flex justify-center">
+                                        {feature.visual}
+                                    </div>
+                                </div>
+
+                                <div className="p-6 md:p-8">
+                                    <div className="flex items-center gap-2.5 mb-3">
+                                        <div
+                                            className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
+                                            <feature.icon className="size-4 text-primary-foreground"
+                                                          strokeWidth={2.25}/>
+                                        </div>
+                                        <span
+                                            className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                      {feature.category}
+                    </span>
+                                    </div>
+
+                                    <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight text-secondary mb-2.5">
+                                        {feature.title}
+                                    </h3>
+                                    <p className="text-muted-foreground leading-relaxed mb-5">
+                                        {feature.details}
+                                    </p>
+
+                                    <span className="inline-flex items-center gap-1.5 font-semibold text-secondary">
+                    {feature.link}
+                                        <ArrowRight
+                                            className="size-4 transition-transform duration-300 group-hover:translate-x-1"/>
+                  </span>
+                                </div>
+                            </Link>
+                        </AnimatedSection>
+                    ))}
+                </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+        </section>
+    );
 };
 
 export default Features06Page;

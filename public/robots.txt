@@ -2,17 +2,17 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://carrycome.com/sitemap.xml
+Sitemap: https://carrymart.com/sitemap.xml
 
-# Crawl-delay
+# Crawl-delay for respectful crawling
 Crawl-delay: 1
 
-# Disallow admin areas (if any in future)
-# Disallow: /admin/
-# Disallow: /api/
+# Disallow private/admin areas
+Disallow: /api/
+Disallow: /admin/
 
-# Allow all bots to crawl the main content
-Allow: /blog
-Allow: /about
-Allow: /services
-Allow: /download
+# Allow all public content
+Allow: /
+Allow: /support
+Allow: /terms
+Allow: /privacy

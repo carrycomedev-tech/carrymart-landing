@@ -1,63 +1,82 @@
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import type { Metadata } from "next";
-import { Urbanist, Outfit } from "next/font/google";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navbar04Page from "@/components/navbar-04/navbar-04";
 import Footer03Page from "@/components/footer-03/footer-03";
 import StructuredData from "@/components/structured-data";
 
-const urbanist = Urbanist({
-  variable: "--font-urbanist",
-  subsets: ["latin"],
+const criteria = localFont({
+  src: [
+    { path: "../fonts/CriteriaCF-Bold.otf", weight: "700", style: "normal" },
+    { path: "../fonts/CriteriaCF-ExtraBold.otf", weight: "800", style: "normal" },
+    { path: "../fonts/CriteriaCF-Super.otf", weight: "900", style: "normal" },
+  ],
+  variable: "--font-criteria",
+  display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
-
 
 export const metadata: Metadata = {
   title: {
-    default: "CarryCome - Campus Delivery Made Easy | Student-to-Student Delivery Service",
-    template: "%s | CarryCome"
+    default: "CarryMart | The Campus Marketplace | Buy & Sell on Your Campus",
+    template: "%s | CarryMart"
   },
-  description: "Join CarryCome, the student-powered campus delivery network. Get food, documents, and parcels delivered fast by fellow students. Earn money as a courier or get what you need delivered quickly.",
+  description: "CarryMart is the student marketplace for campuses across Ghana. Buy and sell fashion, food, beauty, and more. Discover deals in reels, chat with sellers in real time, and pay safely with the CarryPay escrow wallet.",
   keywords: [
-    "campus delivery",
-    "student delivery service", 
-    "university food delivery",
-    "campus courier",
-    "student jobs",
-    "peer-to-peer delivery",
-    "campus errands",
-    "student earn money",
-    "university delivery app",
-    "campus logistics"
+    "campus marketplace",
+    "student marketplace",
+    "buy and sell campus",
+    "student ecommerce Ghana",
+    "campus deals",
+    "escrow wallet",
+    "student sellers",
+    "campus shopping app",
+    "university marketplace",
+    "CarryPay",
+    "campus market Ghana",
+    "student trading app",
+    "university student selling",
+    "campus fashion marketplace",
+    "student food delivery",
+    "escrow payment system",
+    "peer-to-peer marketplace",
+    "student community platform",
+    "Ghana marketplace app",
+    "campus social commerce",
+    "university deals and discounts",
+    "student thrift marketplace",
+    "digital wallet for students",
   ],
-  authors: [{ name: "CarryCome Team" }],
-  creator: "CarryCome",
-  publisher: "CarryCome",
+  authors: [{ name: "CarryMart Team" }],
+  creator: "CarryMart",
+  publisher: "CarryMart",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://carrycome.com"),
+  metadataBase: new URL("https://carrymart.com"),
   alternates: {
-    canonical: "/",
+    canonical: "https://carrymart.com/",
   },
   openGraph: {
-    title: "CarryCome - Campus Delivery Made Easy",
-    description: "Join the student-powered campus delivery revolution. Get what you need delivered fast or earn money as a courier.",
-    url: "https://carrycome.com",
-    siteName: "CarryCome",
+    title: "CarryMart | The Campus Marketplace",
+    description: "Buy and sell with students on your campus. Discover deals in reels, chat instantly, and pay safely with the CarryPay escrow wallet.",
+    url: "https://carrymart.com",
+    siteName: "CarryMart",
     images: [
       {
-        url: "/assets/hero-image.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "CarryCome - Student delivery service on campus",
+        alt: "CarryMart | The campus marketplace app",
       },
     ],
     locale: "en_US",
@@ -65,10 +84,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CarryCome - Campus Delivery Made Easy",
-    description: "Join the student-powered campus delivery revolution. Get what you need delivered fast or earn money as a courier.",
-    images: ["/assets/hero-image.png"],
-    creator: "@carrycome",
+    title: "CarryMart | The Campus Marketplace",
+    description: "Buy and sell with students on your campus. Discover deals in reels, chat instantly, and pay safely with escrow.",
+    images: ["/og-image.png"],
+    creator: "@carrymart",
   },
   robots: {
     index: true,
@@ -81,7 +100,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  category: "Education Technology",
+  category: "Shopping",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "CarryMart",
+  },
 };
 
 export default function RootLayout({
@@ -91,7 +115,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${urbanist.variable} ${outfit.variable} antialiased`}>
+      <body className={`${criteria.variable} ${inter.variable} antialiased`}>
         <StructuredData />
         <ActiveSectionContextProvider>
           <Navbar04Page />
@@ -102,4 +126,3 @@ export default function RootLayout({
     </html>
   );
 }
-

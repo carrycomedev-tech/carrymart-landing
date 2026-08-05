@@ -1,16 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import qrcode from "qrcode-generator";
+import { Scan } from "lucide-react";
+import { AnimatedSection } from "@/components/ui/animated-section";
 
 const DownloadAppSection = () => {
     const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string>("");
 
     // App download URLs (replace with actual URLs when available)
-    const appStoreUrl = "https://apps.apple.com/app/carrycome";
-    const playStoreUrl = "https://play.google.com/store/apps/details?id=com.carrycome";
+    const appStoreUrl = "https://apps.apple.com/app/carrymart";
+    const playStoreUrl = "https://play.google.com/store/apps/details?id=com.carrymart";
 
     // Generate QR code when component mounts or URL changes
     useEffect(() => {
@@ -20,22 +21,20 @@ const DownloadAppSection = () => {
                 qr.addData(appStoreUrl);
                 qr.make();
 
-                // Create canvas and draw QR code
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
                 if (!context) return;
 
                 const modules = qr.getModuleCount();
-                const cellSize = 4; // Size of each QR code cell
+                const cellSize = 4;
                 const size = modules * cellSize;
 
                 canvas.width = size;
                 canvas.height = size;
 
-                // Draw QR code
                 for (let row = 0; row < modules; row++) {
                     for (let col = 0; col < modules; col++) {
-                        context.fillStyle = qr.isDark(row, col) ? '#080231' : '#FFFFFF';
+                        context.fillStyle = qr.isDark(row, col) ? '#000B29' : '#FFFFFF';
                         context.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
                     }
                 }
@@ -50,129 +49,99 @@ const DownloadAppSection = () => {
     }, [appStoreUrl]);
 
     return (
-        <section id="download" className="w-full bg-primary/10 py-20 px-6 relative overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-0 w-full h-full" style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFCC00' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-                }}></div>
-            </div>
-            {/* Floating Elements */}
-            <div className="absolute top-10 left-10 w-20 h-20 bg-[#FFCC00]/20 rounded-full blur-xl"></div>
-            <div className="absolute bottom-10 right-10 w-32 h-32 bg-[#FFCC00]/10 rounded-full blur-2xl"></div>
-            <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/5 rounded-full blur-lg"></div>
-            
-            <div className="max-w-4xl mx-auto text-center relative z-1">
-                {/* Header */}
-                <div className="mb-12">
-                    <h2 className="font-urbanist text-3xl md:text-4xl font-extrabold text-secondary mb-4">
-                        Download Our <span className="text-[#FFCC00]">App</span>
-                    </h2>
-                    <p className="font-outfit text-lg text-secondary/80 max-w-2xl mx-auto">
-                        Get the CarryCome app and start earning or ordering right from your phone.
-                        Available on both iOS and Android platforms.
-                    </p>
-                </div>
+        <section id="download" className="w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+                <AnimatedSection>
+                    {/* primary-deep rather than primary: white body copy needs 4.5:1
+                        and plain --primary only reaches 4.19:1. */}
+                    <div className="bg-primary-deep rounded-[2rem] md:rounded-[2.5rem] px-8 sm:px-10 md:px-14 lg:px-16 py-12 md:py-16 relative overflow-hidden">
+                        {/* Subtle decorative circles */}
+                        <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-white/10 pointer-events-none" />
+                        <div className="absolute -bottom-32 -left-16 w-80 h-80 rounded-full bg-secondary/5 pointer-events-none" />
 
-                {/* Download Options */}
-                <div className="space-y-8">
-                    {/* QR Code Display */}
-                    <div className="flex justify-center">
-                        <div className="bg-white p-6 rounded-xl shadow-lg max-w-xs">
-                            <div className="flex flex-col items-center space-y-4">
-                                {qrCodeDataUrl ? (
-                                    <div className="bg-white p-2 rounded-lg border">
-                                        <Image
-                                            src={qrCodeDataUrl}
-                                            alt="QR Code for downloading CarryCome app"
-                                            width={128}
-                                            height={128}
-                                            className="w-32 h-32"
-                                        />
+                        {/* Copy column is capped so the QR card sits beside it as a
+                            centred pair, rather than being flung to the far edge. */}
+                        <div className="relative grid lg:grid-cols-[minmax(0,40rem)_auto] lg:justify-center gap-10 lg:gap-16 items-center">
+                            {/* Left — Content */}
+                            <div className="text-center lg:text-left">
+                                <p className="text-xs font-semibold text-primary-foreground uppercase tracking-[0.15em] mb-3">
+                                    Get Started
+                                </p>
+                                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primary-foreground mb-4">
+                                    Get the CarryMart app
+                                </h2>
+                                <p className="text-base md:text-lg text-primary-foreground leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
+                                    Set up your shop or find your first deal in minutes.{" "}
+                                    <span className="font-semibold underline decoration-white/40 underline-offset-4">
+                                        Listing is free
+                                    </span>{" "}
+                                    and every payment is escrow-protected.
+                                </p>
+
+                                {/* App Store Buttons */}
+                                <div className="flex flex-col sm:flex-row gap-3.5 justify-center lg:justify-start">
+                                    <a
+                                        href={appStoreUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-3 bg-secondary text-white rounded-2xl h-14 px-6 hover:bg-secondary/90 hover:-translate-y-0.5 transition-all duration-300"
+                                    >
+                                        <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
+                                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                        </svg>
+                                        <span className="text-left leading-tight">
+                                            <span className="block text-[11px] opacity-70">Download on the</span>
+                                            <span className="block font-bold text-base">App Store</span>
+                                        </span>
+                                    </a>
+
+                                    <a
+                                        href={playStoreUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-3 bg-secondary text-white rounded-2xl h-14 px-6 hover:bg-secondary/90 hover:-translate-y-0.5 transition-all duration-300"
+                                    >
+                                        <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
+                                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                                        </svg>
+                                        <span className="text-left leading-tight">
+                                            <span className="block text-[11px] opacity-70">Get it on</span>
+                                            <span className="block font-bold text-base">Google Play</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Right — QR Code */}
+                            <div className="hidden md:flex justify-center lg:justify-end">
+                                <div className="bg-white rounded-3xl p-7 shadow-sharp-xl">
+                                    <div className="flex flex-col items-center gap-5">
+                                        <div className="flex items-center gap-2 text-secondary">
+                                            <Scan className="size-5" />
+                                            <span className="font-semibold">Scan to download</span>
+                                        </div>
+
+                                        {qrCodeDataUrl ? (
+                                            <Image
+                                                src={qrCodeDataUrl}
+                                                alt="QR code for downloading the CarryMart app"
+                                                width={160}
+                                                height={160}
+                                                className="w-40 h-40 rounded-lg"
+                                            />
+                                        ) : (
+                                            <div className="w-40 h-40 bg-muted rounded-lg animate-pulse" />
+                                        )}
+
+                                        <p className="text-xs text-muted-foreground text-center max-w-[180px]">
+                                            Point your camera at the code to get the app
+                                        </p>
                                     </div>
-                                ) : (
-                                    <div className="w-32 h-32 bg-gray-100 rounded-lg flex items-center justify-center">
-                                        <span className="text-[#080231]">Loading...</span>
-                                    </div>
-                                )}
-                                <div className="text-center">
-                                    <p className="font-outfit text-sm text-[#080231] font-semibold mb-1">
-                                        Scan to Download
-                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    {/* App Store Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Button
-                            asChild
-                            size="lg"
-                            className="bg-white text-[#080231] hover:bg-white/90 rounded-xl px-8 py-6 font-outfit font-semibold text-base"
-                        >
-                            <a href={appStoreUrl} target="_blank" rel="noopener noreferrer">
-                                <svg
-                                    version="1.1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    x="0"
-                                    y="0"
-                                    viewBox="0 0 496 496"
-                                    xmlSpace="preserve"
-                                    className="mr-2 h-5 w-5"
-                                >
-                                    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="248" y1="496" x2="248" y2="0">
-                                        <stop offset="0" stopColor="#0030c4" />
-                                        <stop offset="1" stopColor="#11c5fc" />
-                                    </linearGradient>
-                                    <circle cx="248" cy="248" r="248" fill="url(#a)" />
-                                    <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="248" y1="476" x2="248" y2="20">
-                                        <stop offset="0" stopColor="#1665f0" />
-                                        <stop offset="1" stopColor="#13c6fc" />
-                                    </linearGradient>
-                                    <circle cx="248" cy="248" r="228" fill="url(#b)" />
-                                    <linearGradient id="c" gradientUnits="userSpaceOnUse" x1="248.5" y1="84.477" x2="248.5" y2="523.588">
-                                        <stop offset="0" stopColor="#eee" />
-                                        <stop offset="1" stopColor="#d0d0cd" />
-                                    </linearGradient>
-                                    <path d="M247.9 110.4l9.1-15.7c5.6-9.8 18.1-13.1 27.9-7.5s13.1 18.1 7.5 27.9l-87.5 151.5h63.3c20.5 0 32 24.1 23.1 40.8H105.8c-11.3 0-20.4-9.1-20.4-20.4s9.1-20.4 20.4-20.4h52l66.6-115.4-20.8-36.1c-5.6-9.8-2.3-22.2 7.5-27.9 9.8-5.6 22.2-2.3 27.9 7.5l8.9 15.7zm-78.7 218l-19.6 34c-5.6 9.8-18.1 13.1-27.9 7.5s-13.1-18.1-7.5-27.9l14.6-25.2c16.4-5.1 29.8-1.2 40.4 11.6zm168.9-61.7h53.1c11.3 0 20.4 9.1 20.4 20.4s-9.1 20.4-20.4 20.4h-29.5l19.9 34.5c5.6 9.8 2.3 22.2-7.5 27.9-9.8 5.6-22.2 2.3-27.9-7.5-33.5-58.1-58.7-101.6-75.4-130.6-17.1-29.5-4.9-59.1 7.2-69.1 13.4 23 33.4 57.7 60.1 104z" fill="url(#c)" />
-                                </svg>
-                                Download for iOS
-                            </a>
-                        </Button>
-
-                        <Button
-                            asChild
-                            size="lg"
-                            className="bg-[#FFCC00] text-[#080231] hover:bg-[#FFCC00]/90 rounded-xl px-8 py-6 font-outfit font-semibold text-base"
-                        >
-                            <a href={playStoreUrl} target="_blank" rel="noopener noreferrer">
-                                <svg
-                                    viewBox="0 0 28.99 31.99"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="mr-2 h-5 w-5"
-                                >
-                                    <g data-name="Capa 2">
-                                        <g data-name="Capa 1">
-                                            <path d="M13.54 15.28.12 29.34a3.66 3.66 0 0 0 5.33 2.16l15.1-8.6Z" style={{ fill: "#ea4335" }} />
-                                            <path d="m27.11 12.89-6.53-3.74-7.35 6.45 7.38 7.28 6.48-3.7a3.54 3.54 0 0 0 1.5-4.79 3.62 3.62 0 0 0-1.5-1.5z" style={{ fill: "#fbbc04" }} />
-                                            <path d="M.12 2.66a3.57 3.57 0 0 0-.12.92v24.84a3.57 3.57 0 0 0 .12.92L14 15.64Z" style={{ fill: "#4285f4" }} />
-                                            <path d="m13.64 16 6.94-6.85L5.5.51A3.73 3.73 0 0 0 3.63 0 3.64 3.64 0 0 0 .12 2.65Z" style={{ fill: "#34a853" }} />
-                                        </g>
-                                    </g>
-                                </svg>
-                                Download for Android
-                            </a>
-                        </Button>
-                    </div>
-
-                    {/* Alternative Text */}
-                    <div className="mt-8">
-                        <p className="font-outfit text-sm text-secondary/60">
-                            Coming soon to your favorite app stores. Join the campus delivery revolution today!
-                        </p>
-                    </div>
-                </div>
+                </AnimatedSection>
             </div>
         </section>
     );

@@ -3,23 +3,19 @@ import Hero03 from '@/components/hero-03/hero-03'
 import Hero05 from '@/components/hero-05/hero-05'
 import DownloadAppSection from '@/components/download-app-section/download-app-section'
 import React from 'react'
-import Blog02Page from './blog/page'
 import Features01Page from '@/components/features-01/features-01'
-import CourierRecruitment from '@/components/courier-recruitment/courier-recruitment'
+import SellSection from '@/components/sell-section/sell-section'
 import Testimonials from '@/components/testimonials'
-import CTASection from '@/components/cta-section/cta-section'
 
 const HomePage = () => {
   return (
     <>
       <Hero03 />
-      <Hero05 />
       <Features06Page />
-      <Blog02Page />
       <Features01Page />
-      <CourierRecruitment />
+      <Hero05 />
+      <SellSection />
       <Testimonials />
-      <CTASection />
       <DownloadAppSection />
     </>
   )

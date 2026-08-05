@@ -1,63 +1,124 @@
+"use client";
+
 import React from "react";
-import { Bike, Zap, Package, Star } from "lucide-react";
+import { ShieldCheck, Smartphone, Lock, ReceiptText, Check, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { AnimatedSection } from "@/components/ui/animated-section";
+import { PhoneMock } from "@/components/ui/phone-mock";
 
-const AboutSection = () => {
+const bullets = [
+  {
+    icon: ShieldCheck,
+    title: "Held in escrow until you confirm",
+    description:
+      "Your money sits safely in CarryPay and is released to the seller only after you confirm the handover.",
+  },
+  {
+    icon: Smartphone,
+    title: "Top up & withdraw with mobile money",
+    description:
+      "Fund your wallet or cash out your sales straight to MoMo. No bank account needed.",
+  },
+  {
+    icon: Lock,
+    title: "PIN-protected wallet",
+    description:
+      "Every payment and withdrawal is locked behind your wallet PIN.",
+  },
+  {
+    icon: ReceiptText,
+    title: "Receipts for every deal",
+    description:
+      "Digital receipts you can view, share, and fall back on if anything goes wrong.",
+  },
+];
+
+const CarryPaySection = () => {
   return (
-    <section id="about" className="w-full bg-[#FFCC00]/5 py-20 px-6">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-        {/* Left Side - Text */}
-        <div>
-          <h2 className="font-urbanist text-3xl md:text-4xl font-extrabold text-[#080231] mb-6">
-            Built for <span className="text-[#FFCC00]">Campus Life</span>
-          </h2>
+    <section id="carrypay" className="w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <AnimatedSection>
+          <div className="bg-secondary rounded-[2rem] md:rounded-[2.5rem] overflow-hidden">
+            <div className="grid lg:grid-cols-2 items-center">
+              {/* Left — content */}
+              <div className="p-8 sm:p-10 md:p-14 lg:p-16">
+                <p className="text-xs font-semibold text-primary uppercase tracking-[0.15em] mb-3">
+                  CarryPay Wallet
+                </p>
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+                  Pay like you&apos;re face to face
+                </h2>
+                <p className="text-white/70 text-base md:text-lg leading-relaxed mb-10 max-w-md">
+                  Campus deals used to run on trust alone. CarryPay adds an
+                  escrow wallet in the middle, so buyers and sellers both walk
+                  away safe.
+                </p>
 
-          <p className="font-outfit text-lg text-[#080231]/80 leading-relaxed mb-6">
-            CarryCome started because we understood the struggle — racing between classes, missing meals, waiting for deliveries that never fit your schedule.
-          </p>
+                <div className="space-y-6">
+                  {bullets.map((bullet) => (
+                    <div key={bullet.title} className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                        <bullet.icon className="size-5 text-primary" strokeWidth={2.25} />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-white leading-snug">
+                          {bullet.title}
+                        </h3>
+                        <p className="text-sm text-white/70 leading-relaxed mt-1">
+                          {bullet.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
-          <p className="font-outfit text-lg text-[#080231]/80 leading-relaxed mb-6">
-            We&apos;re a student-focused delivery platform designed specifically for campus life. Unlike city-wide services, we understand University of Ghana&apos;s unique challenges: gate restrictions, building access codes, and the need for fast, affordable delivery that works around your academic schedule.
-          </p>
+                <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
+                  <Button asChild size="lg" className="w-full sm:w-auto">
+                    <Link href="#download">
+                      Get the app
+                      <ArrowRight className="size-5" />
+                    </Link>
+                  </Button>
+                  <p className="text-sm text-white/60">
+                    Free to set up. No card required.
+                  </p>
+                </div>
+              </div>
 
-          <p className="font-outfit text-lg text-[#080231]/80 leading-relaxed mb-6">
-            Our student couriers aren&apos;t just delivering packages — they&apos;re fellow students earning income while helping their peers. They know the shortcuts through campus, the fastest routes to every hall, and exactly how to navigate when you need something urgently.
-          </p>
+              {/* Right — phone mock */}
+              <div className="relative flex justify-center py-12 lg:py-16 px-8">
+                {/* Brand glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] rounded-full bg-primary/20 blur-3xl pointer-events-none" />
 
-          <p className="font-outfit text-lg text-[#080231]/80 leading-relaxed mb-8">
-            From late-night study sessions to early morning exams, we&apos;cre here to make campus life easier. One app. Multiple categories. Delivered by students who get it.
-          </p>
+                <PhoneMock
+                  src="/media/carrypay.mp4"
+                  poster="/media/carrypay-poster.jpg"
+                >
+                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-secondary/70 to-transparent" />
+                </PhoneMock>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex items-center gap-2">
-              <Bike className="size-5 text-[#FFCC00]" />
-              <span className="font-urbanist text-sm font-semibold text-[#080231]">20+ Student Couriers</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Zap className="size-5 text-[#FFCC00]" />
-              <span className="font-urbanist text-sm font-semibold text-[#080231]">15-20 Min Average Delivery</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Package className="size-5 text-[#FFCC00]" />
-              <span className="font-urbanist text-sm font-semibold text-[#080231]">4 Delivery Categories</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Star className="size-5 text-[#FFCC00]" />
-              <span className="font-urbanist text-sm font-semibold text-[#080231]">4.8/5 Average Rating</span>
+                {/* Escrow status chip */}
+                <div className="absolute bottom-20 lg:bottom-24 left-1/2 -translate-x-1/2 sm:translate-x-6 bg-white rounded-2xl shadow-sharp-xl px-5 py-4 flex items-center gap-3.5 w-max">
+                  <div className="w-11 h-11 rounded-xl bg-primary flex items-center justify-center shrink-0">
+                    <Check className="size-5 text-primary-foreground" strokeWidth={3} />
+                  </div>
+                  <div>
+                    <p className="font-display font-extrabold text-secondary leading-tight">
+                      GHS 120 released
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-tight">
+                      Delivery confirmed by buyer
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Right Side - Illustration or Image */}
-        <div
-          className="w-full h-[500px] lg:h-[600px] rounded-2xl bg-cover bg-center shadow-lg"
-          style={{
-            backgroundImage:
-              "url('/assets/blog-community.png')",
-          }}
-        />
+        </AnimatedSection>
       </div>
     </section>
   );
 };
 
-export default AboutSection;
+export default CarryPaySection;

@@ -6,9 +6,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  /* Map Tailwind font-sans to Outfit by default */
-  --font-sans: var(--font-outfit);
-  --font-mono: var(--font-urbanist);
+  --color-primary-deep: var(--primary-deep);
+  /* Inter for body copy, Criteria CF (brand display font) for headings */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-criteria);
+  /* Legacy aliases so older pages keep working */
+  --font-urbanist: var(--font-criteria);
+  --font-outfit: var(--font-inter);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -44,77 +48,138 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/*
+ * Radius scale — four steps, each with one job. Don't introduce new values.
+ *   rounded-xl   (14px) icon tiles, inputs, small inner elements
+ *   rounded-2xl  (16px) chips and small floating cards
+ *   rounded-3xl  (24px) content cards
+ *   rounded-[2rem] md:rounded-[2.5rem]  full-width panels
+ *   rounded-full pills (all buttons) and avatars
+ * The phone mock keeps its own device radius, which is physical, not stylistic.
+ */
+
+/* Brand palette sourced from the CarryCome app: pink + navy. */
 :root {
   --radius: 0.625rem;
-  --background: #F5F5F5; /* Light Gray */
-  --foreground: #080231; /* Brand Navy */
+  /* Fixed navbar height, plus the offset anchored sections scroll to. */
+  --nav-height: 72px;
+  --nav-scroll-offset: 88px;
+  --background: #FFFFFF; /* White */
+  --foreground: #000B29; /* Brand Navy */
   --card: #FFFFFF; /* White */
-  --card-foreground: #080231; /* Brand Navy */
+  --card-foreground: #000B29; /* Brand Navy */
   --popover: #FFFFFF; /* White */
-  --popover-foreground: #080231; /* Brand Navy */
-  --primary: #FFCC00; /* Brand Yellow */
-  --primary-foreground: #080231; /* Brand Navy */
-  --secondary: #080231; /* Brand Navy */
-  --secondary-foreground: #FFCC00; /* Brand Yellow */
-  --muted: #F5F5F5; /* Light Gray */
-  --muted-foreground: #080231; /* Brand Navy */
-  --accent: #FFCC00; /* Brand Yellow */
-  --accent-foreground: #080231; /* Brand Navy */
-  --destructive: #FF0000;
-  --border: #F5F5F5; /* Light Gray */
-  --input: #F5F5F5; /* Light Gray */
-  --ring: #080231; /* Brand Navy */
-  --chart-1: #FFCC00;
-  --chart-2: #080231;
-  --chart-3: #F5F5F5;
+  --popover-foreground: #000B29; /* Brand Navy */
+  --primary: #F50053; /* Brand Pink */
+  --primary-foreground: #FFFFFF; /* White (on brand) */
+  /* White on --primary is only 4.19:1, which fails AA for body copy. This
+     deeper pink reaches 5.16:1 and backs brand panels that carry real text. */
+  --primary-deep: #D9004A;
+  --secondary: #000B29; /* Brand Navy */
+  --secondary-foreground: #FFFFFF; /* White */
+  --muted: #F5F8FF; /* App surface tint */
+  --muted-foreground: #5C5E6E; /* Muted text — 5.85:1 on --muted, 6.22:1 on white */
+  --accent: #F50053; /* Brand Pink */
+  --accent-foreground: #FFFFFF; /* White (on brand) */
+  --destructive: #EF4444; /* Danger */
+  --border: rgba(0, 11, 41, 0.1); /* Hairline navy tint */
+  --input: rgba(0, 11, 41, 0.1); /* Hairline navy tint */
+  --ring: #F50053; /* Brand Pink */
+  --chart-1: #F50053;
+  --chart-2: #000B29;
+  --chart-3: #F5F8FF;
   --chart-4: #FFFFFF;
-  --chart-5: #080231;
+  --chart-5: #717384;
   --sidebar: #FFFFFF; /* White */
-  --sidebar-foreground: #080231; /* Brand Navy */
-  --sidebar-primary: #FFCC00; /* Brand Yellow */
-  --sidebar-primary-foreground: #080231; /* Brand Navy */
-  --sidebar-accent: #FFCC00; /* Brand Yellow */
-  --sidebar-accent-foreground: #080231; /* Brand Navy */
-  --sidebar-border: #F5F5F5; /* Light Gray */
-  --sidebar-ring: #080231; /* Brand Navy */
+  --sidebar-foreground: #000B29; /* Brand Navy */
+  --sidebar-primary: #F50053; /* Brand Pink */
+  --sidebar-primary-foreground: #FFFFFF; /* White */
+  --sidebar-accent: #F50053; /* Brand Pink */
+  --sidebar-accent-foreground: #FFFFFF; /* White */
+  --sidebar-border: rgba(0, 11, 41, 0.1); /* Hairline navy tint */
+  --sidebar-ring: #F50053; /* Brand Pink */
 }
 
 .dark {
-  --background: #080231; /* Brand Navy */
-  --foreground: #FFCC00; /* Brand Yellow */
-  --card: #080231; /* Brand Navy */
-  --card-foreground: #FFCC00; /* Brand Yellow */
-  --popover: #080231; /* Brand Navy */
-  --popover-foreground: #FFCC00; /* Brand Yellow */
-  --primary: #FFCC00; /* Brand Yellow */
-  --primary-foreground: #080231; /* Brand Navy */
+  --background: #000B29; /* Brand Navy */
+  --foreground: #FFFFFF; /* White */
+  --card: #000B29; /* Brand Navy */
+  --card-foreground: #FFFFFF; /* White */
+  --popover: #000B29; /* Brand Navy */
+  --popover-foreground: #FFFFFF; /* White */
+  --primary: #F50053; /* Brand Pink */
+  --primary-foreground: #FFFFFF; /* White */
+  --primary-deep: #D9004A;
   --secondary: #FFFFFF; /* White */
-  --secondary-foreground: #080231; /* Brand Navy */
-  --muted: #080231; /* Brand Navy */
-  --muted-foreground: #FFCC00; /* Brand Yellow */
-  --accent: #FFCC00; /* Brand Yellow */
-  --accent-foreground: #080231; /* Brand Navy */
-  --destructive: #FF0000;
-  --border: #FFCC00; /* Brand Yellow */
-  --input: #FFCC00; /* Brand Yellow */
-  --ring: #FFCC00; /* Brand Yellow */
-  --chart-1: #FFCC00;
+  --secondary-foreground: #000B29; /* Brand Navy */
+  --muted: #0B1533; /* Raised navy */
+  --muted-foreground: rgba(255, 255, 255, 0.6); /* Muted text */
+  --accent: #F50053; /* Brand Pink */
+  --accent-foreground: #FFFFFF; /* White */
+  --destructive: #F87171; /* Danger */
+  --border: rgba(255, 255, 255, 0.1); /* Hairline white tint */
+  --input: rgba(255, 255, 255, 0.1); /* Hairline white tint */
+  --ring: #F50053; /* Brand Pink */
+  --chart-1: #F50053;
   --chart-2: #FFFFFF;
-  --chart-3: #080231;
-  --chart-4: #F5F5F5;
-  --chart-5: #080231;
-  --sidebar: #080231; /* Brand Navy */
-  --sidebar-foreground: #FFCC00; /* Brand Yellow */
-  --sidebar-primary: #FFCC00; /* Brand Yellow */
-  --sidebar-primary-foreground: #080231; /* Brand Navy */
-  --sidebar-accent: #FFCC00; /* Brand Yellow */
-  --sidebar-accent-foreground: #080231; /* Brand Navy */
-  --sidebar-border: #FFCC00; /* Brand Yellow */
-  --sidebar-ring: #FFCC00; /* Brand Yellow */
+  --chart-3: #000B29;
+  --chart-4: #0B1533;
+  --chart-5: #717384;
+  --sidebar: #000B29; /* Brand Navy */
+  --sidebar-foreground: #FFFFFF; /* White */
+  --sidebar-primary: #F50053; /* Brand Pink */
+  --sidebar-primary-foreground: #FFFFFF; /* White */
+  --sidebar-accent: #F50053; /* Brand Pink */
+  --sidebar-accent-foreground: #FFFFFF; /* White */
+  --sidebar-border: rgba(255, 255, 255, 0.1); /* Hairline white tint */
+  --sidebar-ring: #F50053; /* Brand Pink */
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Offset in-page anchor targets so they clear the fixed navbar. */
+#hero,
+#marketplace,
+#features,
+#carrypay,
+#sell,
+#download {
+  scroll-margin-top: var(--nav-scroll-offset);
+}
+
+/* Respect users who ask for less motion: kill the looping decorative
+   animations, and make sure anything that starts at opacity 0 waiting to be
+   animated in is still visible. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .opacity-0,
+  .animate-fade-in-up,
+  .animate-slide-in-left,
+  .animate-slide-in-right,
+  .animate-scale-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-gradient,
+  .animate-ping {
+    animation: none !important;
+  }
 }
 
 @layer base {
@@ -122,13 +187,255 @@ html {
     @apply border-border outline-ring/50;
   }
   body {
-    font-family: var(--font-outfit);
-    @apply bg-background text-foreground;
-  }
-  p {
-    font-family: var(--font-outfit);
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    @apply bg-background text-foreground antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-urbanist);
+    font-family: var(--font-criteria), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    @apply text-balance;
+  }
+}
+
+/* Premium Shadows */
+@layer utilities {
+  .shadow-sharp {
+    box-shadow: 0 1px 2px rgba(0, 11, 41, 0.04),
+                0 4px 8px rgba(0, 11, 41, 0.04),
+                0 8px 16px rgba(0, 11, 41, 0.04);
+  }
+  .shadow-sharp-lg {
+    box-shadow: 0 2px 4px rgba(0, 11, 41, 0.02),
+                0 8px 16px rgba(0, 11, 41, 0.06),
+                0 16px 32px rgba(0, 11, 41, 0.06),
+                0 32px 64px rgba(0, 11, 41, 0.04);
+  }
+  .shadow-sharp-xl {
+    box-shadow: 0 4px 8px rgba(0, 11, 41, 0.02),
+                0 16px 24px rgba(0, 11, 41, 0.08),
+                0 24px 48px rgba(0, 11, 41, 0.08),
+                0 48px 96px rgba(0, 11, 41, 0.06);
+  }
+  .shadow-glow {
+    box-shadow: 0 0 0 1px rgba(245, 0, 83, 0.1),
+                0 4px 16px rgba(245, 0, 83, 0.15),
+                0 8px 32px rgba(245, 0, 83, 0.1);
+  }
+  .shadow-glow-sm {
+    box-shadow: 0 0 0 1px rgba(245, 0, 83, 0.08),
+                0 2px 8px rgba(245, 0, 83, 0.12);
+  }
+}
+
+/* Smooth transitions for interactive elements */
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .transition-bounce {
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+/* Gradient text utility */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #F50053 0%, #FF5C9A 50%, #F50053 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* App brand gradient — matches the CarryMart home-screen story ring
+     (palette.brand #F50053 → #FF8A5C, bottom-left to top-right). */
+  .text-gradient-brand {
+    background: linear-gradient(to top right, #F50053 0%, #FF8A5C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-primary-dark {
+    color: #F50053;
+  }
+}
+
+/* Premium card hover effect */
+@layer utilities {
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@layer utilities {
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+}
+
+/* Premium button effects */
+@layer utilities {
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+  .btn-shine:hover::before {
+    left: 100%;
+  }
+}
+
+/* Glassmorphism */
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .glass-dark {
+    background: rgba(0, 11, 41, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(245, 0, 83, 0.1);
   }
 }

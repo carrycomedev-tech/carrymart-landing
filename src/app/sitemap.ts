@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://carrycome.com'
-  
+  const baseUrl = 'https://carrymart.com'
+
   return [
     {
       url: baseUrl,
@@ -11,28 +11,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
+      url: `${baseUrl}/support`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/services`,
+      url: `${baseUrl}/terms`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'yearly',
+      priority: 0.3,
     },
     {
-      url: `${baseUrl}/download`,
+      url: `${baseUrl}/privacy`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
+      changeFrequency: 'yearly',
+      priority: 0.3,
     },
   ]
 }

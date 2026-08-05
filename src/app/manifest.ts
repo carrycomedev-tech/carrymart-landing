@@ -2,13 +2,13 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'CarryCome - Campus Delivery Service',
-    short_name: 'CarryCome',
-    description: 'Student-powered campus delivery network for food, documents, and parcels',
+    name: 'CarryMart | The Campus Marketplace',
+    short_name: 'CarryMart',
+    description: 'Buy and sell with students on your campus — reels, chat, and escrow-protected payments',
     start_url: '/',
     display: 'standalone',
-    background_color: '#080231',
-    theme_color: '#FFCC00',
+    background_color: '#000B29',
+    theme_color: '#F50053',
     icons: [
       {
         src: '/favicon.ico',
@@ -26,7 +26,7 @@ export default function manifest(): MetadataRoute.Manifest {
         type: 'image/png',
       },
     ],
-    categories: ['education', 'lifestyle', 'business'],
+    categories: ['shopping', 'lifestyle', 'social'],
     lang: 'en',
     orientation: 'portrait-primary',
   }

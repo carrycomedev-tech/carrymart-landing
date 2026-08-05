@@ -1,98 +1,151 @@
-// import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
+"use client";
+
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 import {
-  FacebookIcon,
   InstagramIcon,
   TwitterIcon,
-  YoutubeIcon,
-  MapPin,
+  FacebookIcon,
+  ArrowRight,
+  Check,
+  Loader2,
   Mail,
   Phone,
-  MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "../navbar-04/logo";
+import { useState } from "react";
+import { SUPPORT_EMAIL, SUPPORT_PHONE, SUPPORT_PHONE_HREF } from "@/lib/contact";
 
 const footerSections = [
   {
     title: "Company",
     links: [
-      { title: "About Us", href: "#" },
-      { title: "How It Works", href: "#" },
-      { title: "Campus Pass", href: "#" },
-      { title: "Careers", href: "#" },
+      { title: "The Marketplace", href: "/#marketplace" },
+      { title: "Why CarryMart", href: "/#features" },
+      { title: "CarryPay Wallet", href: "/#carrypay" },
+      { title: "Sell on CarryMart", href: "/#sell" },
     ],
   },
   {
-    title: "Services",
+    title: "Categories",
     links: [
-      { title: "Food Delivery", href: "#" },
-      { title: "Parcel Delivery", href: "#" },
-      { title: "Document Delivery", href: "#" },
-      { title: "Grocery Delivery", href: "#" },
+      { title: "Fashion", href: "/#marketplace" },
+      { title: "Beauty", href: "/#marketplace" },
+      { title: "Food", href: "/#marketplace" },
+      { title: "Deals & Events", href: "/#marketplace" },
     ],
   },
   {
-    title: "Support",
+    title: "Help & Legal",
     links: [
-      { title: "Help Center", href: "#" },
-      { title: "FAQs", href: "#" },
-      { title: "Contact Us", href: "#" },
-      { title: "Safety Guidelines", href: "#" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { title: "Terms of Service", href: "#" },
-      { title: "Privacy Policy", href: "#" },
-      { title: "Courier Agreement", href: "#" },
-      { title: "Community Guidelines", href: "#" },
+      { title: "Help & FAQs", href: "/support" },
+      { title: "Terms of Service", href: "/terms" },
+      { title: "Privacy Policy", href: "/privacy" },
     ],
   },
 ];
 
+const socialLinks = [
+  { icon: InstagramIcon, href: "https://instagram.com/carrymart", label: "Instagram" },
+  { icon: TwitterIcon, href: "https://twitter.com/carrymart", label: "Twitter" },
+  { icon: FacebookIcon, href: "https://facebook.com/carrymart", label: "Facebook" },
+];
+
+type Status = "idle" | "submitting" | "success" | "error";
+
 const Footer03Page = () => {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (status === "submitting") return;
+
+    setStatus("submitting");
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+
+      if (!res.ok) {
+        setStatus("error");
+        setMessage(data.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+
+      setStatus("success");
+      setEmail("");
+    } catch {
+      setStatus("error");
+      setMessage("Something went wrong. Please try again.");
+    }
+  };
+
   return (
-    <footer className="border-t bg-[#080231] text-white">
-      <div className="max-w-(--breakpoint-xl) mx-auto">
-        <div className="py-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-10 px-6 xl:px-0">
+    <footer className="bg-secondary text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main Footer Content */}
+        <div className="py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Brand Info */}
-          <div className="col-span-full xl:col-span-2">
-            <Logo isDarkBg={true}/>
-            <p className="mt-4 text-white/80">
-              CarryCome connects students through fast, affordable, and reliable
-              campus deliveries. Whether it&apos;s food, parcels, or errands — we make
-              life on campus simpler and more rewarding.
+          <div className="sm:col-span-2 lg:col-span-4">
+            <Logo isDarkBg={true} />
+            <p className="mt-4 text-white/70 text-sm leading-relaxed max-w-xs">
+              The campus marketplace. Buy and sell with students on campuses
+              across Ghana.
             </p>
 
-            <div className="mt-6 space-y-3 text-white/70 text-sm">
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-[#FFCC00]" />
-                <span>CarryCome HQ, University Campus Innovation Hub</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-[#FFCC00]" />
-                <span>support@carrycome.app</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-[#FFCC00]" />
-                <span>+233 55 123 4567 </span>
-              </div>
+            {/* Contact Info */}
+            <div className="mt-6 space-y-3">
+              <a
+                href={`mailto:${SUPPORT_EMAIL}`}
+                className="flex items-center gap-3 text-white/70 hover:text-white transition-colors text-sm"
+              >
+                <Mail className="h-4 w-4 text-primary shrink-0" />
+                {SUPPORT_EMAIL}
+              </a>
+              <a
+                href={`tel:${SUPPORT_PHONE_HREF}`}
+                className="flex items-center gap-3 text-white/70 hover:text-white transition-colors text-sm"
+              >
+                <Phone className="h-4 w-4 text-primary shrink-0" />
+                {SUPPORT_PHONE}
+              </a>
+            </div>
+
+            {/* Social Links */}
+            <div className="mt-6 flex items-center gap-3">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Footer Navigation */}
           {footerSections.map(({ title, links }) => (
-            <div key={title}>
-              <h6 className="font-medium text-white">{title}</h6>
-              <ul className="mt-6 space-y-4">
+            <div key={title} className="lg:col-span-2">
+              <h6 className="font-semibold text-white text-sm">{title}</h6>
+              <ul className="mt-4 space-y-3">
                 {links.map(({ title, href }) => (
                   <li key={title}>
                     <Link
                       href={href}
-                      className="text-white/70 hover:text-[#FFCC00] transition-colors"
+                      className="text-white/70 hover:text-white transition-colors text-sm"
                     >
                       {title}
                     </Link>
@@ -102,47 +155,76 @@ const Footer03Page = () => {
             </div>
           ))}
 
-          {/* Connect */}
-          <div className="col-span-2">
-            <h6 className="font-medium text-white">Connect</h6>
-            <div className="mt-6 flex items-center gap-4">
-              <Link href="#" target="_blank" aria-label="Instagram">
-                <InstagramIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
-              </Link>
-              <Link href="#" target="_blank" aria-label="Twitter">
-                <TwitterIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
-              </Link>
-              <Link href="#" target="_blank" aria-label="Facebook">
-                <FacebookIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
-              </Link>
-              <Link href="#" target="_blank" aria-label="TikTok">
-                <YoutubeIcon className="h-5 w-5 hover:text-[#FFCC00] transition-colors" />
-              </Link>
-            </div>
-            <div className="mt-6 space-y-3 text-white/70 text-sm">
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-[#FFCC00]" />
-                <span>hello@carrycome.gh</span>
+          {/* Newsletter */}
+          <div className="sm:col-span-2 lg:col-span-2">
+            <h6 className="font-semibold text-white text-sm">Stay Updated</h6>
+            <p className="mt-4 text-white/70 text-sm">
+              Get notified when we launch on your campus.
+            </p>
+
+            {status === "success" ? (
+              <div className="mt-4 flex items-start gap-2.5 rounded-2xl bg-white/10 p-4">
+                <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
+                <p className="text-sm text-white/80 leading-relaxed">
+                  You&apos;re on the list. We&apos;ll be in touch before launch.
+                </p>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-[#FFCC00]" />
-                <span>+233 XX XXX XXXX</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MessageCircle className="h-4 w-4 text-[#FFCC00]" />
-                <span>WhatsApp Support</span>
-              </div>
-            </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="mt-4 space-y-3" noValidate>
+                <label htmlFor="footer-email" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="footer-email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  autoComplete="email"
+                  aria-invalid={status === "error"}
+                  aria-describedby={status === "error" ? "footer-email-error" : undefined}
+                  className="w-full h-11 px-4 bg-white/10 border border-white/20 rounded-full text-sm text-white placeholder:text-white/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/40 transition-all"
+                  required
+                />
+                <Button type="submit" className="w-full" disabled={status === "submitting"}>
+                  {status === "submitting" ? (
+                    <>
+                      Subscribing
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      Subscribe
+                      <ArrowRight className="h-4 w-4" />
+                    </>
+                  )}
+                </Button>
+                {status === "error" && (
+                  <p id="footer-email-error" className="text-sm text-white/80 leading-relaxed">
+                    {message}{" "}
+                    <a
+                      href={`mailto:${SUPPORT_EMAIL}`}
+                      className="underline underline-offset-4 hover:text-white"
+                    >
+                      Email us instead
+                    </a>
+                    .
+                  </p>
+                )}
+              </form>
+            )}
           </div>
         </div>
 
-        <Separator className="bg-white/20" />
+        <Separator className="bg-white/10" />
 
         {/* Footer Bottom */}
-        <div className="py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-x-2 gap-y-5 px-6 xl:px-0">
-          <span className="text-white/70 text-sm text-center sm:text-left">
-            © 2025 CarryCome Ghana Ltd. All rights reserved. <br />
-            Made with 💛 for campus life.
+        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span className="text-white/60 text-sm">
+            © {new Date().getFullYear()} CarryMart. All rights reserved.
+          </span>
+          <span className="text-white/60 text-sm">
+            Made for campus life
           </span>
         </div>
       </div>
