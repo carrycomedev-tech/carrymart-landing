@@ -89,8 +89,10 @@ const Footer03Page = () => {
   };
 
   return (
-    <footer className="bg-secondary text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    // Gutter lives on the footer, so the max-w-7xl track below matches the
+    // content edges of the page sections.
+    <footer className="bg-secondary text-white px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Brand Info */}

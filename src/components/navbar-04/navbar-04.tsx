@@ -24,14 +24,16 @@ const Navbar04Page = () => {
   }, []);
 
   return (
+    // Gutter lives on the header, so the nav's max-w-7xl track matches the
+    // content edges of the page sections instead of sitting 32px inside them.
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 inset-x-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
         scrolled
           ? "bg-white/90 backdrop-blur-md border-b border-border shadow-[0_1px_2px_rgba(0,11,41,0.04)]"
           : "bg-white/60 backdrop-blur-sm border-b border-transparent"
       }`}
     >
-      <nav className="h-(--nav-height) max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav className="h-(--nav-height) max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" aria-label="CarryMart home">
           <Logo />
         </Link>
