@@ -7,7 +7,7 @@ import {AnimatedSection} from "@/components/ui/animated-section";
 /* --- Mini app-style visuals (pure CSS, no stock images) --- */
 
 const ListingsVisual = () => (
-    <div className="grid grid-cols-2 gap-2.5 w-full max-w-[320px]">
+    <div className="grid grid-cols-2 gap-2.5 w-full max-w-[400px]">
         {[
             {emoji: "👟", name: "Air Force 1", price: "GHS 250"},
             {emoji: "💄", name: "Gloss set", price: "GHS 45"},
@@ -29,10 +29,10 @@ const ListingsVisual = () => (
 );
 
 const ReelsVisual = () => (
-    <div className="flex items-center gap-3">
-        <div className="w-20 h-36 rounded-2xl bg-gradient-to-b from-secondary/70 to-secondary opacity-60 scale-90"/>
+    <div className="flex items-end gap-3">
+        <div className="w-24 h-40 rounded-2xl bg-gradient-to-b from-secondary/70 to-secondary opacity-60"/>
         <div
-            className="relative w-28 h-48 rounded-2xl bg-gradient-to-b from-primary to-[#C7004A] shadow-sharp-lg flex items-center justify-center">
+            className="relative w-32 h-52 rounded-2xl bg-gradient-to-b from-primary to-[#C7004A] shadow-sharp-lg flex items-center justify-center">
             <div className="w-10 h-10 rounded-full bg-white/40 backdrop-blur flex items-center justify-center -mt-6">
                 <Play className="size-4 text-secondary fill-secondary ml-0.5"/>
             </div>
@@ -42,12 +42,12 @@ const ReelsVisual = () => (
                     20</p>
             </div>
         </div>
-        <div className="w-20 h-36 rounded-2xl bg-gradient-to-b from-secondary/70 to-secondary opacity-60 scale-90"/>
+        <div className="w-24 h-40 rounded-2xl bg-gradient-to-b from-secondary/70 to-secondary opacity-60"/>
     </div>
 );
 
 const ChatVisual = () => (
-    <div className="w-full max-w-[300px] space-y-2.5">
+    <div className="w-full max-w-[380px] space-y-2.5">
         <div className="bg-white border border-border rounded-2xl rounded-bl-md px-4 py-2.5 w-fit shadow-sharp">
             <p className="text-sm text-secondary">Is the hoodie still available? 👀</p>
         </div>
@@ -61,14 +61,14 @@ const ChatVisual = () => (
             className="flex items-center gap-2 bg-white border border-border rounded-full pl-4 pr-1.5 py-1.5 shadow-sharp">
             <p className="text-xs text-muted-foreground flex-1">Message…</p>
             <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center">
-                <Send className="size-3.5 text-primary-foreground"/>
+                <Send className="size-3.5 text-primary-foreground" strokeWidth={2.25}/>
             </div>
         </div>
     </div>
 );
 
 const CampusVisual = () => (
-    <div className="w-full max-w-[300px] bg-white rounded-2xl border border-border shadow-sharp overflow-hidden">
+    <div className="w-full max-w-[380px] bg-white rounded-2xl border border-border shadow-sharp overflow-hidden">
         <div className="px-4 py-3 border-b border-border">
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Choose your campus</p>
         </div>
@@ -158,10 +158,19 @@ const Features06Page = () => {
                                 href="#download"
                                 className="group block bg-muted rounded-3xl overflow-hidden border border-transparent hover:border-border hover:shadow-sharp-lg transition-all duration-300 h-full"
                             >
+                                {/* Two alignments doing the work here:
+                                    - px-6 md:px-8 matches the copy block below, and justify-start
+                                      left-aligns the mock, so the mock, eyebrow, heading and link
+                                      all share one left edge.
+                                    - items-end sits every mock on a common baseline just above the
+                                      copy. The mocks are different heights, so centring them in a
+                                      fixed-height box left each one floating at its own offset.
+                                    origin-bottom-left keeps that baseline pinned during the hover
+                                    scale, so the card grows up and right rather than drifting. */}
                                 <div
-                                    className="h-60 md:h-64 flex items-center justify-center px-6 pt-6 overflow-hidden">
+                                    className="h-60 md:h-64 flex items-end justify-start px-6 md:px-8 pt-6 overflow-hidden">
                                     <div
-                                        className="transition-transform duration-500 group-hover:scale-[1.03] group-hover:-translate-y-1 w-full flex justify-center">
+                                        className="transition-transform duration-500 group-hover:scale-[1.03] group-hover:-translate-y-1 w-full origin-bottom-left">
                                         {feature.visual}
                                     </div>
                                 </div>

@@ -49,7 +49,10 @@ export const LegalPage = ({
   sections,
 }: LegalPageProps) => {
   return (
-    <div className="min-h-screen pt-32 pb-24 px-6">
+    // Gutter matches the navbar, footer and every landing section, so the
+    // three share one content edge. The reading width comes from max-w-3xl
+    // below, not from the gutter.
+    <div className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
         {/* Header */}
         <div className="inline-flex items-center gap-2 rounded-full bg-muted border border-border px-4 py-1.5 mb-6">
