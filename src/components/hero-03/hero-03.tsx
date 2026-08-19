@@ -111,8 +111,8 @@ const Hero03 = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full bg-primary/10 blur-3xl pointer-events-none animate-pulse-glow" />
 
           <PhoneMock
-            src="/media/marketplace.mp4"
-            poster="/media/marketplace-poster.jpg"
+            src="/media/shopper.mp4"
+            poster="/media/shopper-poster.jpg"
           >
             {/* Bottom gradient so the chip reads clearly */}
             <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-secondary/60 to-transparent" />

@@ -45,3 +45,8 @@ next-env.d.ts
 deploy.sh
 deploy.mjs
 .last_build_hash
+
+# Source video masters. Kept on disk for re-encoding, but the cropped and
+# compressed versions in public/media are what ship.
+/public/media/first-carrypay-video.mp4
+/public/media/first-carrypay-video1.mp4
