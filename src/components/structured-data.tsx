@@ -8,8 +8,8 @@ export default function StructuredData() {
     name: 'CarryMart',
     alternateName: 'CarryMart Campus Marketplace',
     description: 'The campus marketplace where students buy and sell with escrow-protected payments, reels, and real-time chat',
-    url: 'https://carrymart.com',
-    logo: 'https://carrymart.com/assets/logo-512.png',
+    url: 'https://www.carrymartgh.com',
+    logo: 'https://www.carrymartgh.com/assets/logo-512.png',
     foundingDate: '2024',
     foundingLocation: {
       '@type': 'Place',
@@ -37,12 +37,12 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'CarryMart',
-    url: 'https://carrymart.com',
+    url: 'https://www.carrymartgh.com',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://carrymart.com/?q={search_term_string}'
+        urlTemplate: 'https://www.carrymartgh.com/?q={search_term_string}'
       },
       'query-input': 'required name=search_term_string'
     },
@@ -65,9 +65,9 @@ export default function StructuredData() {
     },
     telephone: SUPPORT_PHONE_HREF,
     email: SUPPORT_EMAIL,
-    url: 'https://carrymart.com',
+    url: 'https://www.carrymartgh.com',
     priceRange: 'GHS 0+',
-    image: 'https://carrymart.com/assets/logo-512.png'
+    image: 'https://www.carrymartgh.com/assets/logo-512.png'
   }
 
   const serviceSchema = {
@@ -153,25 +153,25 @@ export default function StructuredData() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://carrymart.com/'
+        item: 'https://www.carrymartgh.com/'
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Marketplace',
-        item: 'https://carrymart.com/#marketplace'
+        item: 'https://www.carrymartgh.com/#marketplace'
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Why CarryMart',
-        item: 'https://carrymart.com/#features'
+        item: 'https://www.carrymartgh.com/#features'
       },
       {
         '@type': 'ListItem',
         position: 4,
         name: 'Support',
-        item: 'https://carrymart.com/support'
+        item: 'https://www.carrymartgh.com/support'
       }
     ]
   }

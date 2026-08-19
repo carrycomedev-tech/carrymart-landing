@@ -62,14 +62,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://carrymart.com"),
+  metadataBase: new URL("https://www.carrymartgh.com"),
   alternates: {
-    canonical: "https://carrymart.com/",
+    canonical: "https://www.carrymartgh.com/",
   },
   openGraph: {
     title: "CarryMart | The Campus Marketplace",
     description: "Buy and sell with students on your campus. Discover deals in reels, chat instantly, and pay safely with the CarryPay escrow wallet.",
-    url: "https://carrymart.com",
+    url: "https://www.carrymartgh.com",
     siteName: "CarryMart",
     images: [
       {
