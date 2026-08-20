@@ -50,3 +50,7 @@ deploy.mjs
 # compressed versions in public/media are what ship.
 /public/media/first-carrypay-video.mp4
 /public/media/first-carrypay-video1.mp4
+/public/media/reels1.mp4
+/public/media/reels2.mp4
+/public/media/reels3.mp4
+/public/media/payments-video.mp4

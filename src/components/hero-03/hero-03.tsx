@@ -9,7 +9,7 @@ import { PhoneMock } from "@/components/ui/phone-mock";
 const stats = [
   { value: "GHS 0", label: "To post a listing" },
   { value: "100%", label: "Escrow protected" },
-  { value: "6", label: "Categories" },
+  { value: "9", label: "Categories" },
 ];
 
 const Hero03 = () => {
@@ -62,8 +62,9 @@ const Hero03 = () => {
 
           <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty opacity-0 animate-fade-in-up animation-delay-200">
             CarryMart is where students shop and sell everything from fashion
-            and food to beauty and events. Discover deals in reels, chat with
-            sellers instantly, and pay safely with the CarryPay escrow wallet.
+            and food to electronics, books, and beauty. Discover deals in reels,
+            chat with sellers instantly, and pay safely with the CarryPay escrow
+            wallet.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 opacity-0 animate-fade-in-up animation-delay-300">

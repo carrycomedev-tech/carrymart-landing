@@ -87,7 +87,6 @@ export const metadata: Metadata = {
     title: "CarryMart | The Campus Marketplace",
     description: "Buy and sell with students on your campus. Discover deals in reels, chat instantly, and pay safely with escrow.",
     images: ["/og-image.png"],
-    creator: "@carrymart",
   },
   robots: {
     index: true,

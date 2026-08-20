@@ -3,19 +3,26 @@
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import {
-  InstagramIcon,
-  TwitterIcon,
-  FacebookIcon,
   ArrowRight,
   Check,
   Loader2,
   Mail,
-  Phone,
 } from "lucide-react";
+import {
+  InstagramIcon,
+  TikTokIcon,
+  SnapchatIcon,
+  WhatsAppIcon,
+} from "@/components/ui/social-icons";
 import Link from "next/link";
 import { Logo } from "../navbar-04/logo";
 import { useState } from "react";
-import { SUPPORT_EMAIL, SUPPORT_PHONE, SUPPORT_PHONE_HREF } from "@/lib/contact";
+import {
+  SUPPORT_EMAIL,
+  SUPPORT_EMAIL_HREF,
+  SUPPORT_PHONE,
+  SUPPORT_WHATSAPP_HREF,
+} from "@/lib/contact";
 
 const footerSections = [
   {
@@ -30,10 +37,10 @@ const footerSections = [
   // {
   //   title: "Categories",
   //   links: [
+  //     { title: "Electronics", href: "/#marketplace" },
   //     { title: "Fashion", href: "/#marketplace" },
-  //     { title: "Beauty", href: "/#marketplace" },
   //     { title: "Food", href: "/#marketplace" },
-  //     { title: "Deals & Events", href: "/#marketplace" },
+  //     { title: "Books & Stationery", href: "/#marketplace" },
   //   ],
   // },
   {
@@ -47,9 +54,9 @@ const footerSections = [
 ];
 
 const socialLinks = [
-  { icon: InstagramIcon, href: "https://instagram.com/carrymart", label: "Instagram" },
-  { icon: TwitterIcon, href: "https://twitter.com/carrymart", label: "Twitter" },
-  { icon: FacebookIcon, href: "https://facebook.com/carrymart", label: "Facebook" },
+  { icon: InstagramIcon, href: "https://www.instagram.com/carrymartgh/", label: "Instagram" },
+  { icon: TikTokIcon, href: "https://www.tiktok.com/@carrymartgh", label: "TikTok" },
+  { icon: SnapchatIcon, href: "https://www.snapchat.com/add/carrymartgh", label: "Snapchat" },
 ];
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -108,17 +115,20 @@ const Footer03Page = () => {
             {/* Contact Info */}
             <div className="mt-6 space-y-3">
               <a
-                href={`mailto:${SUPPORT_EMAIL}`}
+                href={SUPPORT_EMAIL_HREF}
                 className="flex items-center gap-3 text-white/70 hover:text-white transition-colors text-sm"
               >
                 <Mail className="h-4 w-4 text-primary shrink-0" />
                 {SUPPORT_EMAIL}
               </a>
               <a
-                href={`tel:${SUPPORT_PHONE_HREF}`}
+                href={SUPPORT_WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Chat with CarryMart on WhatsApp at ${SUPPORT_PHONE}`}
                 className="flex items-center gap-3 text-white/70 hover:text-white transition-colors text-sm"
               >
-                <Phone className="h-4 w-4 text-primary shrink-0" />
+                <WhatsAppIcon className="h-4 w-4 text-primary shrink-0" />
                 {SUPPORT_PHONE}
               </a>
             </div>
@@ -134,7 +144,7 @@ const Footer03Page = () => {
                   aria-label={label}
                   className="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300"
                 >
-                  <Icon className="h-4 w-4" strokeWidth={2.25} />
+                  <Icon className="h-4 w-4" />
                 </a>
               ))}
             </div>
@@ -210,7 +220,7 @@ const Footer03Page = () => {
                   <p id="footer-email-error" className="text-sm text-white/80 leading-relaxed">
                     {message}{" "}
                     <a
-                      href={`mailto:${SUPPORT_EMAIL}`}
+                      href={SUPPORT_EMAIL_HREF}
                       className="underline underline-offset-4 hover:text-white"
                     >
                       Email us instead
@@ -228,7 +238,7 @@ const Footer03Page = () => {
         {/* Footer Bottom */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <span className="text-white/60 text-sm">
-            © {new Date().getFullYear()} CarryMart. All rights reserved.
+            © {new Date().getFullYear()} CarryMart Ghana. All rights reserved.
           </span>
           <span className="text-white/60 text-sm">
             Made for campus life

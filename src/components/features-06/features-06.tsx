@@ -1,22 +1,36 @@
 "use client";
 
 import {ArrowRight, Check, Clapperboard, Heart, MapPin, MessagesSquare, Play, Send, Store,} from "lucide-react";
+import Image from "next/image";
+import {ReactNode} from "react";
 import Link from "next/link";
 import {AnimatedSection} from "@/components/ui/animated-section";
+import {useReducedMotion} from "@/lib/use-reduced-motion";
+import {cn} from "@/lib/utils";
 
-/* --- Mini app-style visuals (pure CSS, no stock images) --- */
+/* --- Mini app-style visuals. Mostly pure CSS; listings carry product
+   photos where we have them, emoji as the stand-in where we do not. --- */
+
+type Listing = { name: string; price: string; emoji?: string; image?: string };
+
+/* Photos are alpha cutouts, so they sit on the same muted tile as the emoji
+   and every card keeps one shared placeholder shape. */
+const listings: Listing[] = [
+    {image: "/assets/sneakers.webp", name: "Pink runners", price: "GHS 250"},
+    {image: "/assets/lip-gloss.webp", name: "Gloss set", price: "GHS 45"},
+    {image: "/assets/shirt.webp", name: "Striped shirt", price: "GHS 120"},
+    {image: "/assets/airpod.webp", name: "Wireless earbuds", price: "GHS 480"},
+];
 
 const ListingsVisual = () => (
     <div className="grid grid-cols-2 gap-2.5 w-full max-w-[400px]">
-        {[
-            {emoji: "👟", name: "Air Force 1", price: "GHS 250"},
-            {emoji: "💄", name: "Gloss set", price: "GHS 45"},
-            {emoji: "🍗", name: "Jollof + wings", price: "GHS 35"},
-            {emoji: "🎧", name: "AirPods Pro", price: "GHS 480"},
-        ].map((item) => (
-            <div key={item.name} className="bg-white rounded-xl border border-border p-2.5 shadow-sharp">
-                <div className="h-9 rounded-lg bg-muted flex items-center justify-center text-lg mb-1.5">
-                    {item.emoji}
+        {listings.map((item) => (
+            <div key={item.name} className="bg-white rounded-xl border border-border p-3 shadow-sharp">
+                <div
+                    className="relative h-10 rounded-lg bg-muted flex items-center justify-center text-lg mb-1.5 overflow-hidden">
+                    {item.image ? (
+                        <Image src={item.image} alt="" fill sizes="176px" className="object-contain p-0.5"/>
+                    ) : item.emoji}
                 </div>
                 <p className="text-[11px] font-semibold text-secondary leading-tight">{item.name}</p>
                 <div className="flex items-center justify-between mt-0.5">
@@ -28,24 +42,70 @@ const ListingsVisual = () => (
     </div>
 );
 
+type ReelPanelProps = {
+    /** Clip filling the panel. Without one the panel keeps its gradient. */
+    src?: string;
+    poster?: string;
+    className?: string;
+    children?: ReactNode;
+};
+
+/* Panels take a clip or fall back to the gradient. Like the phone mock, the
+   clips are decorative and hold on the poster frame under reduced motion. The
+   centre reel leads on size and shadow, so the side clips need no dimming. */
+const ReelPanel = ({src, poster, className, children}: ReelPanelProps) => {
+    const reducedMotion = useReducedMotion();
+
+    return (
+        <div className={cn("relative rounded-2xl overflow-hidden", className)}>
+            {src && (
+                <video
+                    key={reducedMotion ? "still" : "playing"}
+                    src={reducedMotion ? undefined : src}
+                    poster={poster}
+                    autoPlay={!reducedMotion}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-hidden="true"
+                    tabIndex={-1}
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+            )}
+            {children}
+        </div>
+    );
+};
+
 const ReelsVisual = () => (
     <div className="flex items-end gap-3">
-        <div className="w-24 h-40 rounded-2xl bg-gradient-to-b from-secondary/70 to-secondary opacity-60"/>
-        <div
-            className="relative w-32 h-52 rounded-2xl bg-gradient-to-b from-primary to-[#C7004A] shadow-sharp-lg flex items-center justify-center">
-            <div className="w-10 h-10 rounded-full bg-white/40 backdrop-blur flex items-center justify-center -mt-6">
+        <ReelPanel
+            src="/media/reel-left.mp4"
+            poster="/media/reel-left-poster.jpg"
+            className="w-24 h-40"
+        />
+        <ReelPanel
+            src="/media/reel-centre.mp4"
+            poster="/media/reel-centre-poster.jpg"
+            className="w-32 h-52 bg-gradient-to-b from-primary to-[#C7004A] shadow-sharp-lg flex items-center justify-center"
+        >
+            {/* relative so it paints above the absolutely positioned video */}
+            <div className="relative w-10 h-10 rounded-full bg-white/40 backdrop-blur flex items-center justify-center -mt-6">
                 <Play className="size-4 text-secondary fill-secondary ml-0.5"/>
             </div>
             <div className="absolute bottom-2.5 inset-x-2.5 bg-white/95 rounded-lg px-2.5 py-1.5">
                 <p className="text-[11px] font-bold text-secondary leading-snug whitespace-nowrap">Thrift drop 🔥</p>
-                <p className="text-[11px] text-muted-foreground font-semibold leading-snug whitespace-nowrap">From GHS
-                    20</p>
+                <p className="text-[11px] text-muted-foreground font-semibold leading-snug whitespace-nowrap">From GHS 20</p>
             </div>
-        </div>
-        <div className="w-24 h-40 rounded-2xl bg-gradient-to-b from-secondary/70 to-secondary opacity-60"/>
+        </ReelPanel>
+        <ReelPanel
+            src="/media/reel-right.mp4"
+            poster="/media/reel-right-poster.jpg"
+            className="w-24 h-40"
+        />
     </div>
 );
-
 const ChatVisual = () => (
     <div className="w-full max-w-[380px] space-y-2.5">
         <div className="bg-white border border-border rounded-2xl rounded-bl-md px-4 py-2.5 w-fit shadow-sharp">
@@ -100,7 +160,7 @@ const features = [
         category: "Listings",
         title: "Post it in seconds, sell it today",
         details:
-            "Snap a photo, set a price, pick a category: fashion, beauty, food, deals, events, or delivery. Your listing is live on your campus feed instantly.",
+            "Snap a photo, set a price, pick one of nine categories, from electronics to food. Your listing is live on your campus feed instantly.",
         link: "Browse listings",
         icon: Store,
         visual: <ListingsVisual/>,

@@ -23,9 +23,9 @@ export default function StructuredData() {
       availableLanguage: ['en']
     },
     sameAs: [
-      'https://twitter.com/carrymart',
-      'https://facebook.com/carrymart',
-      'https://instagram.com/carrymart'
+      'https://www.instagram.com/carrymartgh/',
+      'https://www.tiktok.com/@carrymartgh',
+      'https://www.snapchat.com/add/carrymartgh'
     ],
     areaServed: {
       '@type': 'Country',
@@ -47,9 +47,9 @@ export default function StructuredData() {
       'query-input': 'required name=search_term_string'
     },
     sameAs: [
-      'https://twitter.com/carrymart',
-      'https://facebook.com/carrymart',
-      'https://instagram.com/carrymart'
+      'https://www.instagram.com/carrymartgh/',
+      'https://www.tiktok.com/@carrymartgh',
+      'https://www.snapchat.com/add/carrymartgh'
     ]
   }
 
@@ -74,7 +74,7 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Campus Marketplace',
-    description: 'A student-to-student marketplace for fashion, beauty, food, deals, events, and delivery on university campuses across Ghana',
+    description: 'A student-to-student marketplace for electronics, fashion, books, food, beauty, services, furniture, tickets, and rentals on university campuses across Ghana',
     serviceType: 'Online Marketplace',
     provider: {
       '@type': 'Organization',
@@ -88,12 +88,15 @@ export default function StructuredData() {
       '@type': 'OfferCatalog',
       name: 'Campus Marketplace Categories',
       itemListElement: [
+        { '@type': 'Thing', name: 'Electronics' },
         { '@type': 'Thing', name: 'Fashion' },
-        { '@type': 'Thing', name: 'Beauty' },
+        { '@type': 'Thing', name: 'Books & Stationery' },
         { '@type': 'Thing', name: 'Food' },
-        { '@type': 'Thing', name: 'Deals' },
-        { '@type': 'Thing', name: 'Events' },
-        { '@type': 'Thing', name: 'Delivery Services' }
+        { '@type': 'Thing', name: 'Beauty' },
+        { '@type': 'Thing', name: 'Services' },
+        { '@type': 'Thing', name: 'Furniture' },
+        { '@type': 'Thing', name: 'Tickets' },
+        { '@type': 'Thing', name: 'Rentals' }
       ]
     }
   }
@@ -116,7 +119,7 @@ export default function StructuredData() {
   const faqs = [
     {
       question: "What is CarryMart?",
-      answer: "CarryMart is the campus marketplace where students buy and sell everything from fashion and food to beauty and events. Discover deals in reels, chat with sellers instantly, and pay safely with the CarryPay escrow wallet."
+      answer: "CarryMart is the campus marketplace where students buy and sell everything from fashion and food to electronics, books, and beauty. Discover deals in reels, chat with sellers instantly, and pay safely with the CarryPay escrow wallet."
     },
     {
       question: "How do I buy something?",

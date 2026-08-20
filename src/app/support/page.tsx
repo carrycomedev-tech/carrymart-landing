@@ -19,7 +19,7 @@ const faqCategories = [
     questions: [
       {
         q: "What is CarryMart?",
-        a: "CarryMart is the campus marketplace, an app where students buy and sell with each other on their own campus. Browse listings in fashion, beauty, food, deals, events, and delivery; discover items through reels and stories; chat with sellers in real time; and pay safely with the CarryPay escrow wallet."
+        a: "CarryMart is the campus marketplace, an app where students buy and sell with each other on their own campus. Browse listings in electronics, fashion, books, food, beauty, services, furniture, tickets, and rentals; discover items through reels and stories; chat with sellers in real time; and pay safely with the CarryPay escrow wallet."
       },
       {
         q: "Which campuses does CarryMart work on?",
@@ -79,7 +79,7 @@ const faqCategories = [
       },
       {
         q: "What can I sell?",
-        a: "Fashion, beauty products, food, tickets and events, deals, and delivery services, anything legal that fits campus life. Listings that break our guidelines (counterfeits, prohibited items) are removed."
+        a: "Electronics, fashion, books and stationery, food, beauty, services, furniture, tickets, and rentals, anything legal that fits campus life. Listings that break our guidelines (counterfeits, prohibited items) are removed."
       }
     ]
   },

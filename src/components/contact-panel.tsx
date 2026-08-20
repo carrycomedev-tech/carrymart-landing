@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, Mail } from "lucide-react";
-import { SUPPORT_EMAIL } from "@/lib/contact";
+import { SUPPORT_EMAIL, SUPPORT_EMAIL_HREF } from "@/lib/contact";
 
 type ContactPanelProps = {
   title: string;
@@ -29,7 +29,7 @@ export const ContactPanel = ({
       <p className="text-white/70 leading-relaxed mb-6">{description}</p>
       <div className="flex flex-col sm:flex-row gap-3">
         <a
-          href={`mailto:${SUPPORT_EMAIL}`}
+          href={SUPPORT_EMAIL_HREF}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground h-12 px-6 font-semibold shadow-glow-sm hover:bg-primary/90 hover:-translate-y-0.5 transition-all duration-300"
         >
           <Mail className="size-4" strokeWidth={2.25} />

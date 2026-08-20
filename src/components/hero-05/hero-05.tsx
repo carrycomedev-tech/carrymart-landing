@@ -92,8 +92,8 @@ const CarryPaySection = () => {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] rounded-full bg-primary/20 blur-3xl pointer-events-none" />
 
                 <PhoneMock
-                  src="/media/carrypay.mp4"
-                  poster="/media/carrypay-poster.jpg"
+                  src="/media/payments.mp4"
+                  poster="/media/payments-poster.jpg"
                 >
                   <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-secondary/70 to-transparent" />
                 </PhoneMock>
