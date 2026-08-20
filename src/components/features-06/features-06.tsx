@@ -78,32 +78,51 @@ const ReelPanel = ({src, poster, className, children}: ReelPanelProps) => {
     );
 };
 
+/* The row used to be three fixed widths totalling 344px, which made it the
+   widest thing on the page: it set the min-content width of its grid cell and
+   dragged the whole document out to 410px, so every phone scrolled sideways.
+   The card never gives it 344px on a phone anyway (310px at 390px wide), so it
+   scales instead of overflowing.
+
+   Proportional tracks size the three panels, and everything inside the centre
+   panel is a percentage of the 344px reference width expressed in cqw, so the
+   mock shrinks as one piece. Sizing the panels alone left the 40px play button
+   and the 11px caption at full size in a two-thirds-scale panel, and the
+   caption then had to either clip or wrap onto four lines.
+     gap 12px → 3.49cqw   button 40px → 11.63cqw   icon 16px → 4.65cqw
+     inset/padding 10px → 2.91cqw   caption 11px → 3.2cqw
+   The container is a wrapper rather than the row itself: cqw on the container
+   element resolves against the next container out (here the viewport), which
+   left a 45px gap on desktop. It also pins the row's width to its parent, so
+   the row can never widen the page again. Radii stay on the fixed scale. */
 const ReelsVisual = () => (
-    <div className="flex items-end gap-3">
+    <div className="@container w-full max-w-[344px]">
+      <div className="grid grid-cols-[1fr_1.33fr_1fr] items-end gap-[3.49cqw]">
         <ReelPanel
             src="/media/reel-left.mp4"
             poster="/media/reel-left-poster.jpg"
-            className="w-24 h-40"
+            className="aspect-[3/5]"
         />
         <ReelPanel
             src="/media/reel-centre.mp4"
             poster="/media/reel-centre-poster.jpg"
-            className="w-32 h-52 bg-gradient-to-b from-primary to-[#C7004A] shadow-sharp-lg flex items-center justify-center"
+            className="aspect-[8/13] bg-gradient-to-b from-primary to-[#C7004A] shadow-sharp-lg flex items-center justify-center"
         >
             {/* relative so it paints above the absolutely positioned video */}
-            <div className="relative w-10 h-10 rounded-full bg-white/40 backdrop-blur flex items-center justify-center -mt-6">
-                <Play className="size-4 text-secondary fill-secondary ml-0.5"/>
+            <div className="relative w-[11.63cqw] aspect-square rounded-full bg-white/40 backdrop-blur flex items-center justify-center -mt-[6.98cqw]">
+                <Play className="size-[4.65cqw] text-secondary fill-secondary ml-[0.58cqw]"/>
             </div>
-            <div className="absolute bottom-2.5 inset-x-2.5 bg-white/95 rounded-lg px-2.5 py-1.5">
-                <p className="text-[11px] font-bold text-secondary leading-snug whitespace-nowrap">Thrift drop 🔥</p>
-                <p className="text-[11px] text-muted-foreground font-semibold leading-snug whitespace-nowrap">From GHS 20</p>
+            <div className="absolute bottom-[2.91cqw] inset-x-[2.91cqw] bg-white/95 rounded-lg px-[2.91cqw] py-[1.74cqw]">
+                <p className="text-[3.2cqw] font-bold text-secondary leading-snug whitespace-nowrap">Thrift drop 🔥</p>
+                <p className="text-[3.2cqw] text-muted-foreground font-semibold leading-snug whitespace-nowrap">From GHS 20</p>
             </div>
         </ReelPanel>
         <ReelPanel
             src="/media/reel-right.mp4"
             poster="/media/reel-right-poster.jpg"
-            className="w-24 h-40"
+            className="aspect-[3/5]"
         />
+      </div>
     </div>
 );
 const ChatVisual = () => (

@@ -24,25 +24,26 @@ import {
   SUPPORT_WHATSAPP_HREF,
 } from "@/lib/contact";
 
+/**
+ * The footer is the site's only global link surface — the navbar is section
+ * anchors on the homepage — so it is what keeps the standalone pages out of the
+ * orphan state that stops a page ranking no matter how good it is. The first
+ * column now points at real URLs rather than "/#anchor" fragments, because a
+ * fragment link passes its signal to the homepage rather than to the page it
+ * names, and the anchor targets are already reachable from the navbar.
+ */
 const footerSections = [
   {
-    title: "Company",
+    title: "Explore",
     links: [
       { title: "The Marketplace", href: "/#marketplace" },
-      { title: "Why CarryMart", href: "/#features" },
-      { title: "CarryPay Wallet", href: "/#carrypay" },
-      { title: "Sell on CarryMart", href: "/#sell" },
+      { title: "Campus Marketplace Guide", href: "/campus-marketplace" },
+      { title: "CarryPay Wallet", href: "/carrypay" },
+      { title: "Sell on Campus", href: "/sell-on-campus" },
+      { title: "Campuses", href: "/campuses" },
+      { title: "About CarryMart", href: "/about" },
     ],
   },
-  // {
-  //   title: "Categories",
-  //   links: [
-  //     { title: "Electronics", href: "/#marketplace" },
-  //     { title: "Fashion", href: "/#marketplace" },
-  //     { title: "Food", href: "/#marketplace" },
-  //     { title: "Books & Stationery", href: "/#marketplace" },
-  //   ],
-  // },
   {
     title: "Help & Legal",
     links: [

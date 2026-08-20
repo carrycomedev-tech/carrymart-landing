@@ -1,11 +1,22 @@
 import type { Metadata } from "next";
 import LegalPage, { type LegalSection } from "@/components/legal/legal-page";
+import PageGraph from "@/components/seo/page-graph";
+import type { Crumb } from "@/lib/schema";
+
+const PATH = "/privacy";
+const TITLE = "Privacy Policy";
+const DESCRIPTION =
+  "How CarryMart collects, uses, and protects your information as you buy and sell on your campus with the CarryPay escrow wallet.";
+
+const crumbs: Crumb[] = [
+  { name: "Home", path: "/" },
+  { name: TITLE, path: PATH },
+];
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "How CarryMart collects, uses, and protects your information as you buy and sell on your campus with the CarryPay escrow wallet.",
-  alternates: { canonical: "/privacy" },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: PATH },
 };
 
 const sections: LegalSection[] = [
@@ -136,13 +147,21 @@ const sections: LegalSection[] = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <LegalPage
-      eyebrow="Legal"
-      title="Privacy Policy"
-      subtitle="Your privacy matters to us. This page explains what we collect, why we collect it, and the control you have, in plain language."
-      lastUpdated="July 27, 2026"
-      intro="CarryMart is the campus marketplace where students buy and sell with each other and pay safely through the CarryPay escrow wallet. This policy covers the CarryMart app and this website."
-      sections={sections}
-    />
+    <>
+      <PageGraph
+        path={PATH}
+        title={TITLE}
+        description={DESCRIPTION}
+        crumbs={crumbs}
+      />
+      <LegalPage
+        eyebrow="Legal"
+        title="Privacy Policy"
+        subtitle="Your privacy matters to us. This page explains what we collect, why we collect it, and the control you have, in plain language."
+        lastUpdated="July 27, 2026"
+        intro="CarryMart is the campus marketplace where students buy and sell with each other and pay safely through the CarryPay escrow wallet. This policy covers the CarryMart app and this website."
+        sections={sections}
+      />
+    </>
   );
 }

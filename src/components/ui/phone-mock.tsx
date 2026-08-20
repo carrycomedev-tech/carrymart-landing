@@ -25,7 +25,10 @@ export const PhoneMock = ({ src, poster, className, children }: PhoneMockProps) 
   return (
     <div
       className={cn(
-        "relative w-[270px] sm:w-[300px] rounded-[2.9rem] bg-secondary p-2.5 shadow-sharp-xl",
+        // isolate keeps the notch's z-10 inside the frame. Without it the notch
+        // wins against the floating chips that sit alongside the phone, and on
+        // phones the hero chip lands at exactly notch height.
+        "relative isolate w-[270px] sm:w-[300px] rounded-[2.9rem] bg-secondary p-2.5 shadow-sharp-xl",
         className
       )}
     >

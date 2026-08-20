@@ -1,11 +1,22 @@
 import type { Metadata } from "next";
 import LegalPage, { type LegalSection } from "@/components/legal/legal-page";
+import PageGraph from "@/components/seo/page-graph";
+import type { Crumb } from "@/lib/schema";
+
+const PATH = "/terms";
+const TITLE = "Terms of Service";
+const DESCRIPTION =
+  "The terms that govern your use of CarryMart, the campus marketplace, and the CarryPay escrow wallet.";
+
+const crumbs: Crumb[] = [
+  { name: "Home", path: "/" },
+  { name: TITLE, path: PATH },
+];
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
-  description:
-    "The terms that govern your use of CarryMart, the campus marketplace, and the CarryPay escrow wallet.",
-  alternates: { canonical: "/terms" },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: PATH },
 };
 
 const sections: LegalSection[] = [
@@ -148,13 +159,21 @@ const sections: LegalSection[] = [
 
 export default function TermsOfServicePage() {
   return (
-    <LegalPage
-      eyebrow="Legal"
-      title="Terms of Service"
-      subtitle="The simple rules that keep CarryMart safe and fair for every student who buys and sells here."
-      lastUpdated="July 27, 2026"
-      intro="Welcome to CarryMart, the campus marketplace where students buy and sell with each other and pay safely through the CarryPay escrow wallet. These terms explain what you can expect from us and what we ask of you."
-      sections={sections}
-    />
+    <>
+      <PageGraph
+        path={PATH}
+        title={TITLE}
+        description={DESCRIPTION}
+        crumbs={crumbs}
+      />
+      <LegalPage
+        eyebrow="Legal"
+        title="Terms of Service"
+        subtitle="The simple rules that keep CarryMart safe and fair for every student who buys and sells here."
+        lastUpdated="July 27, 2026"
+        intro="Welcome to CarryMart, the campus marketplace where students buy and sell with each other and pay safely through the CarryPay escrow wallet. These terms explain what you can expect from us and what we ask of you."
+        sections={sections}
+      />
+    </>
   );
 }

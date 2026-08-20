@@ -61,10 +61,15 @@ const Hero03 = () => {
           </h1>
 
           <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty opacity-0 animate-fade-in-up animation-delay-200">
-            CarryMart is where students shop and sell everything from fashion
-            and food to electronics, books, and beauty. Discover deals in reels,
-            chat with sellers instantly, and pay safely with the CarryPay escrow
-            wallet.
+            {/* "the campus marketplace" is here rather than in the H1 so the
+                headline keeps its rhythm. The first paragraph under an H1 is
+                where both a featured snippet and a generative answer look for
+                the definition of the thing the page is about, and the phrase was
+                previously absent from the homepage body entirely. */}
+            CarryMart is the campus marketplace where students shop and sell
+            everything from fashion and food to electronics, books, and beauty.
+            Discover deals in reels, chat with sellers instantly, and pay safely
+            with the CarryPay escrow wallet.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 opacity-0 animate-fade-in-up animation-delay-300">
@@ -88,17 +93,22 @@ const Hero03 = () => {
             </Button>
           </div>
 
-          {/* Stats */}
+          {/* Stats. first:pl-0 is a desktop rule — it trims the left inset once the
+              row is left-aligned. Kept off the centred mobile layout, where it
+              made column one read wider than the other two. The base padding
+              and label size are tuned so "Escrow protected" still fits on one
+              line at 360px; when it wrapped, the three labels lost their
+              shared baseline. */}
           <dl className="mt-12 grid grid-cols-3 divide-x divide-border/70 border-t border-border/70 pt-8 max-w-md mx-auto lg:mx-0 opacity-0 animate-fade-in-up animation-delay-400">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="px-2 sm:px-4 first:pl-0 text-center lg:text-left"
+                className="px-1 sm:px-4 lg:first:pl-0 text-center lg:text-left"
               >
                 <dd className="font-display text-xl sm:text-2xl font-extrabold text-secondary tracking-tight">
                   {stat.value}
                 </dd>
-                <dt className="mt-1 text-xs sm:text-sm text-muted-foreground">
+                <dt className="mt-1 text-[10px] min-[360px]:text-[11px] sm:text-sm text-muted-foreground">
                   {stat.label}
                 </dt>
               </div>

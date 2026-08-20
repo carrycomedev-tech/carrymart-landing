@@ -35,7 +35,7 @@ const Navbar04Page = () => {
     >
       <nav className="h-(--nav-height) max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" aria-label="CarryMart home">
-          <Logo />
+          <Logo compact />
         </Link>
 
         {/* Desktop Menu */}

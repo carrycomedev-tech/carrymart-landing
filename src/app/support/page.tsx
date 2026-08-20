@@ -4,13 +4,24 @@ import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import { ContactPanel } from '@/components/contact-panel';
 import { SUPPORT_EMAIL } from '@/lib/contact';
+import PageGraph from '@/components/seo/page-graph';
+import type { Crumb } from '@/lib/schema';
+
+const PATH = '/support';
+const TITLE = 'Help & FAQs';
+const DESCRIPTION =
+  'Answers to common questions about buying, selling, and paying on CarryMart, the campus marketplace, and the CarryPay escrow wallet.';
 
 export const metadata: Metadata = {
-  title: 'Help & FAQs',
-  description:
-    'Answers to common questions about buying, selling, and paying on CarryMart, the campus marketplace, and the CarryPay escrow wallet.',
-  alternates: { canonical: '/support' },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: PATH },
 };
+
+const crumbs: Crumb[] = [
+  { name: 'Home', path: '/' },
+  { name: 'Help & FAQs', path: PATH },
+];
 
 const faqCategories = [
   {
@@ -130,11 +141,26 @@ const faqCategories = [
 ];
 
 const SupportPage = () => {
+  // Every question below is rendered as visible text on this page, which is the
+  // condition for marking it up as an FAQPage. This is where the site's FAQ
+  // schema belongs; it used to sit on the homepage, describing answers that were
+  // only ever displayed here.
+  const faqs = faqCategories.flatMap((category) =>
+    category.questions.map((faq) => ({ q: faq.q, a: faq.a }))
+  );
+
   return (
     // Gutter matches the navbar, footer and every landing section, so the
     // three share one content edge. The reading width comes from max-w-3xl
     // below, not from the gutter.
     <div className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8">
+      <PageGraph
+        path={PATH}
+        title={TITLE}
+        description={DESCRIPTION}
+        crumbs={crumbs}
+        faqs={faqs}
+      />
       <div className="mx-auto max-w-3xl">
         {/* Header */}
         <div className="inline-flex items-center gap-2 rounded-full bg-muted border border-border px-4 py-1.5 mb-6">
