@@ -88,8 +88,23 @@ async function apiGet<T>(path: string): Promise<T | null> {
   }
 }
 
-/** Usernames are `[a-z0-9_]`, 3–20 chars — the same rule the app and API enforce. */
-export const USERNAME_PATTERN = /^[a-z0-9_]{3,20}$/;
+/**
+ * Usernames are `[a-z0-9._]`, 3–20 chars, where a dot may not lead, trail, or
+ * repeat — Instagram's rules, and the same rule the app and API enforce
+ * (`UsernameHelper.cs` server-side, `HANDLE_SRC` in the app).
+ *
+ * Read as first char + 1–18 middle + last char: that fixes the length AND keeps
+ * a dot off both ends in one expression, and the lookahead is the only way to
+ * say "no `..`". All three copies have to agree — this one is the last gate
+ * before `notFound()`, so a pattern narrower than the API's turns a perfectly
+ * good profile link into a 404.
+ *
+ * Dots became legal on 2026-08-23. Until then this was `[a-z0-9_]{3,20}` and
+ * would have 404'd every dotted handle the app had just started letting people
+ * claim — a link someone shared from their own profile, landing on "page not
+ * found" for anyone without the app installed.
+ */
+export const USERNAME_PATTERN = /^(?!.*\.\.)[a-z0-9_][a-z0-9._]{1,18}[a-z0-9_]$/;
 
 /** Listing and post ids are GUIDs. Anything else is a 404, not an API call. */
 export const GUID_PATTERN =
