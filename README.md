@@ -46,6 +46,28 @@ To get a local copy up and running, follow these simple steps.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Deployment
+
+**Pushing to `main` deploys to production.** That is the whole mechanism: Vercel's
+GitHub integration builds and promotes every push, and it is configured in the
+Vercel dashboard rather than anywhere in this repo — which is why nothing here
+appeared to deploy anything.
+
+There is no deploy script and no CI workflow, deliberately. Both used to exist and
+neither worked:
+
+*   `workflows/deploy.yml` ran `npx vercel --prod` on push, but it sat in
+    `workflows/` rather than `.github/workflows/`, so GitHub Actions never picked
+    it up. Moving it into place would have been worse than deleting it: it would
+    have raced Vercel's own integration on every push, promoting a second build of
+    the same commit, and it needed a `VERCEL_TOKEN` secret — so if that secret
+    were missing it would turn a silent no-op into a failed check on every commit.
+*   `npm run deploy` called `bun run deploy.mjs`. There is no `deploy.mjs` and no
+    bun lockfile in this project, so it had two reasons to fail.
+
+To deploy, push. To check a deploy, look at the Vercel dashboard — the live site
+gives no version marker, so there is nothing to probe from outside.
+
 ## Folder Structure
 
 The project structure is organized as follows:
