@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import LinkLanding from "@/components/deep-link/link-landing";
 import { BRAND } from "@/lib/seo";
 import { USERNAME_PATTERN, getProfile } from "@/lib/link-targets";
@@ -15,21 +15,39 @@ import { USERNAME_PATTERN, getProfile } from "@/lib/link-targets";
  * the 404 — `notFound()` below, or `/typo` would silently render as a profile.
  *
  * `/@handle` is one of the two path shapes the app claims (see `@/lib/app-links`),
- * so on a phone with CarryMart installed this code never runs.
+ * so on a phone with CarryMart installed this code never runs. A bare
+ * `/handle` is accepted too and 308s to the `@` form — the app does not claim
+ * the bare shape, so that hop is what puts a hand-typed URL back on the only
+ * path that can hand off to the app.
  */
 
 type Props = { params: Promise<{ handle: string }> };
 
-/** `%40ama_styles` and `@ama_styles` both arrive here; neither keeps the `@`. */
-function usernameFrom(rawSegment: string): string | null {
+/**
+ * `%40ama_styles`, `@ama_styles`, `AMA_STYLES` and a bare `ama_styles` all
+ * arrive here. None of them keeps the `@`, and `canonical` says whether the URL
+ * that was requested is already the one this profile should live at.
+ *
+ * The bare form is accepted because people type it. `/@handle` is what the app
+ * and the API share, what the QR code encodes and what `/.well-known/*` claims,
+ * but nobody reading a handle out loud says "at" — they hear "yaa_designs on
+ * carrymartgh" and type `carrymartgh.com/yaa_designs`, which until now was a
+ * flat 404 with nothing to suggest the `@` was the missing piece.
+ *
+ * Case is folded for the same reason: a handle written with a capital in a bio
+ * or a WhatsApp message is the same person, and 404ing it teaches people the
+ * link is broken.
+ */
+function parseSegment(rawSegment: string): { username: string; canonical: boolean } | null {
   const segment = decodeURIComponent(rawSegment);
-  if (!segment.startsWith("@")) return null;
-  const username = segment.slice(1).toLowerCase();
-  return USERNAME_PATTERN.test(username) ? username : null;
+  const username = (segment.startsWith("@") ? segment.slice(1) : segment).toLowerCase();
+  if (!USERNAME_PATTERN.test(username)) return null;
+  // Exact match, so a missing `@` and a stray capital are both non-canonical.
+  return { username, canonical: segment === `@${username}` };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const username = usernameFrom((await params).handle);
+  const username = parseSegment((await params).handle)?.username;
   if (!username) return { title: "Page not found", robots: { index: false, follow: true } };
 
   const profile = await getProfile(username);
@@ -69,9 +87,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProfileLinkPage({ params }: Props) {
-  const username = usernameFrom((await params).handle);
-  if (!username) notFound();
+  const parsed = parseSegment((await params).handle);
+  if (!parsed) notFound();
 
+  const { username, canonical } = parsed;
   const profile = await getProfile(username);
 
   /**
@@ -79,8 +98,25 @@ export default async function ProfileLinkPage({ params }: Props) {
    * mistyped link. That is different from the API being unreachable, but from
    * here they are indistinguishable, and "we could not find that page" is the
    * honest answer in both cases.
+   *
+   * Resolved *before* the redirect below on purpose: this segment catches every
+   * single-part path, so `/abuot` is far more likely to be a fumbled `/about`
+   * than a person. Redirecting first would answer it with a hop to `/@abuot`
+   * and a 404 there, turning one honest miss into two.
    */
   if (!profile) notFound();
+
+  /**
+   * A real person, reached by a URL that is not their canonical one. Redirect
+   * rather than render: `/@handle` is the only shape `/.well-known/*` claims, so
+   * it is the form that opens the app instead of this page, and the only one
+   * worth having in someone's history or pasted into a chat. Permanent (308)
+   * rather than temporary: the mapping from a bare or capitalised handle to its
+   * `@` form is a normalisation that cannot change meaning later, which is the
+   * same reason Next itself 308s trailing slashes. It is also what stops the
+   * variants being duplicate URLs serving identical content.
+   */
+  if (!canonical) permanentRedirect(`/@${username}`);
 
   const displayName = profile.name ?? `@${username}`;
 
