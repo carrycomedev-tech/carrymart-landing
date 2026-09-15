@@ -36,22 +36,65 @@ export const APPLE_APP_ID = `${APPLE_TEAM_ID}.${IOS_BUNDLE_ID}`;
 export const ANDROID_PACKAGE = "com.carrymart";
 
 /**
- * SHA-256 fingerprints of every signing certificate allowed to claim these
- * links. An install signed by a cert that is not listed here does not get
- * verified links, so during development the debug cert has to be present.
+ * `com.carrymart` is not signed by one certificate but by up to three, depending
+ * on how a given copy of the app was installed, and Android verifies these links
+ * only for the cert that signed *that* copy. So all three belong in the array
+ * below — a missing one is not a partial failure, it is silently dead links for
+ * everybody who installed that way.
+ */
+
+/**
+ * The debug cert, `android/app/debug.keystore` in the app repo (alias
+ * `androiddebugkey`). Every `./gradlew installDebug` and every emulator build
+ * carries it, which is the only reason it is in a production file: without it
+ * deep links cannot be tested on the machine they are developed on.
  *
- * The first entry is the Android SDK's standard debug keystore
- * (`~/.android/debug.keystore`, alias `androiddebugkey`) which
- * `android/app/build.gradle` still uses for `release` too, so it is the cert on
- * every build that exists today. Publishing to Play adds a second fingerprint —
- * Play App Signing re-signs the upload, so the cert users actually get is the
- * one shown under Play Console → Test and release → App integrity. Add it here
- * (keep both) the moment the app is uploaded, or verified links break for
- * everyone who installs from the store.
+ * It is a weaker entry than the other two — that keystore is **committed to the
+ * app repo**, so its private key is available to anyone who can read the repo,
+ * and a sideloaded APK signed with it and named `com.carrymart` would be able to
+ * claim these URLs. That is an acceptable trade while the app is pre-launch;
+ * drop this entry at public launch, when store installs are what matter and a
+ * debug build claiming the domain is pure downside.
+ */
+const DEBUG_CERT_SHA256 =
+  "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C";
+
+/**
+ * The upload cert — `android/app/carrymart-upload.keystore`, created 2026-09-09
+ * and read via `android/keystore.properties` (untracked, and the only copy).
+ *
+ * `build.gradle` signs `release` with this whenever that properties file is
+ * present, so it is the cert on every locally built release APK and on the AAB
+ * before Play touches it. Needed here for any release build installed directly
+ * — `adb install` of a release APK, or an APK handed to a tester outside Play.
+ */
+const UPLOAD_CERT_SHA256 =
+  "6B:C7:0D:02:F1:75:AC:C0:53:8B:68:13:D9:7E:22:6A:12:ED:72:BE:E2:62:08:F2:22:9E:16:2C:6A:1F:C1:45";
+
+/**
+ * The cert Play App Signing re-signs the bundle with before delivering it, which
+ * is the cert on **every install from the Play Store** and therefore the only one
+ * that will matter once the app is public. It is Google's key, not ours, and it
+ * exists nowhere on this machine: read it from Play Console → Test and release →
+ * Setup → App integrity → App signing key certificate (SHA-256).
+ *
+ * Still `null` because the only upload so far (v1.1, 2026-09-09) was rejected and
+ * nobody has read the value out of the console yet. Set it to the string and the
+ * array below picks it up; it survives the pending transfer to the organization
+ * account, because a transfer keeps the app's signing key.
+ */
+const PLAY_APP_SIGNING_CERT_SHA256: string | null = null;
+
+/**
+ * Every certificate allowed to claim these links. Order is not significant to
+ * the verifier; `null` entries are dropped so an unknown fingerprint is simply
+ * absent rather than emitting `null` into the JSON, which fails the whole file.
  */
 export const ANDROID_SHA256_FINGERPRINTS = [
-  "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C",
-];
+  DEBUG_CERT_SHA256,
+  UPLOAD_CERT_SHA256,
+  PLAY_APP_SIGNING_CERT_SHA256,
+].filter((fingerprint): fingerprint is string => fingerprint !== null);
 
 /**
  * The only URL shapes that hand off to the app. Everything else on this domain
