@@ -76,7 +76,7 @@ const Hero03 = () => {
             <Button
               asChild
               size="lg"
-              className="w-full sm:w-auto shadow-glow hover:shadow-glow"
+              className="w-full sm:w-auto"
             >
               <Link href="#download">
                 Get the app

@@ -16,13 +16,13 @@ const buttonVariants = cva(
       variant: {
         // Icons on a filled brand background take stroke-width 2.25 — lucide's
         // default 2 reads thin on a saturated fill.
-        default: "bg-primary text-primary-foreground shadow-md hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5 [&_svg]:[stroke-width:2.25]",
+        default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 [&_svg]:[stroke-width:2.25]",
         destructive:
-          "bg-destructive text-white shadow-md hover:bg-destructive/90 hover:shadow-lg hover:-translate-y-0.5 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
-          "border-2 border-secondary/20 bg-background shadow-sm hover:border-secondary/40 hover:bg-accent/5 hover:shadow-md dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+          "border-2 border-secondary/20 bg-background hover:border-secondary/40 hover:bg-accent/5 dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-md hover:bg-secondary/90 hover:shadow-lg hover:-translate-y-0.5",
+          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/90",
         ghost:
           "hover:bg-accent/10 hover:text-accent-foreground dark:hover:bg-accent/20",
         link: "text-primary underline-offset-4 hover:underline",

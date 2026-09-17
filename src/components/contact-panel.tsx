@@ -30,7 +30,7 @@ export const ContactPanel = ({
       <div className="flex flex-col sm:flex-row gap-3">
         <a
           href={SUPPORT_EMAIL_HREF}
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground h-12 px-6 font-semibold shadow-glow-sm hover:bg-primary/90 hover:-translate-y-0.5 transition-all duration-300"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground h-12 px-6 font-semibold shadow-xs hover:bg-primary/90 transition-all duration-300"
         >
           <Mail className="size-4" strokeWidth={2.25} />
           {SUPPORT_EMAIL}
