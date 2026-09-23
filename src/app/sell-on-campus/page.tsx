@@ -14,7 +14,7 @@ import { CAMPUSES } from "@/lib/campuses";
 const PATH = "/sell-on-campus";
 const TITLE = "How to sell on campus: a student seller's guide";
 const DESCRIPTION =
-  "What sells on a Ghanaian campus, how to list it so it moves, and how sellers get paid out of CarryPay escrow. Free listings, no commission.";
+  "What sells on a Ghanaian campus, how to list it so it moves, and how to agree a handover that actually happens. Free listings, no commission.";
 
 export const metadata = pageMetadata({
   title: TITLE,
@@ -42,15 +42,15 @@ const faqs: Faq[] = [
   },
   {
     q: "Does it cost anything to sell?",
-    a: "No. Standard listings are free and CarryMart takes no commission on your sale. The only optional cost is a listing boost, which pushes your item to the top of your campus feed for 7 or 30 days and is paid from your CarryPay wallet.",
+    a: "No. Standard listings are free and CarryMart takes no commission on your sale. The only optional cost is a listing boost, which pushes your item to the top of your campus feed for 7 or 30 days.",
   },
   {
     q: "How do I get paid?",
-    a: "When a buyer pays, the money is held in CarryPay escrow. Once they confirm delivery, it lands in your CarryPay wallet, and you withdraw it to mobile money whenever you like, protected by your PIN.",
+    a: "You and the buyer agree the price in the chat and settle it between yourselves when you meet to hand the item over. CarryMart takes no commission, so what you agree is what you keep.",
   },
   {
     q: "How do I avoid getting scammed as a seller?",
-    a: "Escrow does most of the work: you can see the buyer's payment is already committed before you hand anything over, so you are never trading on a promise. Beyond that, keep the whole conversation in the app so there is a record, meet somewhere public on campus, and never accept a request to complete the payment outside CarryMart.",
+    a: "Keep the whole conversation in the app so there is a record of what was agreed, meet somewhere public and busy on campus, and check both the item and the payment before either one changes hands. Be wary of anyone pushing to move the conversation off CarryMart before you have met.",
   },
   {
     q: "What can I sell on campus?",
@@ -85,7 +85,7 @@ const postSteps = [
   },
   {
     name: "Reply fast, meet in public, get paid",
-    text: "First reply wins most campus deals. Agree a public spot, hand over the item, and the buyer's confirmation releases the escrow into your wallet.",
+    text: "First reply wins most campus deals. Agree a public spot, meet between lectures, and hand the item over in person.",
   },
 ];
 
@@ -152,22 +152,21 @@ const sections: ContentSection[] = [
   },
   {
     id: "getting-paid",
-    heading: "How you get paid, and why you cannot be stiffed",
+    heading: "Agreeing the handover, and getting paid",
     blocks: [
       {
         type: "p",
-        text: "You are never handing over goods on a promise. The buyer pays into CarryPay escrow before the handover, so the money is committed and visible to you before you give anything up. Their confirmation of delivery releases it into your wallet, and you withdraw to mobile money whenever you like.",
+        text: "You and your buyer settle up directly when you meet, so the two things worth getting right are what you agreed and where you are meeting. Keep the whole negotiation in the chat: it is your record of the price, the condition and the time, and it is what you refer back to if the story changes at the handover.",
       },
       {
         type: "list",
         items: [
-          "Escrow means the payment exists before you hand over the item.",
-          "Withdrawals go to mobile money, protected by your wallet PIN.",
-          "Every deal produces a digital receipt, so a dispute has evidence attached.",
+          "Agree the price, the condition and the meeting spot in the chat before you set off.",
+          "Meet somewhere public and busy, in daylight where you can.",
+          "Check the payment and hand the item over in the same moment, not before.",
           "No commission is taken from your sale.",
         ],
       },
-      { type: "cta", label: "How CarryPay escrow works", href: "/carrypay" },
     ],
   },
   {
@@ -221,7 +220,7 @@ export default function SellOnCampusPage() {
           howToNode(
             PATH,
             "How to post a listing that sells on campus",
-            "Six steps from photographing an item to getting paid out of escrow.",
+            "Six steps from photographing an item to handing it over on campus.",
             postSteps
           ),
         ]}
@@ -229,8 +228,8 @@ export default function SellOnCampusPage() {
       <ContentPage
         eyebrow="For sellers"
         title={TITLE}
-        subtitle="No shop rent, no delivery fees, no commission. What to sell on a Ghanaian campus, how to list it so it moves, and how the money reaches your mobile money account."
-        answer="To sell on campus, download CarryMart, choose your university, and post your item with photos, a price, a category and your campus location. Standard listings are free and CarryMart takes no commission. When a buyer pays, the money is held in CarryPay escrow until they confirm delivery, then it lands in your wallet to withdraw to mobile money."
+        subtitle="No shop rent, no delivery fees, no commission. What to sell on a Ghanaian campus, how to list it so it moves, and how to close the deal in person."
+        answer="To sell on campus, download CarryMart, choose your university, and post your item with photos, a price, a category and your campus location. Standard listings are free and CarryMart takes no commission. Buyers message you in the app, you agree a price and a spot to meet, and you hand the item over in person."
         crumbs={crumbs}
         sections={sections}
         contact={{

@@ -134,7 +134,7 @@ const ChatVisual = () => (
             <p className="text-sm text-primary-foreground font-medium">Yes! GHS 80. Meet at the night market?</p>
         </div>
         <div className="bg-white border border-border rounded-2xl rounded-bl-md px-4 py-2.5 w-fit shadow-sharp">
-            <p className="text-sm text-secondary">Deal 🤝 Paying with CarryPay</p>
+            <p className="text-sm text-secondary">Deal 🤝 See you at 6</p>
         </div>
         <div
             className="flex items-center gap-2 bg-white border border-border rounded-full pl-4 pr-1.5 py-1.5 shadow-sharp">
@@ -197,7 +197,7 @@ const features = [
         category: "Real-time Chat",
         title: "Chat, haggle, and close the deal",
         details:
-            "Message sellers instantly. No exchanging numbers. Agree on price and meetup, then pay right from the conversation.",
+            "Message sellers instantly. No exchanging numbers. Agree on price and a place to meet, all in one thread you can refer back to.",
         link: "Start a conversation",
         icon: MessagesSquare,
         visual: <ChatVisual/>,
@@ -226,7 +226,7 @@ const Features06Page = () => {
                     </h2>
                     <p className="mt-4 text-muted-foreground text-base md:text-lg leading-relaxed">
                         A social marketplace built for student life: list, discover, chat,
-                        and get paid without leaving campus.
+                        and close the deal without leaving campus.
                     </p>
                 </AnimatedSection>
 

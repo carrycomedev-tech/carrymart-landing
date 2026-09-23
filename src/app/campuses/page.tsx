@@ -75,7 +75,7 @@ const sections: ContentSection[] = [
         items: [
           "Every listing is scoped to a campus, so what you see is what you can walk to.",
           "You pick your home campus at sign-up and can switch at any time.",
-          "Escrow, chat, reels and free listings work identically on every campus.",
+          "Chat, reels, search and free listings work identically on every campus.",
         ],
       },
       {

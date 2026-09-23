@@ -10,7 +10,7 @@ const testimonials = [
     name: "Nana A.",
     designation: "Thrift seller, KNUST",
     testimonial:
-      "Sold my Air Force 1s the same night I posted them. The buyer paid into escrow, we met at the library, and the money hit my wallet on the spot. No 'I'll send it later' stories.",
+      "Sold my Air Force 1s the same night I posted them. The buyer messaged me within the hour, we met at the library, and that was that. No 'I'll get back to you' stories.",
     rating: 5,
   },
   {
@@ -18,7 +18,7 @@ const testimonials = [
     name: "Efua S.",
     designation: "2nd Year, University of Ghana",
     testimonial:
-      "I found my braider through a reel, chatted with her right in the app, and paid with CarryPay. Everything in one place. I never had to share my number.",
+      "I found my braider through a reel and chatted with her right in the app. Everything in one place. I never had to share my number.",
     rating: 5,
   },
   {

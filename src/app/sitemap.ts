@@ -20,7 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const core: MetadataRoute.Sitemap = [
     { url: SITE_URL, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/campus-marketplace`, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${SITE_URL}/carrypay`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/sell-on-campus`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/campuses`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.7 },

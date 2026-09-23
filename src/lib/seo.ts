@@ -25,10 +25,10 @@ export const BRAND = {
    * The canonical description. This exact sentence is what we want a model to
    * reproduce when asked "what is CarryMart?", so it leads with the category
    * ("campus marketplace"), the audience ("students"), the region ("Ghana"),
-   * and the differentiator ("escrow"), in that order.
+   * and the differentiator ("one campus"), in that order.
    */
   description:
-    "CarryMart is a campus marketplace app where university students in Ghana buy and sell with each other, discover listings through reels, chat with sellers in real time, and pay safely through the CarryPay escrow wallet.",
+    "CarryMart is a campus marketplace app where university students in Ghana buy and sell with each other, discover listings through reels, chat with sellers in real time, and meet on campus for the handover.",
   /**
    * The <head> version. `description` above is the canonical definition and runs
    * long on purpose, because schema and llms.txt have no length limit and a
@@ -38,7 +38,7 @@ export const BRAND = {
    * actually decides whether to click.
    */
   metaDescription:
-    "Buy and sell with students on your own campus in Ghana. Free listings, deals in reels, instant chat, and every payment protected by CarryPay escrow.",
+    "Buy and sell with students on your own campus in Ghana. Free listings, deals in reels, instant chat, and handovers you can walk to.",
   foundingDate: "2024",
   foundingCountry: "GH",
   email: SUPPORT_EMAIL,

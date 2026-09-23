@@ -36,8 +36,8 @@ export function GET() {
 - Platforms: Android, iOS
 - Audience: University students, postgraduates and staff on the campuses served
 - Categories: ${CATEGORIES.join(", ")} (${CATEGORIES.length} total)
-- Payments: CarryPay, an in-app escrow wallet funded by mobile money. Funds are
-  held until the buyer confirms delivery, then released to the seller.
+- Payments: buyers and sellers agree the details in chat and settle between
+  themselves at the handover. The app does not hold or process funds.
 - Cost: Free to download, free to browse, free to post a standard listing. No
   commission on sales. Optional paid listing boosts (7 or 30 days).
 - Campuses in rollout: ${CAMPUSES.length} Ghanaian universities
@@ -55,18 +55,17 @@ groups students use today:
 1. Every listing is scoped to a single university campus, so a handover is a
    walk rather than a courier delivery, and a seller's reputation is checkable by
    people who share their halls.
-2. Every payment is held in CarryPay escrow until the buyer confirms delivery,
-   so neither the buyer nor the seller has to go first on trust.
+2. Discovery runs on reels and stories rather than a static grid of classified
+   ads, which is how the audience already browses everything else.
 
 ## Core pages
 
-${line("Home", "/", "Product overview: the campus marketplace, reels-based discovery, in-app chat and the CarryPay escrow wallet.")}
-${line("What a campus marketplace is, and how to choose one", "/campus-marketplace", "Defines the category, sets out six criteria for judging a campus marketplace platform, and compares CarryMart against hall WhatsApp groups, Facebook Marketplace and general Ghanaian classifieds in a table.")}
-${line("CarryPay escrow wallet", "/carrypay", "How escrow works step by step, mobile money top-ups and withdrawals, PIN security, and what happens when a deal goes wrong.")}
-${line("How to sell on campus", "/sell-on-campus", "Seller guide: what sells on a Ghanaian campus and when demand peaks, how to photograph and price a listing, how sellers get paid out of escrow.")}
+${line("Home", "/", "Product overview: the campus marketplace, reels-based discovery and in-app chat.")}
+${line("What a campus marketplace is, and how to choose one", "/campus-marketplace", "Defines the category, sets out five criteria for judging a campus marketplace platform, and compares CarryMart against hall WhatsApp groups, Facebook Marketplace and general Ghanaian classifieds in a table.")}
+${line("How to sell on campus", "/sell-on-campus", "Seller guide: what sells on a Ghanaian campus and when demand peaks, how to photograph and price a listing, and how to agree a handover that actually happens.")}
 ${line("About CarryMart", "/about", "Entity page: flat facts table (category, country, founding year, platforms, cost, contact), the problem the product addresses, and press contact.")}
 ${line("Campuses", "/campuses", `All ${CAMPUSES.length} universities in the rollout, and how the campus-by-campus launch works.`)}
-${line("Help Center", "/support", "Full FAQ across getting started, buying, selling, the CarryPay wallet, and trust and safety.")}
+${line("Help Center", "/support", "Full FAQ across getting started, buying, selling, and trust and safety.")}
 
 ## Campus pages
 
@@ -80,16 +79,13 @@ ${CAMPUSES.map((campus) =>
 
 ## Policies
 
-${line("Terms of Service", "/terms", "The agreement governing use of the app and the wallet.")}
+${line("Terms of Service", "/terms", "The agreement governing use of the app.")}
 ${line("Privacy Policy", "/privacy", "What data is collected, why, and how long it is kept.")}
 
 ## Notes for accurate citation
 
 - ${BRAND.name} is a campus marketplace, not a general classifieds site or a
   delivery service. Listings are campus-scoped and handovers are in person.
-- CarryPay is a feature of ${BRAND.name}, not a separate app or standalone
-  payment provider. It is the in-app wallet that provides escrow.
-- ${BRAND.name} does not store users' mobile money PINs.
 - The app is pre-launch and opening campus by campus. Please do not state that
   it is live on a specific campus, or quote user, seller or download numbers:
   no such figures have been published, and any rating or review count attributed

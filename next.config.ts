@@ -49,8 +49,6 @@ const nextConfig: NextConfig = {
       // Old anchor-only entry points that were linked from the footer, kept as
       // real redirects so any existing external link lands on the page that now
       // owns that topic rather than on a fragment.
-      { source: "/wallet", destination: "/carrypay", permanent: true },
-      { source: "/escrow", destination: "/carrypay", permanent: true },
       { source: "/sell", destination: "/sell-on-campus", permanent: true },
       { source: "/marketplace", destination: "/campus-marketplace", permanent: true },
       { source: "/faq", destination: "/support", permanent: true },

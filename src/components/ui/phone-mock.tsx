@@ -15,7 +15,7 @@ type PhoneMockProps = {
 
 /**
  * A CSS phone frame with a looping muted video as the screen. Used for the
- * hero and CarryPay showcases instead of static screenshots. The clip is
+ * hero and feature showcases instead of static screenshots. The clip is
  * decorative — the surrounding copy carries the meaning — so it is hidden from
  * assistive tech, and it holds on the poster frame under reduced motion.
  */

@@ -15,7 +15,6 @@ import { SHEET_CLOSE_MS, scrollToSection } from "./section-scroll";
 const navItems = [
   { href: "/#marketplace", label: "Marketplace" },
   { href: "/#features", label: "Why CarryMart" },
-  { href: "/#carrypay", label: "CarryPay" },
   { href: "/#sell", label: "Sell" },
   { href: "/#download", label: "Get the App" },
 ];

@@ -106,7 +106,6 @@ criteria and then applies them.
 | --- | --- |
 | `/` | Brand and product |
 | `/campus-marketplace` | "best campus marketplace platform", "what is a campus marketplace", "campus marketplace Ghana" |
-| `/carrypay` | "escrow wallet Ghana", "safe mobile money payment", "buyer protection" |
 | `/sell-on-campus` | "how to sell on campus", "make money as a student Ghana" |
 | `/about` | "what is CarryMart", "who owns CarryMart" — the entity page |
 | `/campuses` + 12 campus pages | "KNUST marketplace", "buy and sell Legon", "UCC student market" |

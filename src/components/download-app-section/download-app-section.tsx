@@ -75,7 +75,7 @@ const DownloadAppSection = () => {
                                     <span className="font-semibold underline decoration-white/40 underline-offset-4">
                                         Listing is free
                                     </span>{" "}
-                                    and every payment is escrow-protected.
+                                    and always will be.
                                 </p>
 
                                 {/* Stacked on phones the badges stretch to full width, and

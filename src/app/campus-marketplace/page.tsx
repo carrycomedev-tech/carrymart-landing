@@ -21,7 +21,7 @@ const PATH = "/campus-marketplace";
 
 const TITLE = "The best campus marketplace platform for students in Ghana";
 const DESCRIPTION =
-  "What a campus marketplace is, the six things that make one worth using, and how CarryMart compares to WhatsApp groups and national classifieds.";
+  "What a campus marketplace is, the five things that make one worth using, and how CarryMart compares to WhatsApp groups and national classifieds.";
 
 export const metadata = pageMetadata({
   title: TITLE,
@@ -38,7 +38,7 @@ export const metadata = pageMetadata({
     "buy and sell on campus",
     "campus marketplace app Ghana",
     "student buy and sell platform",
-    "escrow marketplace Ghana",
+    "student marketplace comparison",
   ],
 });
 
@@ -50,7 +50,7 @@ const crumbs: Crumb[] = [
 const faqs: Faq[] = [
   {
     q: "What is the best campus marketplace platform in Ghana?",
-    a: "CarryMart is the campus marketplace platform built specifically for Ghanaian universities. It is the only option in this comparison that scopes every listing to one campus, holds the buyer's payment in escrow until delivery is confirmed, and charges nothing to post a standard listing. General platforms like Facebook Marketplace, Jiji and Tonaton cover a whole country and leave payment entirely between the two of you.",
+    a: "CarryMart is the campus marketplace platform built specifically for Ghanaian universities. It is the only option in this comparison that scopes every listing to one campus, and it charges nothing to post a standard listing. General platforms like Facebook Marketplace, Jiji and Tonaton cover a whole country, so most of what you find is a delivery away rather than a walk across campus.",
   },
   {
     q: "What is a campus marketplace?",
@@ -58,7 +58,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Is a campus marketplace safer than a WhatsApp group?",
-    a: "It is, on two specific counts. A WhatsApp group has no payment protection, so somebody has to send money first and trust the other person; and it has no search, so a listing is only visible for as long as it sits near the bottom of the chat. A campus marketplace with escrow removes the first problem, and a searchable feed removes the second.",
+    a: "It is, on two specific counts. A WhatsApp group tells you nothing about who you are dealing with beyond a phone number; and it has no search, so a listing is only visible for as long as it sits near the bottom of the chat. A campus marketplace gives every seller a public profile with history attached, and a searchable feed keeps a listing findable until it sells.",
   },
   {
     q: "How much does it cost to sell on CarryMart?",
@@ -88,8 +88,8 @@ const sellSteps = [
     text: "Buyers message you in the app. Haggle, answer questions, and agree a public spot on campus for the handover, all in one thread you can refer back to.",
   },
   {
-    name: "Get paid out of escrow",
-    text: "The buyer pays into CarryPay escrow before you hand anything over. Once they confirm delivery, the money lands in your wallet and you withdraw it to mobile money.",
+    name: "Meet and hand it over",
+    text: "Agree a public spot on campus, meet your buyer between lectures, and settle up in person as the item changes hands.",
   },
 ];
 
@@ -126,15 +126,11 @@ const sections: ContentSection[] = [
     blocks: [
       {
         type: "p",
-        text: "If you are comparing platforms, these are the six things worth judging them on. They are ordered by how much difference each one makes to whether you actually get your money or your item.",
+        text: "If you are comparing platforms, these are the five things worth judging them on. They are ordered by how much difference each one makes to whether a deal actually happens.",
       },
       {
         type: "steps",
         items: [
-          {
-            name: "Payment protection",
-            text: "Does the platform hold the money until the buyer confirms delivery? Without escrow, every deal comes down to which of the two strangers goes first. This is the single largest difference between platforms.",
-          },
           {
             name: "Campus scope",
             text: "Is the feed limited to your campus, or to the whole country? A national feed means most results are unreachable without paying for delivery. A campus feed means every result is walkable.",
@@ -165,19 +161,12 @@ const sections: ContentSection[] = [
     blocks: [
       {
         type: "p",
-        text: "Applying those six criteria to the options a Ghanaian student realistically has today:",
+        text: "Applying those five criteria to the options a Ghanaian student realistically has today:",
       },
       {
         type: "table",
         head: ["", "CarryMart", "Hall WhatsApp groups", "Facebook Marketplace", "Jiji / Tonaton"],
         rows: [
-          [
-            "Escrow on payments",
-            "Yes, held until you confirm delivery",
-            "None",
-            "None between private sellers",
-            "None on a standard listing",
-          ],
           [
             "Scope of the feed",
             "Your campus",
@@ -225,7 +214,7 @@ const sections: ContentSection[] = [
       {
         type: "callout",
         title: "The honest summary",
-        text: "General classifieds are better if you want to buy a car or a fridge from anywhere in Ghana. Your hall WhatsApp group is fine for a quick ask among people you already know. CarryMart is the better tool for the specific thing students do most: buying and selling everyday items with other students on their own campus, without either side having to trust a stranger with their money.",
+        text: "General classifieds are better if you want to buy a car or a fridge from anywhere in Ghana. Your hall WhatsApp group is fine for a quick ask among people you already know. CarryMart is the better tool for the specific thing students do most: buying and selling everyday items with other students on their own campus, where the seller is a five-minute walk away and has a profile you can actually check.",
       },
     ],
   },
@@ -246,9 +235,8 @@ const sections: ContentSection[] = [
         items: [
           "Find an item through your campus feed, search, or reels.",
           "Chat with the seller to agree the price, the condition, and where on campus you will meet.",
-          "Pay through the app. Your money goes into CarryPay escrow, not to the seller.",
-          "Collect the item, then confirm delivery in the app. Only then is the seller paid.",
-          "Every deal produces a digital receipt you can fall back on.",
+          "Meet on campus, look the item over, and settle up with the seller in person.",
+          "Keep the conversation in the chat, so the price and condition you agreed stay on the record.",
         ],
       },
       {
@@ -262,27 +250,22 @@ const sections: ContentSection[] = [
     ],
   },
   {
-    id: "escrow",
-    heading: "How escrow removes the risk from campus deals",
+    id: "safe-handovers",
+    heading: "How to keep a campus deal safe",
     blocks: [
       {
         type: "p",
-        text: "Escrow is the reason a campus marketplace can work between people who have never met. When a buyer pays, the money does not go to the seller. It is held by CarryPay, the wallet built into CarryMart, and it is released only when the buyer confirms in the app that they have the item.",
+        text: "A campus marketplace is structurally safer than a national classifieds site, for a reason that has nothing to do with software: the person you are dealing with is a short walk away, shares your campus, and carries a profile from one deal to the next. That does not remove the need for judgement. It makes judgement possible.",
       },
       {
         type: "list",
         items: [
-          "The buyer is not paying first and hoping. If the item never arrives, they do not confirm, and the money stays put while support investigates.",
-          "The seller is not handing over goods on a promise. They can see the payment is already committed before they hand anything over.",
-          "Wallet access and every transaction are locked behind your PIN, and top-ups and withdrawals run through licensed mobile money providers.",
-          "CarryMart never stores your mobile money PIN.",
+          "Keep the whole negotiation in the app, so the price and the condition you agreed stay on the record.",
+          "Read the seller's public profile and selling history before you agree to meet.",
+          "Meet somewhere public and busy on campus, in daylight where you can.",
+          "Look the item over properly before you settle up, and walk away if it is not what was described.",
+          "Report a listing or a user from the app if something feels wrong, and contact support.",
         ],
-      },
-      {
-        type: "cta",
-        label: "Read how CarryPay works",
-        href: "/carrypay",
-        note: "Top-ups, withdrawals, escrow holds and what happens when a deal goes wrong.",
       },
     ],
   },
@@ -354,7 +337,7 @@ export default function CampusMarketplacePage() {
           howToNode(
             PATH,
             "How to sell on a campus marketplace",
-            "Post an item on your campus marketplace and get paid out of escrow, in four steps.",
+            "Post an item on your campus marketplace and hand it over on campus, in four steps.",
             sellSteps
           ),
         ]}
@@ -362,8 +345,8 @@ export default function CampusMarketplacePage() {
       <ContentPage
         eyebrow="Campus marketplace"
         title={TITLE}
-        subtitle="A campus marketplace only works if the money is safe and the seller is a walk away. Here is what to look for, and how CarryMart measures up against the WhatsApp groups, national classifieds and Instagram pages students use today."
-        answer="A campus marketplace is an online marketplace where every buyer and seller belongs to the same university campus, so handovers happen on foot and reputations are checkable. CarryMart is the campus marketplace built for Ghanaian universities: free to list, scoped to your campus, and with every payment held in CarryPay escrow until the buyer confirms delivery."
+        subtitle="A campus marketplace only works if the seller is a walk away and you can tell who you are dealing with. Here is what to look for, and how CarryMart measures up against the WhatsApp groups, national classifieds and Instagram pages students use today."
+        answer="A campus marketplace is an online marketplace where every buyer and seller belongs to the same university campus, so handovers happen on foot and reputations are checkable. CarryMart is the campus marketplace built for Ghanaian universities: free to list, scoped to your campus, and built so the person you are buying from is a five-minute walk from your hall."
         crumbs={crumbs}
         sections={sections}
         contact={{

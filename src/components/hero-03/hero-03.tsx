@@ -1,14 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ShieldCheck, Tag } from "lucide-react";
+import { ArrowRight, MapPin, Tag } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { PhoneMock } from "@/components/ui/phone-mock";
 
 const stats = [
   { value: "GHS 0", label: "To post a listing" },
-  { value: "100%", label: "Escrow protected" },
+  { value: "0%", label: "Commission on sales" },
   { value: "9", label: "Categories" },
 ];
 
@@ -68,8 +68,7 @@ const Hero03 = () => {
                 previously absent from the homepage body entirely. */}
             CarryMart is the campus marketplace where students shop and sell
             everything from fashion and food to electronics, books, and beauty.
-            Discover deals in reels, chat with sellers instantly, and pay safely
-            with the CarryPay escrow wallet.
+            Discover deals in reels and chat with sellers instantly.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 opacity-0 animate-fade-in-up animation-delay-300">
@@ -96,8 +95,8 @@ const Hero03 = () => {
           {/* Stats. first:pl-0 is a desktop rule — it trims the left inset once the
               row is left-aligned. Kept off the centred mobile layout, where it
               made column one read wider than the other two. The base padding
-              and label size are tuned so "Escrow protected" still fits on one
-              line at 360px; when it wrapped, the three labels lost their
+              and label size are tuned so the longest label still fits on one
+              line at 360px; when one wrapped, the three labels lost their
               shared baseline. */}
           <dl className="mt-12 grid grid-cols-3 divide-x divide-border/70 border-t border-border/70 pt-8 max-w-md mx-auto lg:mx-0 opacity-0 animate-fade-in-up animation-delay-400">
             {stats.map((stat) => (
@@ -142,11 +141,11 @@ const Hero03 = () => {
 
           <div className="absolute bottom-12 -right-2 sm:right-4 lg:-right-4 bg-white rounded-2xl shadow-sharp-lg border border-border px-4 py-3 flex items-center gap-3 animate-float animation-delay-500">
             <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center shrink-0">
-              <ShieldCheck className="size-4 text-white" strokeWidth={2.5} />
+              <MapPin className="size-4 text-white" strokeWidth={2.5} />
             </div>
             <div>
-              <p className="font-display font-bold text-sm text-secondary leading-tight">Escrow protected</p>
-              <p className="text-xs text-muted-foreground leading-tight">Released when you confirm</p>
+              <p className="font-display font-bold text-sm text-secondary leading-tight">Meet on campus</p>
+              <p className="text-xs text-muted-foreground leading-tight">Handover between lectures</p>
             </div>
           </div>
         </div>

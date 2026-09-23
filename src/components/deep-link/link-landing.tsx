@@ -130,9 +130,8 @@ export default function LinkLanding({
             Open this in the CarryMart app
           </p>
           <p className="mt-2 text-muted-foreground leading-relaxed text-pretty">
-            The app is where you chat with the seller, agree a price and pay
-            through CarryPay escrow, so the money is only released once you have
-            the item. This page is the preview.
+            The app is where you chat with the seller, agree a price and
+            arrange a handover on campus. This page is the preview.
           </p>
           <div className="mt-6">
             <StoreLinks />

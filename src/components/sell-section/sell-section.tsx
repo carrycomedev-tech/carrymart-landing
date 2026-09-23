@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Camera, Sparkles, Wallet, ArrowRight, Rocket } from "lucide-react";
+import { Camera, Sparkles, Handshake, ArrowRight, Rocket } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/animated-section";
@@ -23,10 +23,10 @@ const steps = [
   },
   {
     step: "3",
-    icon: Wallet,
-    title: "Get paid, guaranteed",
+    icon: Handshake,
+    title: "Meet and hand it over",
     description:
-      "Buyers pay into CarryPay escrow before you hand anything over. Confirm the deal and withdraw to MoMo.",
+      "Agree a spot on campus in chat, meet your buyer between lectures, and close the deal face to face.",
   },
 ];
 
@@ -85,7 +85,7 @@ const SellSection = () => {
               </h3>
               <p className="text-muted-foreground leading-relaxed">
                 7-day and 30-day boosts push your listing to the top of the
-                campus feed. Pay right from your CarryPay wallet.
+                campus feed, right when your buyers are looking.
               </p>
             </div>
             <Button asChild size="lg" className="w-full md:w-auto shrink-0">

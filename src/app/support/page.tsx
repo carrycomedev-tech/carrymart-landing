@@ -10,7 +10,7 @@ import type { Crumb } from '@/lib/schema';
 const PATH = '/support';
 const TITLE = 'Help & FAQs';
 const DESCRIPTION =
-  'Answers to common questions about buying, selling, and paying on CarryMart, the campus marketplace, and the CarryPay escrow wallet.';
+  'Answers to common questions about buying, selling, and staying safe on CarryMart, the campus marketplace for students in Ghana.';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -30,7 +30,7 @@ const faqCategories = [
     questions: [
       {
         q: "What is CarryMart?",
-        a: "CarryMart is the campus marketplace, an app where students buy and sell with each other on their own campus. Browse listings in electronics, fashion, books, food, beauty, services, furniture, tickets, and rentals; discover items through reels and stories; chat with sellers in real time; and pay safely with the CarryPay escrow wallet."
+        a: "CarryMart is the campus marketplace, an app where students buy and sell with each other on their own campus. Browse listings in electronics, fashion, books, food, beauty, services, furniture, tickets, and rentals; discover items through reels and stories; and chat with sellers in real time."
       },
       {
         q: "Which campuses does CarryMart work on?",
@@ -42,7 +42,7 @@ const faqCategories = [
       },
       {
         q: "Do I need a student ID to join?",
-        a: "You sign up with your phone number and choose your campus. Seller profiles are public, with QR codes and transaction history, so the community can see who they're dealing with."
+        a: "You sign up with your phone number and choose your campus. Seller profiles are public, with QR codes and a visible selling history, so the community can see who they're dealing with."
       }
     ]
   },
@@ -52,19 +52,15 @@ const faqCategories = [
     questions: [
       {
         q: "How do I buy something?",
-        a: "Find an item through the feed, search, or reels, then chat with the seller to agree on the details. When you're ready, pay through the app. Your money is held in CarryPay escrow, and you arrange the handover with the seller right in the chat."
-      },
-      {
-        q: "When does the seller get my money?",
-        a: "Only after you confirm delivery. Your payment sits safely in CarryPay escrow until you've received the item and confirmed it in the app. Then it's released to the seller. That's the whole point: no paying first and praying later."
+        a: "Find an item through the feed, search, or reels, then chat with the seller to agree on the details. You arrange the handover with them right in the chat, and you settle up when you meet."
       },
       {
         q: "What if the item never arrives or isn't as described?",
-        a: "Don't confirm the delivery. If the deal falls through, contact support from the app and we'll investigate. Your money stays in escrow while we do. Every deal has a digital receipt you can fall back on."
+        a: "Check the item over before you settle up, and do not pay for something that is not what was described. If a deal goes wrong, report the listing or the user from the app and contact support. Keep the conversation in the chat, because that is your record of what was agreed."
       },
       {
         q: "How do I pay?",
-        a: "Top up your CarryPay wallet with mobile money (MTN MoMo and other networks), or pay with a saved payment method at checkout. Every wallet action is protected by your PIN."
+        a: "You pay the seller directly when you meet for the handover. Agree how you are settling in the chat beforehand so there are no surprises. CarryMart does not take the payment or hold it for either side."
       }
     ]
   },
@@ -78,11 +74,11 @@ const faqCategories = [
       },
       {
         q: "How do I get paid?",
-        a: "When a buyer pays, the money is held in CarryPay escrow. Once they confirm delivery, it lands in your CarryPay wallet. Withdraw it to mobile money whenever you like, protected by your PIN."
+        a: "You and the buyer agree the price in the chat and settle it between yourselves when you meet to hand the item over. CarryMart takes no commission, so what you agree is what you keep."
       },
       {
         q: "What are boosts and how do they work?",
-        a: "Boosts push your listing to the top of your campus feed for extra visibility. Choose a 7-day or 30-day boost when you post (or later), and pay from your CarryPay wallet. Standard listings stay free forever."
+        a: "Boosts push your listing to the top of your campus feed for extra visibility. Choose a 7-day or 30-day boost when you post, or add one later. Standard listings stay free forever."
       },
       {
         q: "Can I promote my shop outside the app?",
@@ -95,46 +91,24 @@ const faqCategories = [
     ]
   },
   {
-    id: "carrypay-wallet",
-    title: "CarryPay Wallet",
-    questions: [
-      {
-        q: "What is CarryPay?",
-        a: "CarryPay is the wallet built into CarryMart. It holds your balance, powers escrow payments, and lets you top up and withdraw with mobile money, all secured with your PIN."
-      },
-      {
-        q: "How do I top up?",
-        a: "Open CarryPay from your profile, tap 'Top Up', choose your amount and mobile money method, and approve the prompt on your phone. Your balance updates as soon as the payment lands."
-      },
-      {
-        q: "How do I withdraw my earnings?",
-        a: "Open CarryPay, tap 'Withdraw', enter the amount, and choose your mobile money account. Withdrawals are protected by your wallet PIN."
-      },
-      {
-        q: "Is my money safe?",
-        a: "Wallet access and every transaction are locked behind your PIN, payments run through licensed mobile money providers, and each deal produces a digital receipt. We never store your mobile money PIN."
-      }
-    ]
-  },
-  {
     id: "trust-and-safety",
     title: "Trust & Safety",
     questions: [
       {
         q: "How do I know a seller is legit?",
-        a: "Check their public profile: listings, activity, and history are visible to everyone. Because payments run through escrow, a seller only gets paid when you confirm the deal, which removes most of the risk from meeting someone new."
+        a: "Check their public profile: listings, activity, and history are visible to everyone. Beyond that, keep the conversation in the app, meet somewhere public on campus, and look the item over before you settle up."
       },
       {
         q: "How do I report a problem or a user?",
-        a: `Every listing and profile has a report option. For payment issues, contact support directly from the app or email us at ${SUPPORT_EMAIL}. Include the receipt from the deal if you have one.`
+        a: `Every listing and profile has a report option. For anything urgent, contact support directly from the app or email us at ${SUPPORT_EMAIL}. Include the chat from the deal if you have it.`
       },
       {
         q: "Where should I meet for handovers?",
-        a: "Somewhere public on campus: the library, a hall entrance, the night market. Agree on the spot in chat so there's a record, and only confirm the delivery once you have the item in hand."
+        a: "Somewhere public on campus: the library, a hall entrance, the night market. Agree on the spot in chat so there's a record, and look the item over before you settle up."
       },
       {
         q: "How do I delete my account?",
-        a: "Go to your profile settings, select 'Delete Account', and follow the prompts. This is permanent. Withdraw your CarryPay balance first. Your data is removed within 30 days as per our privacy policy."
+        a: "Go to your profile settings, select 'Delete Account', and follow the prompts. This is permanent. Your data is removed within 30 days as per our privacy policy."
       }
     ]
   }
@@ -173,7 +147,7 @@ const SupportPage = () => {
         </h1>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed text-pretty">
           Answers to the questions students ask most about buying, selling, and
-          getting paid on CarryMart.
+          staying safe on CarryMart.
         </p>
 
         {/* Table of contents */}

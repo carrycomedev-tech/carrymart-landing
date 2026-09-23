@@ -38,7 +38,6 @@ const footerSections = [
     links: [
       { title: "The Marketplace", href: "/#marketplace" },
       { title: "Campus Marketplace Guide", href: "/campus-marketplace" },
-      { title: "CarryPay Wallet", href: "/carrypay" },
       { title: "Sell on Campus", href: "/sell-on-campus" },
       { title: "Campuses", href: "/campuses" },
       { title: "About CarryMart", href: "/about" },

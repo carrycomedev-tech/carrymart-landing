@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'CarryMart | The Campus Marketplace',
     short_name: 'CarryMart',
-    description: 'Buy and sell with students on your campus — reels, chat, and escrow-protected payments',
+    description: 'Buy and sell with students on your campus: reels, chat, and free listings',
     start_url: '/',
     display: 'standalone',
     background_color: '#000B29',

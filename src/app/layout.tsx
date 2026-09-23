@@ -48,7 +48,6 @@ export const metadata: Metadata = {
     "best campus marketplace platform",
     "university marketplace app",
     "buy and sell on campus",
-    "CarryPay escrow wallet",
     "student sellers Ghana",
   ],
   authors: [{ name: `${BRAND.name} Team`, url: SITE_URL }],
@@ -65,7 +64,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${BRAND.name} | ${BRAND.tagline}`,
     description:
-      "Buy and sell with students on your campus. Discover deals in reels, chat instantly, and pay safely with the CarryPay escrow wallet.",
+      "Buy and sell with students on your campus. Discover deals in reels, chat with sellers instantly, and meet for the handover.",
     url: SITE_URL,
     siteName: BRAND.name,
     images: [
@@ -83,7 +82,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${BRAND.name} | ${BRAND.tagline}`,
     description:
-      "Buy and sell with students on your campus. Discover deals in reels, chat instantly, and pay safely with escrow.",
+      "Buy and sell with students on your campus. Free listings, deals in reels, and instant chat.",
     images: [BRAND.ogImage],
   },
   robots: {

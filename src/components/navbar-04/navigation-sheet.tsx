@@ -33,7 +33,13 @@ export const NavigationSheet = () => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" aria-label="Open menu">
+        {/* Tracks the CTA's height so the two controls stay level. */}
+        <Button
+          variant="outline"
+          size="icon"
+          aria-label="Open menu"
+          className="size-10 sm:size-11"
+        >
           <Menu />
         </Button>
       </SheetTrigger>

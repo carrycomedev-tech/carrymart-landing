@@ -6,7 +6,7 @@ import type { Crumb } from "@/lib/schema";
 const PATH = "/terms";
 const TITLE = "Terms of Service";
 const DESCRIPTION =
-  "The terms that govern your use of CarryMart, the campus marketplace, and the CarryPay escrow wallet.";
+  "The terms that govern your use of CarryMart, the campus marketplace for university students in Ghana.";
 
 const crumbs: Crumb[] = [
   { name: "Home", path: "/" },
@@ -46,11 +46,11 @@ const sections: LegalSection[] = [
   },
   {
     id: "your-account",
-    heading: "Your account and PIN",
+    heading: "Your account",
     blocks: [
       {
         type: "p",
-        text: "You are responsible for what happens on your account. Keep your PIN private, since it protects your wallet and every transaction. Tell us right away if you think someone else has access to your account.",
+        text: "You are responsible for what happens on your account. Keep your sign-in details, and any PIN you set, private. Tell us right away if you think someone else has access to your account.",
       },
     ],
   },
@@ -82,25 +82,25 @@ const sections: LegalSection[] = [
     blocks: [
       {
         type: "p",
-        text: "Buyers and sellers agree the details in chat, then pay through the app. Your money is held in CarryPay escrow and released to the seller only after you confirm delivery. Meet somewhere public on campus for handovers, agree the spot in chat so there is a record, and confirm only once the item is in your hands.",
+        text: "Buyers and sellers agree the details in chat and settle payment directly between themselves at the handover. Meet somewhere public on campus, agree the spot in chat so there is a record, and check the item before any money changes hands.",
       },
       {
         type: "p",
-        text: "CarryMart provides the marketplace and the escrow tool, but the deal itself is between the buyer and the seller. If something goes wrong, do not confirm the delivery and contact support so we can help while your money stays in escrow.",
+        text: "CarryMart provides the marketplace where you find each other and agree terms. The deal itself, payment included, is between the buyer and the seller. CarryMart is not a party to it and does not hold, transmit or process the money. If something goes wrong, report it from the app and contact support, and we will help where we can.",
       },
     ],
   },
   {
-    id: "carrypay-and-fees",
-    heading: "CarryPay, payments, and fees",
+    id: "costs-and-fees",
+    heading: "Costs and fees",
     blocks: [
       {
         type: "list",
         items: [
-          "CarryPay lets you top up and withdraw with mobile money, and it powers escrow payments. Every action is protected by your PIN.",
           "The app is free to use, browsing is free, and posting a standard listing is free.",
+          "CarryMart takes no commission on a sale.",
           "Optional listing boosts are the only seller cost, and you choose them when you post or later. Any current fees are shown before you confirm.",
-          "Payments run through licensed mobile money providers, and their own terms apply to the mobile money side of a transaction.",
+          "CarryMart does not hold, transmit or process payments between buyers and sellers. How you settle a deal is between the two of you.",
         ],
       },
     ],
@@ -111,7 +111,7 @@ const sections: LegalSection[] = [
     blocks: [
       {
         type: "p",
-        text: "Treat other students with respect. Do not harass, scam, or mislead people, do not spam the feed, and do not try to move payments off the platform to avoid escrow protection. Breaking these rules can lead to removed content, a suspended account, or a permanent ban.",
+        text: "Treat other students with respect. Do not harass, scam, or mislead people, do not spam the feed, and do not use the app to set up deals you intend to break. Breaking these rules can lead to removed content, a suspended account, or a permanent ban.",
       },
     ],
   },
@@ -131,7 +131,7 @@ const sections: LegalSection[] = [
     blocks: [
       {
         type: "p",
-        text: "CarryMart is provided as is. While we work hard to keep the marketplace safe and reliable, we cannot guarantee every listing, user, or deal. To the extent the law allows, CarryMart is not liable for disputes between users or for indirect losses arising from your use of the app. Escrow is designed to protect your payment, so use it and confirm deals only when you are satisfied.",
+        text: "CarryMart is provided as is. While we work hard to keep the marketplace safe and reliable, we cannot guarantee every listing, user, or deal. To the extent the law allows, CarryMart is not liable for disputes between users or for indirect losses arising from your use of the app.",
       },
     ],
   },
@@ -141,7 +141,7 @@ const sections: LegalSection[] = [
     blocks: [
       {
         type: "p",
-        text: "You can delete your account at any time from your profile settings. We may suspend or close accounts that break these terms or put the community at risk. If your account is closed, withdraw any CarryPay balance first where possible.",
+        text: "You can delete your account at any time from your profile settings. We may suspend or close accounts that break these terms or put the community at risk.",
       },
     ],
   },
@@ -171,7 +171,7 @@ export default function TermsOfServicePage() {
         title="Terms of Service"
         subtitle="The simple rules that keep CarryMart safe and fair for every student who buys and sells here."
         lastUpdated="July 27, 2026"
-        intro="Welcome to CarryMart, the campus marketplace where students buy and sell with each other and pay safely through the CarryPay escrow wallet. These terms explain what you can expect from us and what we ask of you."
+        intro="Welcome to CarryMart, the campus marketplace where students buy and sell with each other on their own campus. These terms explain what you can expect from us and what we ask of you."
         sections={sections}
       />
     </>

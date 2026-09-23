@@ -1,22 +1,22 @@
 "use client";
 
 import {
-  ShieldCheck,
+  Video,
   MessagesSquare,
   Rocket,
   MapPin,
   QrCode,
-  Smartphone,
+  Search,
 } from "lucide-react";
 import React from "react";
 import { AnimatedSection } from "@/components/ui/animated-section";
 
 const features = [
   {
-    icon: ShieldCheck,
-    title: "Escrow that protects both sides",
+    icon: Video,
+    title: "Discover through reels and stories",
     description:
-      "Buyers pay into CarryPay, and the money is released only when delivery is confirmed. No 'pay first, pray later'.",
+      "Scroll campus reels to see what is for sale right now, and follow the shops whose stories you want in your feed.",
   },
   {
     icon: MessagesSquare,
@@ -43,10 +43,10 @@ const features = [
       "Every seller has a public shop profile with a QR code. Scan to view their listings or share yours anywhere.",
   },
   {
-    icon: Smartphone,
-    title: "Top up & cash out with MoMo",
+    icon: Search,
+    title: "Search your whole campus",
     description:
-      "Fund your CarryPay wallet and withdraw your earnings straight to mobile money, protected by your PIN.",
+      "Search the full campus feed by item, category or price, so a listing stays findable long after it was posted.",
   },
 ];
 
@@ -63,7 +63,7 @@ const Features01Page = () => {
             Built for how students actually trade
           </h2>
           <p className="mt-4 text-base md:text-lg text-muted-foreground leading-relaxed">
-            Safe payments, real conversations, and a market that lives where you do.
+            Free listings, real conversations, and a market that lives where you do.
           </p>
         </AnimatedSection>
 

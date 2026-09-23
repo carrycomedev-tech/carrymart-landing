@@ -20,7 +20,6 @@ export const metadata: Metadata = {
 
 const suggestions = [
   { title: "The campus marketplace, explained", href: "/campus-marketplace" },
-  { title: "How CarryPay escrow works", href: "/carrypay" },
   { title: "Selling on your campus", href: "/sell-on-campus" },
   { title: "Find your campus", href: "/campuses" },
   { title: "Help & FAQs", href: "/support" },

@@ -42,8 +42,13 @@ const Navbar04Page = () => {
         <NavMenu className="hidden lg:block" />
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Kept visible on phones too — this is the primary action. */}
-          <Button asChild className="px-4 sm:px-6">
+          {/* Kept visible on phones too — this is the primary action, but it
+              drops to 40px with a tighter label below sm so the pill doesn't
+              dominate the header on a 360px screen. */}
+          <Button
+            asChild
+            className="h-10 px-4 text-[13px] sm:h-11 sm:px-6 sm:text-sm"
+          >
             <Link href="/#download">Get the app</Link>
           </Button>
 

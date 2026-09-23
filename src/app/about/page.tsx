@@ -20,7 +20,7 @@ import { SUPPORT_EMAIL, SUPPORT_PHONE } from "@/lib/contact";
 const PATH = "/about";
 const TITLE = "About CarryMart";
 const DESCRIPTION =
-  "CarryMart is a campus marketplace app for university students in Ghana, founded in 2024. Nine categories, reels discovery, CarryPay escrow payments.";
+  "CarryMart is a campus marketplace app for university students in Ghana, founded in 2024. Nine categories, reels discovery, handovers on campus.";
 
 export const metadata = pageMetadata({
   title: TITLE,
@@ -57,19 +57,15 @@ const faqs: Faq[] = [
   },
   {
     q: "What does CarryMart do differently from other marketplaces?",
-    a: "Two things. Listings are scoped to one campus rather than a whole country, so every result is walking distance. And every payment is held in CarryPay escrow until the buyer confirms delivery, so neither side has to trust a stranger with their money first.",
+    a: "Two things. Listings are scoped to one campus rather than a whole country, so every result is walking distance. And discovery runs on reels and stories, so finding something feels like the apps students already use rather than reading classified ads.",
   },
   {
     q: "Is CarryMart free?",
     a: "Yes. The app is free to download, browsing is free, and posting a standard listing is free with no commission on the sale. Listing boosts are the only optional paid feature.",
   },
   {
-    q: "What is CarryPay?",
-    a: "CarryPay is the wallet built into CarryMart. It holds balances, holds buyers' payments in escrow until delivery is confirmed, and handles top-ups and withdrawals through mobile money.",
-  },
-  {
     q: "How do I contact CarryMart?",
-    a: `Email ${SUPPORT_EMAIL} or message the team on WhatsApp at ${SUPPORT_PHONE}. The Help Center answers most questions about buying, selling and payments.`,
+    a: `Email ${SUPPORT_EMAIL} or message the team on WhatsApp at ${SUPPORT_PHONE}. The Help Center answers most questions about buying and selling.`,
   },
 ];
 
@@ -89,7 +85,7 @@ const sections: ContentSection[] = [
           ["Audience", "University students, postgraduates and staff on the campuses it serves"],
           ["Platforms", "Android and iOS"],
           ["Categories", `${CATEGORIES.length} (${CATEGORIES.join(", ")})`],
-          ["Payments", "CarryPay, an in-app escrow wallet funded by mobile money"],
+          ["Payments", "Agreed in chat and settled in person at the handover"],
           ["Cost", "Free to download, browse and list. No commission on sales. Optional listing boosts"],
           ["Campuses in rollout", `${CAMPUSES.length} Ghanaian universities`],
           ["Website", SITE_URL.replace("https://", "")],
@@ -108,11 +104,11 @@ const sections: ContentSection[] = [
       },
       {
         type: "p",
-        text: "What was missing was never demand. It was infrastructure. In a group chat, a listing disappears in an afternoon, nothing is searchable, a seller's reputation is a phone number, and somebody always has to send money first and hope. That last problem is the one that stops the whole thing scaling: the risk of getting scammed by a stranger on your own campus is small but real, and it is enough to make most people not bother.",
+        text: "What was missing was never demand. It was infrastructure. In a group chat, a listing disappears in an afternoon, nothing is searchable, and a seller's reputation is a phone number. That last problem is the one that stops the whole thing scaling: buying something from a stranger on your own campus should be an easy decision, and with no history to check, it is not.",
       },
       {
         type: "p",
-        text: "CarryMart is that infrastructure. Listings are persistent, categorised and searchable. Sellers have public profiles with history behind them. Discovery works the way students already browse, through reels and stories rather than keyword searches. And every payment runs through escrow, so neither side goes first on trust.",
+        text: "CarryMart is that infrastructure. Listings are persistent, categorised and searchable. Sellers have public profiles with history behind them. Discovery works the way students already browse, through reels and stories rather than keyword searches. And because both sides are on the same campus, the handover is a short walk and a face rather than a courier and a promise.",
       },
     ],
   },
@@ -126,9 +122,7 @@ const sections: ContentSection[] = [
           "You sign up with your phone number and choose your campus. Everything you see from then on is students near you.",
           `You browse nine categories (${CATEGORIES.join(", ")}) through a campus feed, search, or reels.`,
           "You chat with the seller in the app to agree price, condition and where on campus to meet.",
-          "You pay in the app. The money is held in CarryPay escrow, not sent to the seller.",
-          "You collect the item and confirm delivery. Only that releases the payment.",
-          "Sellers withdraw their balance to mobile money, protected by a wallet PIN.",
+          "You meet on campus, check the item over, and settle with the seller in person.",
         ],
       },
       { type: "cta", label: "Read the full explanation", href: "/campus-marketplace" },

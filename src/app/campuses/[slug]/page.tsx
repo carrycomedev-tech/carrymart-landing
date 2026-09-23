@@ -61,7 +61,7 @@ const titleFor = (campus: Campus) =>
  * in the H1, the title and the schema.
  */
 const descriptionFor = (campus: Campus) =>
-  `Buying and selling at ${campus.shortName}, ${campus.city}. Free listings, handovers on campus, and every payment held in CarryPay escrow until you confirm delivery.`;
+  `Buying and selling at ${campus.shortName}, ${campus.city}. Free listings, public seller profiles, and handovers you can walk to.`;
 
 export async function generateMetadata({
   params,
@@ -91,7 +91,7 @@ export async function generateMetadata({
 const faqsFor = (campus: Campus): Faq[] => [
   {
     q: `How do I buy something from another student at ${campus.shortName}?`,
-    a: `Open CarryMart, set your campus to ${campus.name}, and browse the feed, search or reels. Message the seller to agree the price and a spot to meet, then pay in the app. Your money sits in CarryPay escrow until you have the item in hand and confirm delivery, so the seller is only paid once you are satisfied.`,
+    a: `Open CarryMart, set your campus to ${campus.name}, and browse the feed, search or reels. Message the seller to agree the price and a spot to meet, then look the item over and settle up with them in person when you get there.`,
   },
   {
     q: `Does it cost anything to sell at ${campus.shortName}?`,
@@ -130,7 +130,7 @@ const sectionsFor = (campus: Campus): ContentSection[] => [
         items: [
           `Listings from students around ${asProse(campus.neighbourhoods)}.`,
           "Free to post, no commission on the sale.",
-          "Every payment held in CarryPay escrow until you confirm delivery.",
+          "Handovers on foot, usually between lectures.",
           "Public seller profiles, so you can see who you are dealing with.",
         ],
       },
@@ -179,43 +179,38 @@ const sectionsFor = (campus: Campus): ContentSection[] => [
       {
         type: "callout",
         title: "The one rule that matters",
-        text: "Confirm the delivery in the app only once the item is physically in your hands. That confirmation is what releases the money out of escrow, and it is the whole reason you are not the one carrying the risk.",
+        text: "Do not settle up until the item is physically in your hands and you have looked it over. Everything else about a campus deal is negotiable in chat; this part is not.",
       },
     ],
   },
   {
-    id: "escrow",
-    heading: "How you get paid, and how you avoid getting scammed",
+    id: "staying-safe",
+    heading: "How to keep a campus deal safe",
     blocks: [
       {
         type: "p",
-        text: "CarryPay is the wallet built into CarryMart, and it is what makes buying from a stranger on your own campus a reasonable thing to do.",
+        text: "Buying from somebody you have never met is a reasonable thing to do on your own campus, because they are a short walk away and they carry the same profile from one deal to the next. These four habits are what keep it that way.",
       },
       {
         type: "steps",
         items: [
           {
-            name: "The buyer pays into escrow",
-            text: "Money leaves the buyer's CarryPay wallet but does not reach the seller. It is held.",
+            name: "Agree the details in chat",
+            text: "Price, condition, and exactly where on campus you are meeting. The thread is your record if the story changes on the day.",
           },
           {
-            name: "The handover happens on campus",
-            text: "The seller can see the payment is committed before handing anything over, so neither side is going first on trust.",
+            name: "Read the seller's profile",
+            text: "Every seller has a public profile with their listings and selling history attached, so you are not going in on a phone number alone.",
           },
           {
-            name: "The buyer confirms delivery",
-            text: "Only this releases the money. If the item never arrives or is not as described, the buyer does not confirm and the money stays in escrow while support investigates.",
+            name: "Meet somewhere public",
+            text: "A hall entrance, the library, the night market. Somewhere busy, and in daylight where you can manage it.",
           },
           {
-            name: "The seller withdraws to mobile money",
-            text: "Funds land in the seller's CarryPay wallet and can be withdrawn to MTN MoMo or another network, protected by their wallet PIN.",
+            name: "Look it over before you settle up",
+            text: "Check the item is what was described before any money changes hands, and walk away if it is not. Report the listing from the app if it was misrepresented.",
           },
         ],
-      },
-      {
-        type: "cta",
-        label: "How CarryPay escrow works",
-        href: "/carrypay",
       },
     ],
   },
@@ -305,8 +300,8 @@ export default async function CampusPage({
       <ContentPage
         eyebrow={`${campus.city}, ${campus.region} Region`}
         title={h1For(campus)}
-        subtitle={`Everything students at ${campus.shortName} need to know about buying and selling on their own campus: what moves, where to meet, and how the money is protected.`}
-        answer={`Students at ${campus.name} can buy and sell with each other on CarryMart, the campus marketplace app. Listings are scoped to the ${campus.shortName} campus in ${campus.city}, posting is free, and every payment is held in CarryPay escrow until the buyer confirms delivery, so handovers happen on foot and nobody has to pay a stranger first.`}
+        subtitle={`Everything students at ${campus.shortName} need to know about buying and selling on their own campus: what moves, where to meet, and how to keep a deal safe.`}
+        answer={`Students at ${campus.name} can buy and sell with each other on CarryMart, the campus marketplace app. Listings are scoped to the ${campus.shortName} campus in ${campus.city}, posting is free, and every seller has a public profile, so handovers happen on foot between people who share a campus.`}
         crumbs={crumbs}
         sections={sectionsFor(campus)}
         contact={{
