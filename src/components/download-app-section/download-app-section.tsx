@@ -9,8 +9,10 @@ import { AnimatedSection } from "@/components/ui/animated-section";
 const DownloadAppSection = () => {
     const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string>("");
 
-    // App download URLs (replace with actual URLs when available)
-    const appStoreUrl = "https://apps.apple.com/app/carrymart";
+    // The App Store link is the published app (id6804004868). Google Play has
+    // no listing for com.carrymart yet; the link goes live when the Android app
+    // is published under that package, which matches ANDROID_PACKAGE in app-links.
+    const appStoreUrl = "https://apps.apple.com/app/carrymart/id6804004868";
     const playStoreUrl = "https://play.google.com/store/apps/details?id=com.carrymart";
 
     // Generate QR code when component mounts or URL changes
