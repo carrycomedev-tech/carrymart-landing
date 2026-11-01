@@ -12,11 +12,12 @@ import { ComponentProps, MouseEvent } from "react";
 import { cn } from "@/lib/utils";
 import { SHEET_CLOSE_MS, scrollToSection } from "./section-scroll";
 
+// No "Get the app" entry: the header button and the sheet's footer button
+// already carry that action, and a third copy sat right beside them.
 const navItems = [
   { href: "/#marketplace", label: "Marketplace" },
-  { href: "/#features", label: "Why CarryMart" },
   { href: "/#sell", label: "Sell" },
-  { href: "/#download", label: "Get the App" },
+  { href: "/campuses", label: "Campuses" },
 ];
 
 type NavMenuProps = ComponentProps<typeof NavigationMenu> & {

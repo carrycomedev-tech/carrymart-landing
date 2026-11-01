@@ -142,7 +142,6 @@ html {
 /* Offset in-page anchor targets so they clear the fixed navbar. */
 #hero,
 #marketplace,
-#features,
 #sell,
 #download {
   scroll-margin-top: var(--nav-scroll-offset);

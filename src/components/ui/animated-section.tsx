@@ -19,7 +19,7 @@ export const AnimatedSection = ({
   className,
   delay = 0,
   direction = "up",
-  duration = 0.6,
+  duration = 0.5,
   once = true,
 }: AnimatedSectionProps) => {
   const reducedMotion = useReducedMotion();
@@ -32,13 +32,13 @@ export const AnimatedSection = ({
   const getTransform = () => {
     switch (direction) {
       case "up":
-        return "translateY(40px)";
+        return "translateY(16px)";
       case "down":
-        return "translateY(-40px)";
+        return "translateY(-16px)";
       case "left":
-        return "translateX(40px)";
+        return "translateX(16px)";
       case "right":
-        return "translateX(-40px)";
+        return "translateX(-16px)";
       default:
         return "none";
     }
@@ -87,7 +87,7 @@ export const AnimatedText = ({
       className={cn(className)}
       style={{
         opacity: shown ? 1 : 0,
-        transform: shown ? "none" : "translateY(20px)",
+        transform: shown ? "none" : "translateY(12px)",
         transition: reducedMotion
           ? undefined
           : `opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
@@ -124,7 +124,7 @@ export const StaggerChildren = ({
         <div
           style={{
             opacity: shown ? 1 : 0,
-            transform: shown ? "none" : "translateY(30px)",
+            transform: shown ? "none" : "translateY(16px)",
             transition: reducedMotion
               ? undefined
               : `opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${baseDelay + index * staggerDelay}s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${baseDelay + index * staggerDelay}s`,

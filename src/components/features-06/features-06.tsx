@@ -1,10 +1,24 @@
 "use client";
 
-import {ArrowRight, Check, Clapperboard, Heart, MapPin, MessagesSquare, Play, Send, Store,} from "lucide-react";
+import {
+    ArrowRight,
+    Check,
+    Clapperboard,
+    Heart,
+    MapPin,
+    MessagesSquare,
+    Play,
+    QrCode,
+    Search,
+    Send,
+    Store,
+    type LucideIcon,
+} from "lucide-react";
 import Image from "next/image";
 import {ReactNode} from "react";
 import Link from "next/link";
 import {AnimatedSection} from "@/components/ui/animated-section";
+import {CATEGORIES} from "@/lib/seo";
 import {useReducedMotion} from "@/lib/use-reduced-motion";
 import {cn} from "@/lib/utils";
 
@@ -17,25 +31,30 @@ type Listing = { name: string; price: string; emoji?: string; image?: string };
    and every card keeps one shared placeholder shape. */
 const listings: Listing[] = [
     {image: "/assets/sneakers.webp", name: "Pink runners", price: "GHS 250"},
+    {image: "/assets/airpod.webp", name: "Earbuds", price: "GHS 480"},
     {image: "/assets/lip-gloss.webp", name: "Gloss set", price: "GHS 45"},
-    {image: "/assets/shirt.webp", name: "Striped shirt", price: "GHS 120"},
-    {image: "/assets/airpod.webp", name: "Wireless earbuds", price: "GHS 480"},
 ];
 
+/* One row of three, so the photos get the height a 2x2 grid could not give
+   them inside the band. */
 const ListingsVisual = () => (
-    <div className="grid grid-cols-2 gap-2.5 w-full max-w-[400px]">
+    <div className="grid grid-cols-3 gap-2.5 w-full max-w-[460px]">
         {listings.map((item) => (
-            <div key={item.name} className="bg-white rounded-xl border border-border p-3 shadow-sharp">
+            <div key={item.name} className="bg-white rounded-xl border border-border p-2.5 shadow-sharp">
                 <div
-                    className="relative h-10 rounded-lg bg-muted flex items-center justify-center text-lg mb-1.5 overflow-hidden">
+                    className="relative h-24 md:h-32 rounded-lg bg-muted flex items-center justify-center text-3xl mb-2 overflow-hidden">
                     {item.image ? (
-                        <Image src={item.image} alt="" fill sizes="176px" className="object-contain p-0.5"/>
+                        <Image src={item.image} alt="" fill sizes="150px" className="object-contain p-2"/>
                     ) : item.emoji}
                 </div>
-                <p className="text-[11px] font-semibold text-secondary leading-tight">{item.name}</p>
-                <div className="flex items-center justify-between mt-0.5">
-                    <p className="text-[11px] font-bold text-secondary">{item.price}</p>
-                    <Heart className="size-3 text-muted-foreground"/>
+                <p className="text-[11px] sm:text-xs font-semibold text-secondary leading-tight truncate">{item.name}</p>
+                {/* Three cards share the band's width, which at 360px leaves
+                    ~65px per card: the price wrapped onto two lines beside the
+                    heart. The price never wraps, and the heart yields until
+                    there is room for both. */}
+                <div className="flex items-center justify-between gap-1 mt-1">
+                    <p className="text-xs font-bold text-secondary whitespace-nowrap">{item.price}</p>
+                    <Heart className="hidden min-[400px]:block size-3.5 shrink-0 text-muted-foreground"/>
                 </div>
             </div>
         ))}
@@ -96,7 +115,7 @@ const ReelPanel = ({src, poster, className, children}: ReelPanelProps) => {
    left a 45px gap on desktop. It also pins the row's width to its parent, so
    the row can never widen the page again. Radii stay on the fixed scale. */
 const ReelsVisual = () => (
-    <div className="@container w-full max-w-[344px]">
+    <div className="@container w-full max-w-[400px]">
       <div className="grid grid-cols-[1fr_1.33fr_1fr] items-end gap-[3.49cqw]">
         <ReelPanel
             src="/media/reel-left.mp4"
@@ -126,7 +145,7 @@ const ReelsVisual = () => (
     </div>
 );
 const ChatVisual = () => (
-    <div className="w-full max-w-[380px] space-y-2.5">
+    <div className="w-full max-w-[420px] space-y-2.5">
         <div className="bg-white border border-border rounded-2xl rounded-bl-md px-4 py-2.5 w-fit shadow-sharp">
             <p className="text-sm text-secondary">Is the hoodie still available? 👀</p>
         </div>
@@ -147,7 +166,7 @@ const ChatVisual = () => (
 );
 
 const CampusVisual = () => (
-    <div className="w-full max-w-[380px] bg-white rounded-2xl border border-border shadow-sharp overflow-hidden">
+    <div className="w-full max-w-[420px] bg-white rounded-2xl border border-border shadow-sharp overflow-hidden">
         <div className="px-4 py-3 border-b border-border">
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Choose your campus</p>
         </div>
@@ -172,15 +191,75 @@ const CampusVisual = () => (
     </div>
 );
 
+const ProfileVisual = () => (
+    <div className="w-full max-w-[340px] bg-white rounded-2xl border border-border shadow-sharp p-3.5 flex items-center gap-3">
+        <div
+            className="size-11 rounded-full bg-secondary flex items-center justify-center shrink-0 font-display font-bold text-sm text-white">
+            A
+        </div>
+        <div className="min-w-0 flex-1">
+            <p className="font-display font-bold text-sm text-secondary leading-tight">Ama Styles</p>
+            <p className="text-xs text-muted-foreground leading-tight mt-1 truncate">@ama_styles</p>
+        </div>
+        <div className="size-11 rounded-xl bg-muted flex items-center justify-center shrink-0">
+            <QrCode className="size-6 text-secondary"/>
+        </div>
+    </div>
+);
+
+/* Typed against the real taxonomy so a renamed category fails the build
+   instead of leaving a made-up name in the mock. */
+const searchChips: (typeof CATEGORIES)[number][] = ["Fashion", "Electronics", "Food"];
+
+const SearchVisual = () => (
+    <div className="w-full max-w-[340px] space-y-2.5">
+        <div
+            className="flex items-center gap-2.5 bg-white border border-border rounded-full px-4 py-2.5 shadow-sharp">
+            <Search className="size-4 text-muted-foreground shrink-0"/>
+            <p className="text-sm text-secondary">Hoodie</p>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+            {searchChips.map((chip, index) => (
+                <span
+                    key={chip}
+                    className={cn(
+                        "rounded-full px-3 py-1.5 text-xs font-semibold",
+                        index === 0
+                            ? "bg-secondary text-white"
+                            : "bg-white border border-border text-muted-foreground"
+                    )}
+                >
+                    {chip}
+                </span>
+            ))}
+        </div>
+    </div>
+);
+
 /* --- Section --- */
 
-const features = [
+type Feature = {
+    category: string;
+    title: string;
+    details: string;
+    icon: LucideIcon;
+    visual: ReactNode;
+    /** Cards with somewhere to go are links. The label says where. */
+    link?: { label: string; href: string };
+    /** A small mock gets a shorter band, so it does not float in empty space. */
+    compact?: boolean;
+};
+
+/* The last two used to sit in a separate "Why CarryMart" grid that otherwise
+   repeated the four above it. They have nowhere to link to, so they are plain
+   cards and carry no hover state. */
+const features: Feature[] = [
     {
         category: "Listings",
         title: "Post it in seconds, sell it today",
         details:
             "Snap a photo, set a price, pick one of nine categories, from electronics to food. Your listing is live on your campus feed instantly.",
-        link: "Browse listings",
+        link: {label: "See how selling works", href: "/sell-on-campus"},
         icon: Store,
         visual: <ListingsVisual/>,
     },
@@ -189,7 +268,7 @@ const features = [
         title: "Discover deals in every reel",
         details:
             "Sellers show off their stuff in short videos and stories. Scroll, spot something you like, and buy it without leaving the reel.",
-        link: "See what's trending",
+        link: {label: "Watch reels in the app", href: "#download"},
         icon: Clapperboard,
         visual: <ReelsVisual/>,
     },
@@ -198,7 +277,7 @@ const features = [
         title: "Chat, haggle, and close the deal",
         details:
             "Message sellers instantly. No exchanging numbers. Agree on price and a place to meet, all in one thread you can refer back to.",
-        link: "Start a conversation",
+        link: {label: "Chat in the app", href: "#download"},
         icon: MessagesSquare,
         visual: <ChatVisual/>,
     },
@@ -207,11 +286,95 @@ const features = [
         title: "Your campus is the storefront",
         details:
             "CarryMart runs campus by campus, so everything you see is nearby. Switch campuses anytime to shop what students are selling across Ghana.",
-        link: "Find your campus",
+        link: {label: "Find your campus", href: "/campuses"},
         icon: MapPin,
         visual: <CampusVisual/>,
     },
+    {
+        category: "Shop Profiles",
+        title: "Profiles you can trust",
+        details:
+            "Every seller has a public shop profile with a QR code. Scan to view their listings or share yours anywhere.",
+        icon: QrCode,
+        visual: <ProfileVisual/>,
+        compact: true,
+    },
+    {
+        category: "Search",
+        title: "Search your whole campus",
+        details:
+            "Search the full campus feed by item, category or price, so a listing stays findable long after it was posted.",
+        icon: Search,
+        visual: <SearchVisual/>,
+        compact: true,
+    },
 ];
+
+const cardClass = "block bg-muted rounded-3xl overflow-hidden border border-transparent h-full";
+
+const FeatureCard = ({feature}: { feature: Feature }) => {
+    const body = (
+        <>
+            {/* Two alignments doing the work here:
+                - px-6 md:px-8 matches the copy block below, and justify-start
+                  left-aligns the mock, so the mock, eyebrow, heading and link
+                  all share one left edge.
+                - items-end sits every mock on a common baseline just above the
+                  copy. The mocks are different heights, so centring them in a
+                  fixed-height box left each one floating at its own offset.
+                origin-bottom-left keeps that baseline pinned during the hover
+                scale, so the card grows up and right rather than drifting. */}
+            <div
+                className={cn(
+                    "flex items-end justify-start px-6 md:px-8 pt-6 overflow-hidden",
+                    feature.compact ? "h-28 md:h-32" : "h-60 md:h-72"
+                )}
+            >
+                <div
+                    className="transition-transform duration-500 group-hover:scale-[1.03] group-hover:-translate-y-1 w-full origin-bottom-left">
+                    {feature.visual}
+                </div>
+            </div>
+
+            <div className="p-6 md:p-8">
+                <div className="flex items-center gap-2.5 mb-3">
+                    <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
+                        <feature.icon className="size-4 text-primary-foreground" strokeWidth={2.25}/>
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                        {feature.category}
+                    </span>
+                </div>
+
+                <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight text-secondary mb-2.5">
+                    {feature.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                    {feature.details}
+                </p>
+
+                {feature.link && (
+                    <span className="mt-5 inline-flex items-center gap-1.5 font-semibold text-secondary">
+                        {feature.link.label}
+                        <ArrowRight
+                            className="size-4 transition-transform duration-300 group-hover:translate-x-1"/>
+                    </span>
+                )}
+            </div>
+        </>
+    );
+
+    return feature.link ? (
+        <Link
+            href={feature.link.href}
+            className={cn(cardClass, "group hover:border-border hover:shadow-sharp-lg transition-all duration-300")}
+        >
+            {body}
+        </Link>
+    ) : (
+        <div className={cardClass}>{body}</div>
+    );
+};
 
 const Features06Page = () => {
     return (
@@ -230,57 +393,14 @@ const Features06Page = () => {
                     </p>
                 </AnimatedSection>
 
-                <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
+                {/* grid-cols-1 is explicit on purpose: the implicit column is
+                    auto-sized, so one wide mock would widen the whole page. */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
                     {features.map((feature, index) => (
-                        <AnimatedSection key={feature.category} delay={index * 0.08} direction="up">
-                            <Link
-                                href="#download"
-                                className="group block bg-muted rounded-3xl overflow-hidden border border-transparent hover:border-border hover:shadow-sharp-lg transition-all duration-300 h-full"
-                            >
-                                {/* Two alignments doing the work here:
-                                    - px-6 md:px-8 matches the copy block below, and justify-start
-                                      left-aligns the mock, so the mock, eyebrow, heading and link
-                                      all share one left edge.
-                                    - items-end sits every mock on a common baseline just above the
-                                      copy. The mocks are different heights, so centring them in a
-                                      fixed-height box left each one floating at its own offset.
-                                    origin-bottom-left keeps that baseline pinned during the hover
-                                    scale, so the card grows up and right rather than drifting. */}
-                                <div
-                                    className="h-60 md:h-64 flex items-end justify-start px-6 md:px-8 pt-6 overflow-hidden">
-                                    <div
-                                        className="transition-transform duration-500 group-hover:scale-[1.03] group-hover:-translate-y-1 w-full origin-bottom-left">
-                                        {feature.visual}
-                                    </div>
-                                </div>
-
-                                <div className="p-6 md:p-8">
-                                    <div className="flex items-center gap-2.5 mb-3">
-                                        <div
-                                            className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
-                                            <feature.icon className="size-4 text-primary-foreground"
-                                                          strokeWidth={2.25}/>
-                                        </div>
-                                        <span
-                                            className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
-                      {feature.category}
-                    </span>
-                                    </div>
-
-                                    <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight text-secondary mb-2.5">
-                                        {feature.title}
-                                    </h3>
-                                    <p className="text-muted-foreground leading-relaxed mb-5">
-                                        {feature.details}
-                                    </p>
-
-                                    <span className="inline-flex items-center gap-1.5 font-semibold text-secondary">
-                    {feature.link}
-                                        <ArrowRight
-                                            className="size-4 transition-transform duration-300 group-hover:translate-x-1"/>
-                  </span>
-                                </div>
-                            </Link>
+                        // Staggered within a row, not down the grid: each card
+                        // waits for its own scroll position already.
+                        <AnimatedSection key={feature.category} delay={(index % 2) * 0.08} direction="up">
+                            <FeatureCard feature={feature}/>
                         </AnimatedSection>
                     ))}
                 </div>

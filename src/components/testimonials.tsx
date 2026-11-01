@@ -47,10 +47,17 @@ const Testimonials = () => (
         </p>
       </AnimatedSection>
 
-      {/* Testimonials Grid */}
-      <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+      {/* Below md the three cards are a swipe row that bleeds to the screen
+          edges, with the next card peeking in so the swipe is discoverable.
+          The negative margins undo the section gutter (px-4, sm:px-6). */}
+      <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory overscroll-x-contain -mx-4 px-4 scroll-px-4 sm:-mx-6 sm:px-6 sm:scroll-px-6 md:mx-0 md:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {testimonials.map((testimonial, index) => (
-          <AnimatedSection key={testimonial.id} delay={index * 0.08} direction="up">
+          <AnimatedSection
+            key={testimonial.id}
+            delay={index * 0.08}
+            direction="up"
+            className="snap-start shrink-0 w-[85%] sm:w-[62%] md:w-auto"
+          >
             <div className="bg-muted rounded-3xl p-7 md:p-8 h-full flex flex-col">
               {/* Stars */}
               <div className="flex gap-1 mb-5">

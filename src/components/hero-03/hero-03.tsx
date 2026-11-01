@@ -38,67 +38,73 @@ const Hero03 = () => {
         <div className="absolute bottom-0 -left-32 w-[440px] h-[440px] rounded-full bg-secondary/[0.04] blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-16 items-center">
-        {/* Left — copy */}
-        <div className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 rounded-full bg-muted border border-border px-4 py-1.5 mb-6 opacity-0 animate-fade-in-up">
-            <span className="relative flex w-2 h-2">
-              <span className="absolute inline-flex w-full h-full rounded-full bg-primary opacity-75 animate-ping" />
-              <span className="relative inline-flex w-2 h-2 rounded-full bg-primary" />
-            </span>
-            <span className="text-sm font-medium text-secondary/80">
-              Built for campuses across Ghana
-            </span>
+      <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        {/* Left — copy. Below lg the wrapper is display: contents, so the copy
+            and the stats are separate grid items and the phone can sit between
+            them: copy, phone, stats. On lg it is the left column again. */}
+        <div className="contents lg:block lg:max-w-xl text-center lg:text-left">
+          <div className="max-w-xl mx-auto lg:max-w-none lg:mx-0">
+            <div className="inline-flex items-center gap-2 rounded-full bg-muted border border-border px-4 py-1.5 mb-6 opacity-0 animate-fade-in-up">
+              <span className="relative flex w-2 h-2">
+                <span className="absolute inline-flex w-full h-full rounded-full bg-primary opacity-75 animate-ping" />
+                <span className="relative inline-flex w-2 h-2 rounded-full bg-primary" />
+              </span>
+              <span className="text-sm font-medium text-secondary/80">
+                Built for campuses across Ghana
+              </span>
+            </div>
+
+            {/* Holds at 5xl through lg — 6xl overflows the two-column layout at
+                ~1024px and orphans the last word onto its own line. */}
+            <h1 className="font-display text-4xl sm:text-5xl xl:text-6xl leading-[1.05] font-black tracking-[-0.03em] text-secondary opacity-0 animate-fade-in-up animation-delay-100">
+              <span className="block">
+                Buy it. <span className="text-gradient-brand">Sell it.</span>
+              </span>
+              <span className="block">Right on campus.</span>
+            </h1>
+
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty opacity-0 animate-fade-in-up animation-delay-200">
+              {/* "the campus marketplace" is here rather than in the H1 so the
+                  headline keeps its rhythm. The first paragraph under an H1 is
+                  where both a featured snippet and a generative answer look for
+                  the definition of the thing the page is about, and the phrase was
+                  previously absent from the homepage body entirely. */}
+              CarryMart is the campus marketplace where students shop and sell
+              everything from fashion and food to electronics, books, and beauty.
+              Discover deals in reels and chat with sellers instantly.
+            </p>
+
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 opacity-0 animate-fade-in-up animation-delay-300">
+              <Button
+                asChild
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                <Link href="#download">
+                  Get the app
+                  <ArrowRight className="size-5" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-secondary/30 w-full sm:w-auto"
+              >
+                <Link href="#sell">Start selling</Link>
+              </Button>
+            </div>
+
+            {/* Stats. first:pl-0 is a desktop rule — it trims the left inset once the
+                row is left-aligned. Kept off the centred mobile layout, where it
+                made column one read wider than the other two. The columns size
+                to their own label and the labels never wrap: in three equal
+                columns the longest one broke onto a second line (at 360px and
+                again from sm up), and the three labels lost their shared
+                baseline. */}
           </div>
 
-          {/* Holds at 5xl through lg — 6xl overflows the two-column layout at
-              ~1024px and orphans the last word onto its own line. */}
-          <h1 className="font-display text-4xl sm:text-5xl xl:text-6xl leading-[1.05] font-black tracking-[-0.03em] text-secondary opacity-0 animate-fade-in-up animation-delay-100">
-            <span className="block">
-              Buy it. <span className="text-gradient-brand">Sell it.</span>
-            </span>
-            <span className="block">Right on campus.</span>
-          </h1>
-
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty opacity-0 animate-fade-in-up animation-delay-200">
-            {/* "the campus marketplace" is here rather than in the H1 so the
-                headline keeps its rhythm. The first paragraph under an H1 is
-                where both a featured snippet and a generative answer look for
-                the definition of the thing the page is about, and the phrase was
-                previously absent from the homepage body entirely. */}
-            CarryMart is the campus marketplace where students shop and sell
-            everything from fashion and food to electronics, books, and beauty.
-            Discover deals in reels and chat with sellers instantly.
-          </p>
-
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 opacity-0 animate-fade-in-up animation-delay-300">
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              <Link href="#download">
-                Get the app
-                <ArrowRight className="size-5" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-secondary/30 w-full sm:w-auto"
-            >
-              <Link href="#sell">Start selling</Link>
-            </Button>
-          </div>
-
-          {/* Stats. first:pl-0 is a desktop rule — it trims the left inset once the
-              row is left-aligned. Kept off the centred mobile layout, where it
-              made column one read wider than the other two. The base padding
-              and label size are tuned so the longest label still fits on one
-              line at 360px; when one wrapped, the three labels lost their
-              shared baseline. */}
-          <dl className="mt-12 grid grid-cols-3 divide-x divide-border/70 border-t border-border/70 pt-8 max-w-md mx-auto lg:mx-0 opacity-0 animate-fade-in-up animation-delay-400">
+          <dl className="lg:mt-12 order-last lg:order-none grid grid-cols-[auto_auto_auto] divide-x divide-border/70 border-t border-border/70 pt-8 max-w-md w-full mx-auto lg:mx-0 opacity-0 animate-fade-in-up animation-delay-400">
             {stats.map((stat) => (
               <div
                 key={stat.label}
@@ -107,7 +113,7 @@ const Hero03 = () => {
                 <dd className="font-display text-xl sm:text-2xl font-extrabold text-secondary tracking-tight">
                   {stat.value}
                 </dd>
-                <dt className="mt-1 text-[10px] min-[360px]:text-[11px] sm:text-sm text-muted-foreground">
+                <dt className="mt-1 text-[10px] min-[360px]:text-[11px] sm:text-sm whitespace-nowrap text-muted-foreground">
                   {stat.label}
                 </dt>
               </div>
@@ -115,37 +121,44 @@ const Hero03 = () => {
           </dl>
         </div>
 
-        {/* Right — phone mock */}
-        <div className="relative flex justify-center lg:justify-end lg:pr-10 opacity-0 animate-scale-in animation-delay-300">
+        {/* Right — phone mock. Below lg only the top 460px shows, fading out
+            at the bottom: a full phone pushed the video off the first screen,
+            and this way it starts right under the buttons. The chips are
+            positioned against the phone itself, not the column, so they hug
+            its edges at every width. In the peek the second chip sits at
+            top-72, which is just under the face in the clip. */}
+        <div className="relative flex justify-center lg:justify-end lg:pr-10 max-lg:h-[460px] max-lg:overflow-hidden max-lg:[mask-image:linear-gradient(to_bottom,black_70%,transparent)] opacity-0 animate-scale-in animation-delay-300">
           {/* Soft brand glow behind the phone */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full bg-primary/10 blur-3xl pointer-events-none animate-pulse-glow" />
 
-          <PhoneMock
-            src="/media/shopper.mp4"
-            poster="/media/shopper-poster.jpg"
-          >
-            {/* Bottom gradient so the chip reads clearly */}
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-secondary/60 to-transparent" />
-          </PhoneMock>
+          <div className="relative">
+            <PhoneMock
+              src="/media/shopper.mp4"
+              poster="/media/shopper-poster.jpg"
+            >
+              {/* Bottom gradient so the chip reads clearly */}
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-secondary/60 to-transparent" />
+            </PhoneMock>
 
-          {/* Floating chips */}
-          <div className="absolute top-10 -left-2 sm:left-4 lg:-left-6 bg-white rounded-2xl shadow-sharp-lg border border-border px-4 py-3 flex items-center gap-3 animate-float">
-            <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shrink-0">
-              <Tag className="size-4 text-primary-foreground" strokeWidth={2.5} />
+            {/* Floating chips */}
+            <div className="absolute top-10 -left-8 lg:-left-20 bg-white rounded-2xl shadow-sharp-lg border border-border px-4 py-3 flex items-center gap-3 animate-float">
+              <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shrink-0">
+                <Tag className="size-4 text-primary-foreground" strokeWidth={2.5} />
+              </div>
+              <div>
+                <p className="font-display font-bold text-sm text-secondary leading-tight">Sneakers · GHS 250</p>
+                <p className="text-xs text-muted-foreground leading-tight">Just listed near you</p>
+              </div>
             </div>
-            <div>
-              <p className="font-display font-bold text-sm text-secondary leading-tight">Sneakers · GHS 250</p>
-              <p className="text-xs text-muted-foreground leading-tight">Just listed near you</p>
-            </div>
-          </div>
 
-          <div className="absolute bottom-12 -right-2 sm:right-4 lg:-right-4 bg-white rounded-2xl shadow-sharp-lg border border-border px-4 py-3 flex items-center gap-3 animate-float animation-delay-500">
-            <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center shrink-0">
-              <MapPin className="size-4 text-white" strokeWidth={2.5} />
-            </div>
-            <div>
-              <p className="font-display font-bold text-sm text-secondary leading-tight">Meet on campus</p>
-              <p className="text-xs text-muted-foreground leading-tight">Handover between lectures</p>
+            <div className="absolute top-72 lg:top-auto lg:bottom-12 -right-8 lg:-right-16 bg-white rounded-2xl shadow-sharp-lg border border-border px-4 py-3 flex items-center gap-3 animate-float animation-delay-500">
+              <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center shrink-0">
+                <MapPin className="size-4 text-white" strokeWidth={2.5} />
+              </div>
+              <div>
+                <p className="font-display font-bold text-sm text-secondary leading-tight">Meet on campus</p>
+                <p className="text-xs text-muted-foreground leading-tight">Handover between lectures</p>
+              </div>
             </div>
           </div>
         </div>
