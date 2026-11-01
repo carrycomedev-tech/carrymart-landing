@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { z } from "zod";
 
-import { SUPPORT_EMAIL } from "@/lib/contact";
-
 // SMTP needs a real TCP socket, which the Edge runtime cannot open.
 export const runtime = "nodejs";
 
@@ -12,13 +10,28 @@ const schema = z.object({
 });
 
 /**
+ * The outgoing server for a mailbox, unless SMTP_HOST says otherwise. The
+ * site delivers through Namecheap Private Email or Gmail depending on which
+ * subscription is live, and swapping between them should only mean swapping
+ * SMTP_USER and SMTP_PASS.
+ */
+function smtpHost(mailbox: string): string {
+  if (process.env.SMTP_HOST) return process.env.SMTP_HOST;
+  return mailbox.toLowerCase().endsWith("@gmail.com")
+    ? "smtp.gmail.com"
+    : "mail.privateemail.com";
+}
+
+/**
  * Launch-list signup.
  *
- * Delivers each address to the support mailbox over SMTP. Set SMTP_USER and
- * SMTP_PASS to the Private Email mailbox credentials; SMTP_HOST, SMTP_PORT and
- * SUBSCRIBE_TO only need setting if you move off Namecheap. Without the
- * credentials the route fails loudly rather than quietly dropping addresses, so
- * a misconfigured deploy is obvious instead of invisible.
+ * Emails each address to the mailbox in SMTP_USER. That is the Private Email
+ * mailbox (support@carrymartgh.com) or, while that subscription is lapsed, a
+ * Gmail account, where SMTP_PASS must be a Google App Password rather than
+ * the account password. SUBSCRIBE_TO redirects the notifications somewhere
+ * other than the sending mailbox. Without credentials the route fails loudly
+ * rather than quietly dropping addresses, so a misconfigured deploy is obvious
+ * instead of invisible.
  */
 export async function POST(request: Request) {
   let body: unknown;
@@ -51,7 +64,7 @@ export async function POST(request: Request) {
 
   const port = Number(process.env.SMTP_PORT ?? 465);
   const transport = nodemailer.createTransport({
-    host: process.env.SMTP_HOST ?? "mail.privateemail.com",
+    host: smtpHost(user),
     port,
     secure: port === 465,
     auth: { user, pass },
@@ -61,9 +74,10 @@ export async function POST(request: Request) {
 
   try {
     await transport.sendMail({
-      // The envelope sender must be the authenticated mailbox or SPF fails.
+      // The envelope sender must be the authenticated mailbox or SPF fails,
+      // and Gmail rewrites any other sender to the account anyway.
       from: `CarryMart launch list <${user}>`,
-      to: process.env.SUBSCRIBE_TO ?? SUPPORT_EMAIL,
+      to: process.env.SUBSCRIBE_TO ?? user,
       // Lets you answer the signup straight from the notification.
       replyTo: parsed.data.email,
       subject: `Launch list signup: ${parsed.data.email}`,
