@@ -3,24 +3,27 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import qrcode from "qrcode-generator";
-import { Scan } from "lucide-react";
+import { Download, Scan } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/animated-section";
 
 const DownloadAppSection = () => {
     const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string>("");
 
-    // The App Store link is the published app (id6804004868). Google Play has
-    // no listing for com.carrymart yet; the link goes live when the Android app
-    // is published under that package, which matches ANDROID_PACKAGE in app-links.
+    // The App Store link is the published app (id6804004868). Android has no Play
+    // listing yet, so its button downloads the APK through /get/android; when Play
+    // goes live, restore the Google Play label and repoint it in next.config.ts.
     const appStoreUrl = "https://apps.apple.com/app/carrymart/id6804004868";
-    const playStoreUrl = "https://play.google.com/store/apps/details?id=com.carrymart";
+    const androidUrl = "/get/android";
+
+    // Sends each phone to its own download, the same link the flyers print.
+    const qrUrl = "https://www.carrymartgh.com/get";
 
     // Generate QR code when component mounts or URL changes
     useEffect(() => {
         const generateQRCode = () => {
             try {
                 const qr = qrcode(0, 'L');
-                qr.addData(appStoreUrl);
+                qr.addData(qrUrl);
                 qr.make();
 
                 const canvas = document.createElement('canvas');
@@ -48,7 +51,7 @@ const DownloadAppSection = () => {
         };
 
         generateQRCode();
-    }, [appStoreUrl]);
+    }, [qrUrl]);
 
     return (
         <section id="download" className="w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8">
@@ -102,17 +105,13 @@ const DownloadAppSection = () => {
                                     </a>
 
                                     <a
-                                        href={playStoreUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                        href={androidUrl}
                                         className="inline-flex items-center justify-start gap-3 bg-secondary text-white rounded-2xl h-14 px-6 hover:bg-secondary/90 transition-all duration-300"
                                     >
-                                        <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
-                                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                                        </svg>
+                                        <Download className="h-6 w-6" aria-hidden="true" />
                                         <span className="text-left leading-tight">
-                                            <span className="block text-[11px] opacity-70">Get it on</span>
-                                            <span className="block font-bold text-base">Google Play</span>
+                                            <span className="block text-[11px] opacity-70">Download for</span>
+                                            <span className="block font-bold text-base">Android</span>
                                         </span>
                                     </a>
                                 </div>
