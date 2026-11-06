@@ -10,7 +10,7 @@ const APP_STORE_URL = "https://apps.apple.com/app/carrymart/id6804004868";
  * Name each APK by version rather than overwriting the last one: CloudFront
  * would keep serving the old file from cache under an unchanged name.
  */
-const ANDROID_DOWNLOAD_URL = "https://media.carrycomegh.com/downloads/carrymart-1.3.apk";
+const ANDROID_DOWNLOAD_URL = "https://media.carrymartgh.com/downloads/carrymart-1.3.apk";
 
 const nextConfig: NextConfig = {
   turbopack: {
