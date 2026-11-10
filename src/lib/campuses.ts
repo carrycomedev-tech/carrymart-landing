@@ -176,6 +176,18 @@ export const CAMPUSES: Campus[] = [
       "ATU sits in the middle of central Accra, so its students are as likely to be selling a skill like repairs, design or tailoring as an object.",
   },
   {
+    slug: "kumasi-technical-university",
+    name: "Kumasi Technical University",
+    shortName: "KsTU",
+    aka: ["KsTU", "Kumasi Technical University", "Kumasi Poly", "Kumasi Polytechnic"],
+    city: "Kumasi",
+    region: "Ashanti",
+    neighbourhoods: ["Amakom", "Asafo", "Adum", "Kejetia"],
+    popularCategories: ["Electronics", "Fashion", "Services", "Food", "Books & Stationery"],
+    colour:
+      "KsTU sits a short walk from Adum and Kejetia, Ghana's busiest market, so its students already know how to haggle. What they're short of is a buyer they can trust who lives down the corridor.",
+  },
+  {
     slug: "umat-tarkwa",
     name: "University of Mines and Technology",
     shortName: "UMaT",
